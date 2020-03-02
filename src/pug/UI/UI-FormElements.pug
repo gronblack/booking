@@ -1,7 +1,14 @@
+include ../../components/input/input
+
 doctype html
 html(lang="ru")
-    head
-        meta(charset="UTF-8")
-        title Пример UI страницы
-    body
-        h1 UI page text
+  head
+    meta(charset="UTF-8")
+    title Form Elements
+  body
+    .container
+      .wrapper-between
+        .column
+          +input({labelText: "text field", placeholder: "Email"})
+        .column
+        .column
