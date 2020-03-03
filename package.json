@@ -5,17 +5,19 @@
   "author": "mikhail lyapin",
   "main": "index.js",
   "scripts": {
-    "start:dev": "webpack-dev-server --mode=development",
-    "start:prod": "webpack-dev-server --mode=production",
-    "dev": "webpack --watch --mode development",
-    "prod": "webpack --mode production"
+    "dev": "webpack --watch --config ./build/webpack.dev.conf.js",
+    "devServer": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
+    "build": "webpack --config ./build/webpack.build.conf.js"
   },
   "dependencies": {},
   "devDependencies": {
     "css-loader": "^3.4.2",
+    "cssnano": "^4.1.10",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-sort-media-queries": "^1.31.21",
     "pug": "^2.0.4",
     "pug-loader": "^2.4.0",
     "sass-loader": "^8.0.2",
