@@ -6,6 +6,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const PAGES_LOC = baseWebpackConfig.externals.pages;
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: "development",
+  entry: {
+    app: `${baseWebpackConfig.externals.paths.src}/dev.js`
+  },
   devtool: "cheap-module-eval-source-map",
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,

@@ -5,5 +5,5 @@ mixin input(options)
     var placeholder = options.placeholder ? options.placeholder : ""
     var id = options.id ? options.id : (+new Date).toString(16)
   p.input-block
-    label(class=input-block__label for=id)= labelText
-    input(class=input-block__input id=id type=type placeholder=placeholder)
+    label(class='input-block__label' for=id)= labelText
+    input(class='input-block__input' id=id type=type placeholder=placeholder)

@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require("fs");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const PATHS = {
   src: path.join(__dirname, '../src'),
@@ -23,8 +24,7 @@ module.exports = {
   },
   output: {
       filename: `js/[name].js`,
-      path: PATHS.dist,
-      publicPath: "/"
+      path: PATHS.dist
   },
   module: {
     rules: [
@@ -50,20 +50,27 @@ module.exports = {
             options: { sourceMap: true }
           }
         ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]'
+        }
       }
     ]
   },
+  resolve: {
+    alias: {
+      "~": PATHS.src
+    }
+  },
   plugins: [
-    /*...PAGES.map(page => new HtmlWebpackPlugin({
-        template: PAGES_DIR + '/' + page,
-        filename: page.replace(/\.pug/,".html")
-    })),
-    ...PAGES_UI.map(page => new HtmlWebpackPlugin({
-        template: PAGES_DIR + 'UI/' + page,
-        filename: 'UI/' + page.replace(/\.pug/,".html")
-    })),*/
     new MiniCssExtractPlugin({
       filename: 'css/[name].css'
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from: `${PATHS.src}/fonts`, to: `${PATHS.dist}/fonts` }
+    ])
   ]
 };

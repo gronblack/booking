@@ -4,9 +4,10 @@ doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
+    link(rel="stylesheet" type="text/css" href="../css/app.css")
     title Form Elements
   body
-    .container
+    .container.wrapper
       .column
         +input({labelText: "text field", placeholder: "Email"})
       .column
