@@ -1,7 +1,9 @@
 // Font
 $mainFont                : 'Montserrat', Helvetica, Arial, sans-serif;
 $mainFontColor           : #1F2041;
-$mainFontColor025        : rgba(31, 32, 65, 0.25);
+$mainFontColor025        : rgba(31, 32, 65, 0.25); // #1F2041 with opacity 0.25
+$mainFontColor05         : rgba(31, 32, 65, 0.5); // #1F2041 with opacity 0.5
+$mainFontColor075        : rgba(31, 32, 65, 0.75); // #1F2041 with opacity 0.75
 $mainFontSize            : 14px;
 $mainFontWeight          : 400;
 $mainLineHeight          : 18px;

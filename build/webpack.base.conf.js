@@ -1,11 +1,16 @@
 const path = require('path');
-const fs = require("fs");
+const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const webpack = require("webpack");
+
+function _path(p) {
+  return path.join(__dirname, p);
+}
 
 const PATHS = {
-  src: path.join(__dirname, '../src'),
-  dist: path.join(__dirname, '../dist'),
+  src: _path('../src'),
+  dist: _path('../dist'),
 };
 const PAGES = {
   // Pages const for HtmlWebpackPlugin
@@ -23,18 +28,44 @@ module.exports = {
     app: PATHS.src
   },
   output: {
-      filename: `js/[name].js`,
+      filename: `js/[name].[contenthash].js`,
       path: PATHS.dist
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor1: {
+          name: "vendors",
+          test: /(node_modules)|(datepicker.js)/,
+          chunks: "all",
+          enforce: true
+        }
+      }
+    }
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: "/node_modules/"
+      },
       {
         test: /\.pug$/,
         loader: 'pug-loader'
       },
       {
+        test: /\/lib\/\S+\.css$/,
+        exclude: "/node_modules/",
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader"
+        ]
+      },
+      {
         test: /\.scss$/,
-        exclude: /node_modules/,
+        exclude: "/node_modules/",
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -60,17 +91,16 @@ module.exports = {
       }
     ]
   },
-  resolve: {
-    alias: {
-      "~": PATHS.src
-    }
-  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css'
+      filename: 'css/[name].[contenthash].css'
     }),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/fonts`, to: `${PATHS.dist}/fonts` }
-    ])
+    ]),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    })
   ]
 };

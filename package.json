@@ -5,12 +5,16 @@
   "author": "mikhail lyapin",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch --config ./build/webpack.dev.conf.js",
-    "devServer": "webpack-dev-server --open --config ./build/webpack.dev.conf.js",
-    "build": "webpack --config ./build/webpack.build.conf.js"
+    "dev": "webpack-dev-server --open --config ./build/webpack.dev.conf.js --display-error-details",
+    "build": "webpack --config ./build/webpack.build.conf.js --display-error-details"
   },
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.4.1"
+  },
   "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",

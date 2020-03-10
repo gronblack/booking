@@ -1,9 +1,17 @@
 mixin input(options)
   -
-    var type = options.type ? options.type : "text"
+    var mode = options.mode ? options.mode : 'text'
+    var type = options.type ? options.type : 'text'
+    var value = options.value ? options.value : false
     var labelText = options.labelText ? options.labelText : ""
-    var placeholder = options.placeholder ? options.placeholder : ""
-    var id = options.id ? options.id : (+new Date).toString(16)
-  p.input-block
+    var placeholder = options.placeholder ? options.placeholder : false
+    var id = options.id ? options.id : '_' + Math.random().toString(36).substr(2, 9)
+    var mask = options.mask ? options.mask : false
+    var addClass = options.addClass ? options.addClass : ""
+  div(class='input-block ' + 'input-block_' + mode + ' ' + addClass)
     label(class='input-block__label' for=id)= labelText
-    input(class='input-block__input' id=id type=type placeholder=placeholder)
+    if mode === 'dropdown'
+      div(class='input-block__content')
+        input(class='input-block__input' id=id type=type placeholder=placeholder value=value, data-mask=mask)
+    else
+      input(class='input-block__input' id=id type=type placeholder=placeholder value=value, data-mask=mask)

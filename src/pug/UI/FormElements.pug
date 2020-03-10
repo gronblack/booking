@@ -4,11 +4,14 @@ doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
-    link(rel="stylesheet" type="text/css" href="../css/app.css")
     title Form Elements
   body
     .container.wrapper
       .column
         +input({labelText: "text field", placeholder: "Email"})
+        +input({labelText: "text field", placeholder: "Email", addClass: "focused"})
+        +input({labelText: "dropdown", mode: "dropdown", value: "Сколько гостей"})
+        p(id='date1')
+          +input({labelText: "masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "99/99/9999"})
       .column
       .column

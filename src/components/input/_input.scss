@@ -1,4 +1,5 @@
 .input-block {
+  // default text field
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -13,13 +14,49 @@
 
   &__input {
     font: inherit;
-    border: 1px solid rgba(31, 32, 65, 0.25);
+    border: 1px solid $mainFontColor025;
     border-radius: 4px;
-    padding: 13px 15px;
+    padding: 12px 15px;
     min-width: 320px;
+    color: $mainFontColor075;
 
     &::placeholder {
       color: $mainFontColor025;
     }
   }
+
+  &:focus &__input, &:hover &__input {
+    border-color: $mainFontColor05;
+  }
+
+  //dropdown
+  &_dropdown &__content {
+    position: relative;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      top: rem(13);
+      right: rem(16);
+      @include size(9px);
+      border: 2px solid $mainFontColor05;
+      border-right: none;
+      border-top: none;
+      transform: rotate(-45deg);
+    }
+
+    &::after {
+      height: 100%;
+      width: rem(40);
+      right: 0;
+      top: 0;
+    }
+  }
+
+
+
+
 }

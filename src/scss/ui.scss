@@ -1,5 +1,15 @@
+@import "utils/vars";
+
 .wrapper {
   margin: 140px auto;
+}
+
+.input-block {
+  margin-bottom: 20px;
+
+  &.focused &__input {
+    border-color: $mainFontColor05;
+  }
 }
 
 .column {
