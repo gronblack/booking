@@ -1,11 +1,11 @@
 // stylesheets
-import './lib/datepicker/css/datepicker.css';
+import '~datepicker/dist/css/datepicker.min.css';
 
 import './scss/main.scss';
 import './scss/ui.scss';
 
 
 // js
-import DatePicker from './lib/datepicker/js/datepicker';
+import datepicker from 'air-datepicker';
 
 import './js/custom';

@@ -36,7 +36,7 @@ module.exports = {
       cacheGroups: {
         vendor1: {
           name: "vendors",
-          test: /(node_modules)|(datepicker.js)/,
+          test: /(node_modules)/,
           chunks: "all",
           enforce: true
         }
@@ -55,6 +55,15 @@ module.exports = {
         loader: 'pug-loader'
       },
       {
+        test: /\.css$/,
+        include: /node_modules/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          //"postcss-loader",
+          "css-loader"
+        ]
+      },
+      /*{
         test: /\/lib\/\S+\.css$/,
         exclude: "/node_modules/",
         use: [
@@ -62,7 +71,7 @@ module.exports = {
           "css-loader",
           "postcss-loader"
         ]
-      },
+      },*/
       {
         test: /\.scss$/,
         exclude: "/node_modules/",
@@ -90,6 +99,11 @@ module.exports = {
         }
       }
     ]
+  },
+  resolve: {
+    alias: {
+      "~datepicker": _path('../node_modules/air-datepicker/')
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({

@@ -11,7 +11,6 @@ html(lang="ru")
         +input({labelText: "text field", placeholder: "Email"})
         +input({labelText: "text field", placeholder: "Email", addClass: "focused"})
         +input({labelText: "dropdown", mode: "dropdown", value: "Сколько гостей"})
-        p(id='date1')
-          +input({labelText: "masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "99/99/9999"})
+        +input({id: "date1", labelText: "masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "99/99/9999"})
       .column
       .column
