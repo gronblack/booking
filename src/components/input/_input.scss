@@ -14,19 +14,19 @@
 
   &__input {
     font: inherit;
-    border: 1px solid $mainFontColor025;
+    border: 1px solid $darkShade025;
     border-radius: 4px;
     padding: 12px 15px;
     min-width: 320px;
-    color: $mainFontColor075;
+    color: $darkShade075;
 
     &::placeholder {
-      color: $mainFontColor025;
+      color: $darkShade025;
     }
   }
 
   &:focus &__input, &:hover &__input {
-    border-color: $mainFontColor05;
+    border-color: $darkShade05;
   }
 
   //dropdown
@@ -42,7 +42,7 @@
       top: rem(13);
       right: rem(16);
       @include size(9px);
-      border: 2px solid $mainFontColor05;
+      border: 2px solid $darkShade05;
       border-right: none;
       border-top: none;
       transform: rotate(-45deg);

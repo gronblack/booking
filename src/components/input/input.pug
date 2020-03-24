@@ -8,10 +8,11 @@ mixin input(options)
     var id = options.id ? options.id : '_' + Math.random().toString(36).substr(2, 9)
     var mask = options.mask ? options.mask : false
     var addClass = options.addClass ? options.addClass : ""
-  div(class='input-block ' + 'input-block_' + mode + ' ' + addClass)
+    var addClassInput = options.addClassInput ? options.addClassInput : ""
+  div(class='input-block input-block_'+mode+' '+addClass)
     label(class='input-block__label' for=id)= labelText
     if mode === 'dropdown'
       div(class='input-block__content')
         input(class='input-block__input' id=id type=type placeholder=placeholder value=value, data-mask=mask)
     else
-      input(class='input-block__input' id=id type=type placeholder=placeholder value=value, data-mask=mask)
+      input(class='input-block__input '+addClassInput id=id type=type placeholder=placeholder value=value, data-mask=mask)

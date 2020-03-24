@@ -16,4 +16,150 @@ body {
   padding: 0 140px;
 }
 
+.datepicker {
+  box-sizing: border-box;
+  border: 1px solid $darkShade025;
+  box-shadow: 0 10px 20px $darkShade005;
+
+  &--pointer {
+    display: none;
+  }
+
+  &--nav {
+    padding: 20px;
+    border-bottom: none;
+  }
+
+  &--nav-action {
+    position: relative;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      display: block;
+      color: $purple;
+    }
+
+    &::before {
+      top: 5px;
+      @include size(12px);
+      border: 2px solid;
+      border-top: none;
+      border-right: none;
+    }
+
+    &::after {
+      top: 10px;
+      @include size(14px, 2px);
+      background-color: $purple;
+    }
+
+    &[data-action="prev"] {
+      &::before,
+      &::after {
+        left: 5px;
+      }
+
+      &::before {
+        transform: rotate(45deg);
+      }
+    }
+
+    &[data-action="next"] {
+      &::before,
+      &::after {
+        right: 5px;
+      }
+
+      &::before {
+        transform: rotate(-135deg);
+      }
+    }
+  }
+
+  &--nav-title {
+    font-family: 'Quicksand', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 24px;
+  }
+
+  &--content {
+    width: inherit;
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+
+  &--days-names {
+    margin: 8px 0 0;
+  }
+
+  &--day-name,
+  &--cell {
+    @include size(rem(40, 16));
+    font-family: $mainFont;
+    font-size: 12px;
+    line-height: 15px;
+    cursor: default;
+  }
+
+  &--cell {
+    border-radius: 50%;
+
+    &.-current- {
+      color: unset;
+    }
+    &.-selected-,
+    &.-selected-.-other-month-{
+      font-weight: 700;
+      background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+    }
+    &.-selected-.-focus- {
+      background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+      opacity: .5;
+    }
+  }
+
+  &--day-name {
+    color: #BC9CFF;
+    font-weight: 700;
+    text-transform: none;
+  }
+
+  &--buttons {
+    justify-content: space-between;
+    padding: 12px;
+    font-family: $mainFont;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+
+    .datepicker--button {
+      display: block;
+      flex: unset;
+      padding: 8px;
+    }
+
+    .datepicker--button:nth-child(odd) {
+      justify-content: flex-start;
+    }
+    .datepicker--button:nth-child(even) {
+      justify-content: flex-end;
+    }
+    & [data-action="clear"] {
+      color: $darkShade05;
+    }
+    & [data-action="selectDate"] {
+      color: $purple;
+    }
+  }
+}
+
+.datepicker-inline .datepicker { //temp!!!
+  width: 320px;
+}
+
 @import "../components/input/input";
