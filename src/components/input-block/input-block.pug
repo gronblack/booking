@@ -1,0 +1,24 @@
+mixin input-block(options)
+  -
+    var modeArray = (options.mode ? options.mode : 'text').split(' ');
+    var attrClass = attributes.class ? (' '+attributes.class) : '';
+    var type = options.type ? options.type : 'text';
+    var value = options.value ? options.value : false;
+    var label = options.label ? options.label : false;
+    var placeholder = options.placeholder ? options.placeholder : false;
+    var id = options.id ? options.id : '_' + Math.random().toString(36).substr(2, 9);
+    var mask = options.mask ? options.mask : false;
+    var pairFirst = options.pairFirst ? options.pairFirst : false;
+
+    var classInput = options.classInput ? (' '+options.classInput) : '';
+    if (!pairFirst && modeArray.includes('date')) classInput += ' datepicker-here';
+
+  div(class='input-block'+attrClass data-dropdown-for=pairFirst ? pairFirst : id)
+    if (label)
+      label(class='input-block__label' for=id)= label
+    if (modeArray.includes('dropdown'))
+      div(class='input-block__content')
+        input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask)
+        span(class='input-block__dropdown-button')
+    else
+      input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask)

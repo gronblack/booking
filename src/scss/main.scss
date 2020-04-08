@@ -16,6 +16,11 @@ body {
   padding: 0 140px;
 }
 
+.field-small {
+  width: 150px !important;
+  min-width: 150px !important;
+}
+
 .datepicker {
   box-sizing: border-box;
   border: 1px solid $darkShade025;
@@ -158,8 +163,4 @@ body {
   }
 }
 
-.datepicker-inline .datepicker { //temp!!!
-  width: 320px;
-}
-
-@import "../components/input/input";
+@import "../components/input-block/input-block";

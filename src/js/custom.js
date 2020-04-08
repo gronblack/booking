@@ -1,5 +1,6 @@
 $(document).ready(function () {
   const NOW_DATE = Date.now();
+  const DATE_FORMATTER = new Intl.DateTimeFormat("ru");
 
   // dd.mm.yyyy to yyyy-mm-dd
   var correctDateString = function (dateString, separator = '.') {
@@ -51,23 +52,30 @@ $(document).ready(function () {
   window['dpCustomized'] = [];
   dpElements.each(function () {
     var dpObject = $(this).data('datepicker');
+    var dpWrapper = $(dpObject.el.closest('.date-pair'));
     dpObject.id = Math.random().toString(36).substr(2, 9);  // add my own id
     dpObject.update({
       navTitles: {
         days: 'MM yyyy'
       },
+      range: !!dpWrapper.length,
+      multipleDatesSeparator: ' - ',
       clearButton: true,
       startDate: '',
       dateFormat: 'dd.mm.yyyy',
-      keyboardNav: false,
       prevHtml: ' ',
       nextHtml: ' ',
       offset: 6,
       onShow: function (dp, animationCompleted) {
         if (!animationCompleted) {
-          dp.$datepicker.width(dp.el.offsetWidth-2);          // width as input, 2px borders
-          if (!window['dpCustomized'].includes(dp.id)) {      // add apply button
-            var newButton = $('<span class="datepicker--button" data-action="selectDate">Применить</span>');
+          // width as input or wrapper
+          var dpWrapper = $(dp.el.closest('.date-pair'));
+          var elem = dpWrapper.length ? dpWrapper : $(dp.el);
+          dp.$datepicker.width(elem.outerWidth());
+
+          // add apply button
+          if (!window['dpCustomized'].includes(dp.id)) {
+            let newButton = $('<span class="datepicker--button" data-action="selectDate">Применить</span>');
             dp.nav.$buttonsContainer.append(newButton);
             newButton.on('click', () => {
               if(setDatefromInput(dp.el)) dp.hide();
@@ -75,11 +83,27 @@ $(document).ready(function () {
             window['dpCustomized'].push(dp.id);
           }
         }
+      },
+      onSelect: function (fd, date, dp) {
+        var dpWrapper = $(dp.el.closest('.date-pair'));
+        if (dpWrapper.length) {
+          let inputBlocks = dpWrapper.find('[data-dropdown-for='+dp.el.id+']');
+          inputBlocks.each(function (i, el) {
+            if (date[i]) $(el).find('.input-block__input').val(DATE_FORMATTER.format(date[i]));
+          })
+        }
       }
     });
   });
 
-  dpElements.on('input', function () {              // set date on input change
+  // set date on input change
+  dpElements.on('input', function () {
     setDatefromInput(this);
+  });
+
+  // show datepicker on dropdown-button click
+  $('[data-dropdown-for]').on('click', function () {
+    var dp = $('#'+$(this).attr("data-dropdown-for")).data('datepicker');
+    if (dp !== null && !dp.visible) dp.show();
   });
 });

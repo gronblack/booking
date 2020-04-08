@@ -1,4 +1,5 @@
-include ../../components/input/input
+include ../../components/input-block/input-block
+include ../../components/date-pair/date-pair
 
 doctype html
 html(lang="ru")
@@ -8,9 +9,10 @@ html(lang="ru")
   body
     .container.wrapper
       .column
-        +input({labelText: "text field", placeholder: "Email"})
-        +input({labelText: "text field", placeholder: "Email", addClass: "focused"})
-        +input({labelText: "dropdown", mode: "dropdown", value: "Сколько гостей"})
-        +input({id: "ui-single-date", addClassInput: "datepicker-here", labelText: "masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})
+        +input-block({label: "text field", placeholder: "Email"})
+        +input-block({label: "text field", placeholder: "Email"})(class="focused")
+        +input-block({mode: "dropdown", label: "dropdown", value: "Сколько гостей"})
+        +input-block({mode: "date", id: "ui-single-date", label: "masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})
+        +date-pair({mode: "dropdown", classInput: "field-small", label: "date dropdown", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000" })
       .column
       .column

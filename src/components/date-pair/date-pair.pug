@@ -1,0 +1,22 @@
+include ../input-block/input-block
+
+mixin date-pair(options)
+  -
+    var options_1 = JSON.parse(JSON.stringify(options));
+    var options_2 = JSON.parse(JSON.stringify(options));
+    if (options.hasOwnProperty('mode')) {
+      var modeArray = options['mode'].split(' ');
+      if (!modeArray.includes('date')) {
+        options_1['mode'] += ' date';
+      }
+    } else {
+        options_1['mode'] = 'date';
+    }
+
+    options_1['id'] = '_' + Math.random().toString(36).substr(2, 9);
+    options_2['pairFirst'] = options_1['id'];
+
+
+  div(class='date-pair row')
+    +input-block(options_1)
+    +input-block(options_2)

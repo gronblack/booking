@@ -30,15 +30,22 @@
   }
 
   //dropdown
-  &_dropdown &__content {
+  &__content {
     position: relative;
-
-    &::before, &::after {
-      content: '';
-      position: absolute;
-    }
+  }
+  &__dropdown-button {
+    position: absolute;
+    height: 100%;
+    width: rem(40);
+    right: 0;
+    top: 0;
+    cursor: pointer;
 
     &::before {
+      content: '';
+      display: block;
+      position: absolute;
+
       top: rem(13);
       right: rem(16);
       @include size(9px);
@@ -47,16 +54,5 @@
       border-top: none;
       transform: rotate(-45deg);
     }
-
-    &::after {
-      height: 100%;
-      width: rem(40);
-      right: 0;
-      top: 0;
-    }
   }
-
-
-
-
 }
