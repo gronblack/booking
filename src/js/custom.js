@@ -85,12 +85,13 @@ $(document).ready(function () {
         }
       },
       onSelect: function (fd, date, dp) {
+        // set value into pair inputs
         var dpWrapper = $(dp.el.closest('.date-pair'));
         if (dpWrapper.length) {
           let inputBlocks = dpWrapper.find('[data-dropdown-for='+dp.el.id+']');
           inputBlocks.each(function (i, el) {
             if (date[i]) $(el).find('.input-block__input').val(DATE_FORMATTER.format(date[i]));
-          })
+          });
         }
       }
     });
@@ -105,5 +106,17 @@ $(document).ready(function () {
   $('[data-dropdown-for]').on('click', function () {
     var dp = $('#'+$(this).attr("data-dropdown-for")).data('datepicker');
     if (dp !== null && !dp.visible) dp.show();
+  });
+
+  $(document).on('mouseover', function (e) {
+    // toggle pseudo-element of '.-range-from-' cell
+    var dpContent = $(e.target).closest('.datepicker--content');
+    if (dpContent.length) {
+      if (dpContent.find('.-range-from-').length && dpContent.find('.-range-to-').length) {
+        dpContent.removeClass('-range-start-');
+      } else {
+        dpContent.addClass('-range-start-');
+      }
+    }
   });
 });
