@@ -137,7 +137,7 @@ body {
 
       color: #fff;
       font-weight: 700;
-      border-radius: 50%;
+      border-radius: 50% !important;
       border: none;
       background: linear-gradient(180deg, $purple 0%, $blue 100%) !important;
     }

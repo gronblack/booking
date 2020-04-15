@@ -11,7 +11,13 @@ $(document).ready(function () {
     return false;
   };
 
-  var isValidDate = function (dateString, dateMin = null, separator = '.') {
+  var isValidDate = function (dateString, dateMin = null, separator = '.') { // dateString: dd[separator]mm[separator]yyyy
+    try {
+      if (dateString.length !== 10) return false;
+    } catch (e) {
+      return false;
+    }
+
     // First check for the pattern
     var regExp = new RegExp('^\\d{1,2}\\' + separator + '\\d{1,2}\\' + separator + '\\d{4}$');
     if (!regExp.test(dateString)) return false;
@@ -39,9 +45,29 @@ $(document).ready(function () {
     return true;
   };
 
-  var setDatefromInput = function(inputNode) {
-    if (inputNode.value.length === 10 && isValidDate(inputNode.value)) {
-      $(inputNode).data('datepicker').selectDate(new Date(correctDateString(inputNode.value)));
+  var setDateToDP = function(dp, date) {
+    if (Array.isArray(date)) {
+      let dateResult = [];
+      date.forEach(function (value, i) {
+        if (isValidDate(value)) dateResult.push(new Date(correctDateString(value)));
+        else return false;
+      });
+      if (dateResult.length === 1) dateResult = dateResult[0];
+      window['notOnSelectDP'] = dp.id;
+      dp.selectDate(dateResult);
+      dp.selectDate(dateResult);    // critical!
+      window['notOnSelectDP'] = null;
+
+      let inputOne = dp.$el;
+      if (inputOne.val()) inputOne.val(DATE_FORMATTER.format(dp.selectedDates[0]));
+      let inputTwo = $('#'+dp.$el.attr('data-one-for'));
+      if (inputTwo.val()) inputTwo.val(DATE_FORMATTER.format(dp.selectedDates[1]));
+
+      return true;
+    }
+
+    if (isValidDate(date)) {
+      dp.selectDate(new Date(correctDateString(date)));
       return true;
     }
     return false;
@@ -69,28 +95,43 @@ $(document).ready(function () {
       onShow: function (dp, animationCompleted) {
         if (!animationCompleted) {
           // width as input or wrapper
-          var dpWrapper = $(dp.el.closest('.date-pair'));
-          var elem = dpWrapper.length ? dpWrapper : $(dp.el);
-          dp.$datepicker.width(elem.outerWidth());
+          var pairWrapper = $(dp.el.closest('.date-pair'));
+          var widthElem = pairWrapper.length ? pairWrapper : $(dp.el);
+          dp.$datepicker.width(widthElem.outerWidth());
 
-          // add apply button
           if (!window['dpCustomized'].includes(dp.id)) {
+            let inputs = pairWrapper.length ? pairWrapper.find('.input-block__input') : $(dp.el);
+
+            // add apply button
             let newButton = $('<span class="datepicker--button" data-action="selectDate">Применить</span>');
             dp.nav.$buttonsContainer.append(newButton);
             newButton.on('click', () => {
-              if(setDatefromInput(dp.el)) dp.hide();
+              if(setDateToDP(dp.el)) dp.hide();
             });
+
+            // clear second input on clear-button click
+            if (pairWrapper.length) {
+              let clearButton = dp.nav.$buttonsContainer.find('[data-action="clear"]');
+              if (clearButton.length) {
+                clearButton.on('click', () => {
+                  inputs.val('');
+                })
+              }
+            }
+
             window['dpCustomized'].push(dp.id);
           }
         }
       },
       onSelect: function (fd, date, dp) {
         // set value into pair inputs
-        var dpWrapper = $(dp.el.closest('.date-pair'));
-        if (dpWrapper.length) {
-          let inputBlocks = dpWrapper.find('[data-dropdown-for='+dp.el.id+']');
-          inputBlocks.each(function (i, el) {
-            if (date[i]) $(el).find('.input-block__input').val(DATE_FORMATTER.format(date[i]));
+        if (dp.id === window['notOnSelectDP']) return false;
+
+        var pairWrapper = $(dp.el.closest('.date-pair'));
+        if (pairWrapper.length) {
+          pairWrapper.find('[data-is-date]').each(function (i, el) {
+            if (date[i]) $(this).val(DATE_FORMATTER.format(date[i]));
+            else  $(this).val('');
           });
         }
       }
@@ -98,8 +139,22 @@ $(document).ready(function () {
   });
 
   // set date on input change
-  dpElements.on('input', function () {
-    setDatefromInput(this);
+  $('.input-block__input[data-is-date]').on('input', function () {
+    if (!isValidDate(this.value)) return false;
+
+    var pairOneId = $(this).attr('data-two-for');
+    var pairTwoId = $(this).attr('data-one-for');
+    if (pairOneId || pairTwoId) {
+      if (pairOneId && !pairTwoId) pairTwoId = $(this).attr('id');
+      if (pairTwoId && !pairOneId) pairOneId = $(this).attr('id');
+
+      let pairOneElem = $('#'+pairOneId);
+      let pairTwoElem = $('#'+pairTwoId);
+      setDateToDP(pairOneElem.data('datepicker'), [pairOneElem.val(), pairTwoElem.val()]);
+      return true;
+    }
+
+    setDateToDP($(this).data('datepicker'), $(this).val());
   });
 
   // show datepicker on dropdown-button click
@@ -119,4 +174,5 @@ $(document).ready(function () {
       }
     }
   });
+
 });

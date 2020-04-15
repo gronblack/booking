@@ -8,17 +8,19 @@ mixin input-block(options)
     var placeholder = options.placeholder ? options.placeholder : false;
     var id = options.id ? options.id : '_' + Math.random().toString(36).substr(2, 9);
     var mask = options.mask ? options.mask : false;
-    var pairFirst = options.pairFirst ? options.pairFirst : false;
+    var oneFor = options.oneFor ? options.oneFor : false;
+    var twoFor = options.twoFor ? options.twoFor : false;
 
     var classInput = options.classInput ? (' '+options.classInput) : '';
-    if (!pairFirst && modeArray.includes('date')) classInput += ' datepicker-here';
+    var isDate = modeArray.includes('date');
+    if (isDate && !twoFor) classInput += ' datepicker-here';
 
-  div(class='input-block'+attrClass data-dropdown-for=pairFirst ? pairFirst : id)
+  div(class='input-block'+attrClass data-dropdown-for=twoFor ? twoFor : id)
     if (label)
       label(class='input-block__label' for=id)= label
     if (modeArray.includes('dropdown'))
       div(class='input-block__content')
-        input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask)
+        input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)
         span(class='input-block__dropdown-button')
     else
-      input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask)
+      input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)
