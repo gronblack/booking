@@ -18,7 +18,14 @@ body {
 
 .field-small {
   width: 150px !important;
-  min-width: 150px !important;
+}
+
+.mb20 {
+  margin-bottom: 20px !important;
+}
+
+.mb40 {
+  margin-bottom: 40px !important;
 }
 
 .datepicker {
@@ -98,6 +105,10 @@ body {
     &.-range-start- .-range-from-::before {
       content: none;
     }
+
+    &.datepicker-small .datepicker--cell {
+      height: 2rem;
+    }
   }
 
   &--days-names {
@@ -106,7 +117,7 @@ body {
 
   &--day-name,
   &--cell {
-    @include size(rem(40, 16));
+    height: rem(40, 16);
     font-family: $mainFont;
     font-size: 12px;
     line-height: 15px;
@@ -172,7 +183,7 @@ body {
 
   &--buttons {
     justify-content: space-between;
-    padding: 12px;
+    padding: 12px 20px;
     font-family: $mainFont;
     font-size: 12px;
     line-height: 15px;
@@ -183,7 +194,7 @@ body {
     .datepicker--button {
       display: block;
       flex: unset;
-      padding: 8px;
+      padding: 8px 0;
     }
     .datepicker--button:nth-child(odd) {
       justify-content: flex-start;

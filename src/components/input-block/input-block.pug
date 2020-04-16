@@ -13,14 +13,15 @@ mixin input-block(options)
 
     var classInput = options.classInput ? (' '+options.classInput) : '';
     var isDate = modeArray.includes('date');
-    if (isDate && !twoFor) classInput += ' datepicker-here';
+    var isDateRange = modeArray.includes('date-range');
+    if ((isDate || isDateRange) && !twoFor) classInput += ' datepicker-here';
 
   div(class='input-block'+attrClass data-dropdown-for=twoFor ? twoFor : id)
     if (label)
       label(class='input-block__label' for=id)= label
     if (modeArray.includes('dropdown'))
       div(class='input-block__content')
-        input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)
+        input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value readonly=isDateRange data-mask=mask data-is-date=isDate data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor)
         span(class='input-block__dropdown-button')
     else
       input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

@@ -2,7 +2,7 @@
   // default text field
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 0 0 20px;
 
   &__label {
     font-size: 12px;
@@ -17,8 +17,13 @@
     border: 1px solid $darkShade025;
     border-radius: 4px;
     padding: 12px 15px;
-    min-width: 320px;
+    //min-width: 320px;
+    width: 100%;
     color: $darkShade075;
+
+    &:read-only {
+      cursor: default;
+    }
 
     &::placeholder {
       color: $darkShade025;
@@ -27,6 +32,10 @@
 
   &:focus &__input, &:hover &__input {
     border-color: $darkShade05;
+
+    &::placeholder {
+      color: $darkShade075;
+    }
   }
 
   //dropdown

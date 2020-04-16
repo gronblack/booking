@@ -73,22 +73,43 @@ $(document).ready(function () {
     return false;
   };
 
+  var setDateFromInput = function (input) {
+    var obj = $(input);
+    if (!isValidDate(obj.val())) return false;
+
+    var pairOneId = obj.attr('data-two-for');
+    var pairTwoId = obj.attr('data-one-for');
+    if (pairOneId || pairTwoId) {
+      if (pairOneId && !pairTwoId) pairTwoId = obj.attr('id');
+      if (pairTwoId && !pairOneId) pairOneId = obj.attr('id');
+
+      let pairOneElem = $('#'+pairOneId);
+      let pairTwoElem = $('#'+pairTwoId);
+      setDateToDP(pairOneElem.data('datepicker'), [pairOneElem.val(), pairTwoElem.val()]);
+      return true;
+    }
+
+    return setDateToDP(obj.data('datepicker'), obj.val());
+  };
+
   // datepicker default initialization
   var dpElements = $('.datepicker-here');
   window['dpCustomized'] = [];
   dpElements.each(function () {
     var dpObject = $(this).data('datepicker');
-    var dpWrapper = $(dpObject.el.closest('.date-pair'));
     dpObject.id = Math.random().toString(36).substr(2, 9);  // add my own id
+    dpObject.isDatePair = !!$(this).closest('.date-pair').length;
+    dpObject.isDateRange = $(this).attr('data-is-date-range') !== undefined;
+    if ($(this).hasClass('datepicker-small')) dpObject.$content.addClass('datepicker-small');
     dpObject.update({
       navTitles: {
         days: 'MM yyyy'
       },
-      range: !!dpWrapper.length,
+      range: dpObject.isDatePair || dpObject.isDateRange,
       multipleDatesSeparator: ' - ',
       clearButton: true,
       startDate: '',
-      dateFormat: 'dd.mm.yyyy',
+      dateFormat: dpObject.isDateRange ? 'd M' : 'dd.mm.yyyy',
       prevHtml: ' ',
       nextHtml: ' ',
       offset: 6,
@@ -106,16 +127,15 @@ $(document).ready(function () {
             let newButton = $('<span class="datepicker--button" data-action="selectDate">Применить</span>');
             dp.nav.$buttonsContainer.append(newButton);
             newButton.on('click', () => {
-              if(setDateToDP(dp.el)) dp.hide();
+              if(!dp.isDateRange && setDateFromInput(dp.el)) dp.hide();
+              else dp.hide();
             });
 
             // clear second input on clear-button click
-            if (pairWrapper.length) {
+            if (dp.isDatePair) {
               let clearButton = dp.nav.$buttonsContainer.find('[data-action="clear"]');
               if (clearButton.length) {
-                clearButton.on('click', () => {
-                  inputs.val('');
-                })
+                clearButton.on('click', () => inputs.val(''));
               }
             }
 
@@ -127,9 +147,8 @@ $(document).ready(function () {
         // set value into pair inputs
         if (dp.id === window['notOnSelectDP']) return false;
 
-        var pairWrapper = $(dp.el.closest('.date-pair'));
-        if (pairWrapper.length) {
-          pairWrapper.find('[data-is-date]').each(function (i, el) {
+        if (dp.isDatePair) {
+          $(dp.el.closest('.date-pair')).find('[data-is-date]').each(function (i, el) {
             if (date[i]) $(this).val(DATE_FORMATTER.format(date[i]));
             else  $(this).val('');
           });
@@ -140,21 +159,7 @@ $(document).ready(function () {
 
   // set date on input change
   $('.input-block__input[data-is-date]').on('input', function () {
-    if (!isValidDate(this.value)) return false;
-
-    var pairOneId = $(this).attr('data-two-for');
-    var pairTwoId = $(this).attr('data-one-for');
-    if (pairOneId || pairTwoId) {
-      if (pairOneId && !pairTwoId) pairTwoId = $(this).attr('id');
-      if (pairTwoId && !pairOneId) pairOneId = $(this).attr('id');
-
-      let pairOneElem = $('#'+pairOneId);
-      let pairTwoElem = $('#'+pairTwoId);
-      setDateToDP(pairOneElem.data('datepicker'), [pairOneElem.val(), pairTwoElem.val()]);
-      return true;
-    }
-
-    setDateToDP($(this).data('datepicker'), $(this).val());
+    setDateFromInput(this);
   });
 
   // show datepicker on dropdown-button click

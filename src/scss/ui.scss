@@ -5,19 +5,26 @@
 }
 
 .input-block {
-  margin-bottom: 20px;
-
   &.focused &__input {
     border-color: $darkShade05;
+
+    &::placeholder {
+      color: $darkShade075;
+    }
   }
 }
 
 .column {
   display: flex;
   flex-direction: column;
+  width: 320px;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
+}
+
+#filter-column {
+  width: 266px;
 }

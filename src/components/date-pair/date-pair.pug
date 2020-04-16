@@ -2,6 +2,7 @@ include ../input-block/input-block
 
 mixin date-pair(options)
   -
+    var attrClass = attributes.class ? (' '+attributes.class) : '';
     var options_1 = JSON.parse(JSON.stringify(options));
     var options_2 = JSON.parse(JSON.stringify(options));
     if (options.hasOwnProperty('mode')) {
@@ -21,6 +22,6 @@ mixin date-pair(options)
     options_2['twoFor'] = options_1['id'];
 
 
-  div(class='date-pair row')
+  div(class='date-pair row'+attrClass)
     +input-block(options_1)
     +input-block(options_2)
