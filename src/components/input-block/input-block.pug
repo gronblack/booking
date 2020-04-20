@@ -11,17 +11,25 @@ mixin input-block(options)
     var oneFor = options.oneFor ? options.oneFor : false;
     var twoFor = options.twoFor ? options.twoFor : false;
 
-    var classInput = options.classInput ? (' '+options.classInput) : '';
     var isDate = modeArray.includes('date');
     var isDateRange = modeArray.includes('date-range');
+    var isDropdown = modeArray.includes('dropdown');
+    var isSubscribe = modeArray.includes('subscribe');
+
+    var classInput = options.classInput ? (' '+options.classInput) : '';
     if ((isDate || isDateRange) && !twoFor) classInput += ' datepicker-here';
 
-  div(class='input-block'+attrClass data-dropdown-for=twoFor ? twoFor : id)
+    var dataDropdownFor = false;
+    if (isDropdown || isDate) dataDropdownFor = twoFor ? twoFor : id;
+
+    var buttonMode = isDropdown ? 'dropdown-button' : 'subscribe-button';
+
+  div(class='input-block'+attrClass data-dropdown-for=dataDropdownFor)
     if (label)
       label(class='input-block__label' for=id)= label
-    if (modeArray.includes('dropdown'))
+    if (isDropdown || isSubscribe)
       div(class='input-block__content')
         input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value readonly=isDateRange data-mask=mask data-is-date=isDate data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor)
-        span(class='input-block__dropdown-button')
+        span(class='input-block__'+buttonMode)
     else
       input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

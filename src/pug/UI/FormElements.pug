@@ -11,11 +11,12 @@ html(lang="ru")
       .column
         +input-block({label: "text field", placeholder: "Email"})
         +input-block({label: "text field", placeholder: "This is pretty awesome"})(class="focused")
-        +input-block({mode: "dropdown", label: "dropdown", value: "Сколько гостей"})
-        +input-block({mode: "date", id: "ui-single-date", label: "masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})(class="mb40")
-        +date-pair({mode: "dropdown", classInput: "field-small", label: "date dropdown", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000" })(class="mb20")
+        +input-block({mode: "dropdown", label: "Dropdown", value: "Сколько гостей"})
+        +input-block({mode: "date", id: "ui-single-date", label: "Masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})(class="mb40")
+        +date-pair({mode: "dropdown", classInput: "field-small", label: "Date dropdown", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000" })(class="mb20")
 
         .column(id="filter-column")
-          +input-block({mode: "date-range dropdown", classInput: "datepicker-small", label: "filter date dropdown"})
+          +input-block({mode: "date-range dropdown", classInput: "datepicker-small", label: "Filter date dropdown"})(class="mb40")
+          +input-block({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})
       .column
       .column

@@ -32,17 +32,14 @@
 
   &:focus &__input, &:hover &__input {
     border-color: $darkShade05;
-
-    &::placeholder {
-      color: $darkShade075;
-    }
   }
 
   //dropdown
   &__content {
     position: relative;
   }
-  &__dropdown-button {
+  &__dropdown-button,
+  &__subscribe-button {
     position: absolute;
     height: 100%;
     width: rem(40);
@@ -54,14 +51,38 @@
       content: '';
       display: block;
       position: absolute;
-
-      top: rem(13);
-      right: rem(16);
-      @include size(9px);
-      border: 2px solid $darkShade05;
-      border-right: none;
-      border-top: none;
-      transform: rotate(-45deg);
     }
   }
+  &__dropdown-button::before {
+    top: rem(13);
+    right: rem(16);
+    @include size(9px);
+    border: 2px solid $darkShade05;
+    border-right: none;
+    border-top: none;
+    transform: rotate(-45deg);
+  }
+  &__subscribe-button {
+    &::before {
+      top: calc(50% - 1px);
+      right: 15px;
+      @include size(14px, 2px);
+      background: $purple;
+    }
+    &::after {
+      content: '';
+      display: block;
+
+      position: absolute;
+      top: calc(50% - 6px);
+      right: 15px;
+
+      @include size(12px);
+      border: 2px solid $purple;
+      border-bottom: none;
+      border-right: none;
+      transform: rotate(135deg);
+    }
+  }
+
 }
