@@ -6,10 +6,10 @@ mixin date-pair(options)
     var options_1 = JSON.parse(JSON.stringify(options));
     var options_2 = JSON.parse(JSON.stringify(options));
     if (options.hasOwnProperty('mode')) {
-      var modeArray = options['mode'].split(' ');
+      var modeArray = options['mode'].split('|');
       if (!modeArray.includes('date')) {
-        options_1['mode'] += ' date';
-        options_2['mode'] += ' date';
+        options_1['mode'] += '|date';
+        options_2['mode'] += '|date';
       }
     } else {
         options_1['mode'] = 'date';

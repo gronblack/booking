@@ -1,6 +1,7 @@
 $(document).ready(function () {
   const NOW_DATE = Date.now();
   const DATE_FORMATTER = new Intl.DateTimeFormat("ru");
+  const SELECT_STRING_LIMIT = 27;
 
   // dd.mm.yyyy to yyyy-mm-dd
   var correctDateString = function (dateString, separator = '.') {
@@ -165,7 +166,7 @@ $(document).ready(function () {
   // show datepicker on dropdown-button click
   $('[data-dropdown-for]').on('click', function () {
     var dp = $('#'+$(this).attr("data-dropdown-for")).data('datepicker');
-    if (dp !== null && !dp.visible) dp.show();
+    if (dp != null && !dp.visible) dp.show();
   });
 
   $(document).on('mouseover', function (e) {
@@ -180,4 +181,49 @@ $(document).ready(function () {
     }
   });
 
+  // change quantity in dropdown select block
+  $('.input-block__select-minus, .input-block__select-plus').on('click', function () {
+    var quantityElem = $(this).siblings('.input-block__select-quantity');
+    var quantity = parseInt(quantityElem.text(), 10);
+    if ($(this).hasClass('input-block__select-plus')) {
+      quantityElem.text(++quantity);
+      $(this).siblings('.input-block__select-minus').attr('disabled', quantity === 0);
+    } else {
+      quantityElem.text(--quantity);
+      $(this).attr('disabled', quantity === 0);
+    }
+    recountSelectValue($(this).closest('.input-block__content').find('.input-block__input'));
+  });
+
+  // toggle select block
+  $('.input-block__input-wrapper[data-is-select]').on('click', function () {
+    $(this).closest('.input-block').toggleClass('input-block_expanded');
+  });
+
+  var recountSelectValue = function (inputNode) {
+    inputNode = $(inputNode);
+    if (!inputNode.length) return false;
+
+    var selectElems = inputNode.closest('.input-block__content').find('.input-block__select-elem');
+    if (selectElems.length) {
+      let result = '';
+      selectElems.each(function (i, elem) {
+        let quantity = parseInt($(elem).find('.input-block__select-quantity').text());
+        if (quantity) result += quantity+' '+$(elem).find('.input-block__select-name').text()+', ';
+      });
+      if (result.length) {
+        result = result.slice(0, -2) + '...';
+        inputNode.val(cutString(result, SELECT_STRING_LIMIT));
+      }
+      else inputNode.val(inputNode.attr('data-select-question'));
+
+      return true;
+    }
+    return false;
+  };
+
+  var cutString = function (string, limit) {
+    if (string.length <= limit) return string;
+    return string.substr(0, (limit-3)) + '...';
+  };
 });

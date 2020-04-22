@@ -1,9 +1,9 @@
 mixin input-block(options)
   -
-    var modeArray = (options.mode ? options.mode : 'text').split(' ');
+    var modeArray = (options.mode ? options.mode : 'text').split('|');
+    var selectArray = options.selectList ? options.selectList.split('|') : [];
     var attrClass = attributes.class ? (' '+attributes.class) : '';
     var type = options.type ? options.type : 'text';
-    var value = options.value ? options.value : false;
     var label = options.label ? options.label : false;
     var placeholder = options.placeholder ? options.placeholder : false;
     var id = options.id ? options.id : '_' + Math.random().toString(36).substr(2, 9);
@@ -11,13 +11,18 @@ mixin input-block(options)
     var oneFor = options.oneFor ? options.oneFor : false;
     var twoFor = options.twoFor ? options.twoFor : false;
 
+    var selectQuestion = options.selectQuestion ? options.selectQuestion : false;
+    var value = options.value ? options.value : selectQuestion;
+
     var isDate = modeArray.includes('date');
     var isDateRange = modeArray.includes('date-range');
     var isDropdown = modeArray.includes('dropdown');
     var isSubscribe = modeArray.includes('subscribe');
+    var isSelect = !!selectArray.length;
 
     var classInput = options.classInput ? (' '+options.classInput) : '';
     if ((isDate || isDateRange) && !twoFor) classInput += ' datepicker-here';
+    var readonly = isDateRange || (isDropdown && !isDate);
 
     var dataDropdownFor = false;
     if (isDropdown || isDate) dataDropdownFor = twoFor ? twoFor : id;
@@ -29,7 +34,20 @@ mixin input-block(options)
       label(class='input-block__label' for=id)= label
     if (isDropdown || isSubscribe)
       div(class='input-block__content')
-        input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value readonly=isDateRange data-mask=mask data-is-date=isDate data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor)
-        span(class='input-block__'+buttonMode)
+        div(class='input-block__input-wrapper' data-is-select=isSelect)
+          input(class='input-block__input'+classInput
+            id=id type=type placeholder=placeholder value=value readonly=readonly data-mask=mask data-is-date=isDate
+            data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor data-select-question=selectQuestion)
+          span(class='input-block__'+buttonMode)
+        if (isSelect)
+          ul(class='input-block__select-list')
+            each val in selectArray
+              li(class='input-block__select-elem')
+                p(class='input-block__select-left')
+                  span(class='input-block__select-name')= val
+                p(class='input-block__select-right')
+                  span(class='input-block__select-minus' disabled)= '-'
+                  span(class='input-block__select-quantity')= '0'
+                  span(class='input-block__select-plus')= '+'
     else
       input(class='input-block__input'+classInput id=id type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

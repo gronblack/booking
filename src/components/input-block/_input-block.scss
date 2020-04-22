@@ -15,7 +15,7 @@
   &__input {
     font: inherit;
     border: 1px solid $darkShade025;
-    border-radius: 4px;
+    border-radius: $borderRadius;
     padding: 12px 15px;
     //min-width: 320px;
     width: 100%;
@@ -30,12 +30,21 @@
     }
   }
 
-  &:focus &__input, &:hover &__input {
+  &_expanded &__input,
+  &:focus &__input,
+  &:hover &__input {
     border-color: $darkShade05;
   }
 
+  &_expanded &__select-list {
+    display: block;
+  }
+
   //dropdown
-  &__content {
+  &[data-dropdown-for] &__input-wrapper * {
+    cursor: pointer;
+  }
+  &__input-wrapper {
     position: relative;
   }
   &__dropdown-button,
@@ -83,6 +92,63 @@
       border-right: none;
       transform: rotate(135deg);
     }
+  }
+
+  &__select-list {
+    display: none;
+    padding: 7px 7px 8px 15px;
+
+    font-size: 12px;
+    line-height: 15px;
+
+    border: 1px solid $darkShade05;
+    border-top: none;
+    border-radius: 0 0 $borderRadius $borderRadius;
+  }
+  &__select-elem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__select-left,
+  &__select-right {
+    display: flex;
+    align-items: center;
+  }
+  &__select-name {
+    pointer-events: none;
+  }
+  &__select-quantity {
+    width: 30px;
+    text-align: center;
+    pointer-events: none;
+    user-select: none
+  }
+  &__select-minus,
+  &__select-plus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include size(30px, 30px);
+    border-radius: 50%;
+    border: 1px solid $darkShade025;
+
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    color: $darkShade05;
+    cursor: pointer;
+    user-select: none
+  }
+  &__select-minus[disabled] {
+    opacity: .38;
+    pointer-events: none;
   }
 
 }

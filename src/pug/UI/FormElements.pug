@@ -10,13 +10,15 @@ html(lang="ru")
     .container.wrapper
       .column
         +input-block({label: "text field", placeholder: "Email"})
-        +input-block({label: "text field", placeholder: "This is pretty awesome"})(class="focused")
+        +input-block({label: "text field", value: "This is pretty awesome"})(class="input-block_focused")
         +input-block({mode: "dropdown", label: "Dropdown", value: "Сколько гостей"})
         +input-block({mode: "date", id: "ui-single-date", label: "Masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})(class="mb40")
         +date-pair({mode: "dropdown", classInput: "field-small", label: "Date dropdown", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000" })(class="mb20")
 
         .column(id="filter-column")
-          +input-block({mode: "date-range dropdown", classInput: "datepicker-small", label: "Filter date dropdown"})(class="mb40")
-          +input-block({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})
+          +input-block({mode: "date-range|dropdown", classInput: "datepicker-small", label: "Filter date dropdown"})(class="mb40")
+          +input-block({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
+          +input-block({mode: "dropdown", label: "Dropdown", classInput: "canted", value: "2 спальни, 2 кровати...", selectList: "спальни|кровати|ванные комнаты"})
+          +input-block({mode: "dropdown", label: "Dropdown", classInput: "canted", selectQuestion: "Какие удобства", selectList: "спальни|кровати|ванные комнаты"})(class='input-block_expanded')
       .column
       .column

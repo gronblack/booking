@@ -5,12 +5,8 @@
 }
 
 .input-block {
-  &.focused &__input {
+  &_focused &__input {
     border-color: $darkShade05;
-
-    &::placeholder {
-      color: $darkShade075;
-    }
   }
 }
 

@@ -20,12 +20,20 @@ body {
   width: 150px !important;
 }
 
+.canted {
+  border-radius: $borderRadius $borderRadius 0 0 !important;
+}
+
 .mb20 {
   margin-bottom: 20px !important;
 }
 
 .mb40 {
   margin-bottom: 40px !important;
+}
+
+.mb100 {
+  margin-bottom: 100px !important;
 }
 
 .datepicker {
