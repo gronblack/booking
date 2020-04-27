@@ -16,10 +16,10 @@ mixin date-pair(options)
         options_2['mode'] = 'date';
     }
 
-    options_1['id'] = '_' + Math.random().toString(36).substr(2, 9);
-    options_2['id'] = '_' + Math.random().toString(36).substr(2, 9);
-    options_1['oneFor'] = options_2['id'];
-    options_2['twoFor'] = options_1['id'];
+    options_1['inputId'] = '_' + Math.random().toString(36).substr(2, 9);
+    options_2['inputId'] = '_' + Math.random().toString(36).substr(2, 9);
+    options_1['oneFor'] = options_2['inputId'];
+    options_2['twoFor'] = options_1['inputId'];
 
 
   div(class='date-pair row'+attrClass)

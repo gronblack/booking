@@ -1,12 +1,12 @@
 mixin input-block(options)
   -
+    var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
+    var inputId = options.inputId ? options.inputId : '_' + Math.random().toString(36).substr(2, 9);
     var modeArray = (options.mode ? options.mode : 'text').split('|');
     var selectArray = options.selectList ? options.selectList.split('|') : [];
     var type = options.type ? options.type : 'text';
     var label = options.label ? options.label : false;
     var placeholder = options.placeholder ? options.placeholder : false;
-    var inputId = options.inputId ? options.inputId : '_' + Math.random().toString(36).substr(2, 9);
-    var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
     var mask = options.mask ? options.mask : false;
     var oneFor = options.oneFor ? options.oneFor : false;
     var twoFor = options.twoFor ? options.twoFor : false;
