@@ -1,5 +1,6 @@
 include ../../components/input-block/input-block
 include ../../components/date-pair/date-pair
+include ../../components/checkbox-block/checkbox-block
 
 doctype html
 html(lang="ru")
@@ -11,14 +12,16 @@ html(lang="ru")
       .column
         +input-block({label: "text field", placeholder: "Email"})
         +input-block({label: "text field", value: "This is pretty awesome"})(class="input-block_focused")
-        +input-block({mode: "dropdown", label: "Dropdown", value: "Сколько гостей"})
-        +input-block({mode: "date", id: "ui-single-date", label: "Masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})(class="mb40")
-        +date-pair({mode: "dropdown", classInput: "field-small", label: "Date dropdown", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000" })(class="mb20")
+        +input-block({blockId: "dropdown-1", mode: "dropdown", label: "Dropdown", selectQuestion: "Сколько гостей", selectList: "взрослые|дети|младенцы"})
+        +input-block({mode: "date", inputId: "ui-single-date", label: "Masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})(class="mb40")
+        +date-pair({blockId: "date-pair-1", mode: "dropdown", classInput: "field-small", label: "Date dropdown", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000" })(class="mb20")
 
         .column(id="filter-column")
           +input-block({mode: "date-range|dropdown", classInput: "datepicker-small", label: "Filter date dropdown"})(class="mb40")
           +input-block({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
           +input-block({mode: "dropdown", label: "Dropdown", classInput: "canted", value: "2 спальни, 2 кровати...", selectList: "спальни|кровати|ванные комнаты"})
-          +input-block({mode: "dropdown", label: "Dropdown", classInput: "canted", selectQuestion: "Какие удобства", selectList: "спальни|кровати|ванные комнаты"})(class='input-block_expanded')
+          +input-block({blockId: "dropdown-expanded", mode: "dropdown", label: "Dropdown", classInput: "canted", selectQuestion: "Какие удобства", selectList: "спальни|кровати|ванные комнаты"})(class='expanded')
+          +checkbox-block({blockId: "checkbox-minimized", caption: "Expandable checkbox list", selectList: "Завтрак|Письменный стол|Стул для кормления|Кроватка|Телевизор|Шампунь"})
+          +checkbox-block({caption: "Expandable checkbox list", selectList: "Завтрак|Письменный стол|Стул для кормления|Кроватка|Телевизор|Шампунь|Телевизор|Шампунь", checkedList: "1|2|3"})(class='expanded')
       .column
       .column

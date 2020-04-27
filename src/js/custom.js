@@ -196,8 +196,8 @@ $(document).ready(function () {
   });
 
   // toggle select block
-  $('.input-block__input-wrapper[data-is-select]').on('click', function () {
-    $(this).closest('.input-block').toggleClass('input-block_expanded');
+  $('[data-exp-button-for]').on('click', function () {
+    $('#'+$(this).attr('data-exp-button-for')).toggleClass('expanded');
   });
 
   var recountSelectValue = function (inputNode) {

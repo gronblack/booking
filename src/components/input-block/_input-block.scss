@@ -30,13 +30,13 @@
     }
   }
 
-  &_expanded &__input,
+  &.expanded &__input,
   &:focus &__input,
   &:hover &__input {
     border-color: $darkShade05;
   }
 
-  &_expanded &__select-list {
+  &.expanded &__select-list {
     display: block;
   }
 
@@ -96,7 +96,7 @@
 
   &__select-list {
     display: none;
-    padding: 7px 7px 8px 15px;
+    padding: 6px 6px 7px 13px;
 
     font-size: 12px;
     line-height: 15px;
@@ -119,13 +119,17 @@
   &__select-left,
   &__select-right {
     display: flex;
-    align-items: center;
+    //align-items: center;
+  }
+  &__select-left {
+    padding-top: 6px;
   }
   &__select-name {
     pointer-events: none;
   }
   &__select-quantity {
-    width: 30px;
+    width: 32px;
+    padding-top: 6px;
     text-align: center;
     pointer-events: none;
     user-select: none
