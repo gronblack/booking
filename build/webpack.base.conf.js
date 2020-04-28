@@ -59,19 +59,9 @@ module.exports = {
         include: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
-          //"postcss-loader",
           "css-loader"
         ]
       },
-      /*{
-        test: /\/lib\/\S+\.css$/,
-        exclude: "/node_modules/",
-        use: [
-          MiniCssExtractPlugin.loader,
-          "css-loader",
-          "postcss-loader"
-        ]
-      },*/
       {
         test: /\.scss$/,
         exclude: "/node_modules/",
@@ -97,6 +87,13 @@ module.exports = {
         options: {
           name: 'fonts/[name].[ext]'
         }
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'img/[name].[ext]'
+        }
       }
     ]
   },
@@ -110,7 +107,8 @@ module.exports = {
       filename: 'css/[name].[contenthash].css'
     }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/fonts`, to: `${PATHS.dist}/fonts` }
+      { from: `${PATHS.src}/fonts`, to: `${PATHS.dist}/fonts` },
+      { from: `${PATHS.src}/img`, to: `${PATHS.dist}/img` }
     ]),
     new webpack.ProvidePlugin({
       $: 'jquery',

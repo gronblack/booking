@@ -1,6 +1,7 @@
 include ../../components/input-block/input-block
 include ../../components/date-pair/date-pair
 include ../../components/checkbox-block/checkbox-block
+include ../../components/advantages-block/advantages-block
 
 doctype html
 html(lang="ru")
@@ -22,6 +23,12 @@ html(lang="ru")
           +input-block({mode: "dropdown", label: "Dropdown", classInput: "canted", value: "2 спальни, 2 кровати...", selectList: "спальни|кровати|ванные комнаты"})
           +input-block({blockId: "dropdown-expanded", mode: "dropdown", label: "Dropdown", classInput: "canted", selectQuestion: "Какие удобства", selectList: "спальни|кровати|ванные комнаты"})(class='expanded')
           +checkbox-block({blockId: "checkbox-minimized", caption: "Expandable checkbox list", selectList: "Завтрак|Письменный стол|Стул для кормления|Кроватка|Телевизор|Шампунь"})
-          +checkbox-block({caption: "Expandable checkbox list", selectList: "Завтрак|Письменный стол|Стул для кормления|Кроватка|Телевизор|Шампунь|Телевизор|Шампунь", checkedList: "1|2|3"})(class='expanded')
+          +checkbox-block({blockId: "checkbox-bottom", caption: "Expandable checkbox list", selectList: "Завтрак|Письменный стол|Стул для кормления|Кроватка|Телевизор|Шампунь|Телевизор|Шампунь", checkedList: "1|2|3"})(class='expanded')
+
+        .column(id="advantages-column")
+          +advantages-block({ data: [
+                { caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены" },
+                { caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален" }
+                ]})
       .column
       .column

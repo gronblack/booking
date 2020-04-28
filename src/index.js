@@ -6,6 +6,7 @@ import './scss/ui.scss';
 
 
 // js
+import maskPlugin from 'jquery-mask-plugin';
 import datepicker from 'air-datepicker';
 
 import './js/custom';

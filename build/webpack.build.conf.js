@@ -10,6 +10,10 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
       template: `${PAGES_LOC.PAGES_DIR}/${page}`,
       filename: page.replace(/\.pug/, ".html")
     }))
+    ,...PAGES_LOC.PAGES_UI.map(page => new HtmlWebpackPlugin({
+      template: `${PAGES_LOC.PAGES_DIR}/UI/${page}`,
+      filename: 'UI/' + page.replace(/\.pug/, ".html")
+    }))
   ]
 });
 

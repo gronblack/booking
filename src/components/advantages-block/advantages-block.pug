@@ -1,0 +1,14 @@
+mixin advantages-block(options)
+  -
+    var data = options.data;
+
+  if !!data.length
+    ul.advantages-block
+      each obj, ind in data
+        li.advantages-block__elem
+          .advantages-block__left
+            img(class='advantages-block__img' src=obj.img)
+          .advantages-block__right
+            p.advantages-block__caption
+              strong= obj.caption
+            p.advantages-block__text= obj.text

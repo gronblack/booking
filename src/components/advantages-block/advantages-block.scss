@@ -1,0 +1,26 @@
+.advantages-block {
+  &__elem {
+    display: flex;
+    position: relative;
+    padding: 20px 0;
+    border-bottom: 1px solid $darkShade01;
+
+    &:last-child {
+      border: none;
+    }
+  }
+
+  &__right {
+    font-size: 14px;
+    line-height: 24px;
+    color: $darkShade075;
+    padding-left: 11px;
+  }
+
+  &__left {
+    width: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
