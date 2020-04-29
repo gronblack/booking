@@ -3,7 +3,6 @@ mixin input-block(options)
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
     var inputId = options.inputId ? options.inputId : '_' + Math.random().toString(36).substr(2, 9);
     var modeArray = (options.mode ? options.mode : 'text').split('|');
-    var selectArray = options.selectList ? options.selectList.split('|') : [];
     var type = options.type ? options.type : 'text';
     var label = options.label ? options.label : false;
     var placeholder = options.placeholder ? options.placeholder : false;
@@ -21,7 +20,7 @@ mixin input-block(options)
     var isDateRange = modeArray.includes('date-range');
     var isDropdown = modeArray.includes('dropdown');
     var isSubscribe = modeArray.includes('subscribe');
-    var isSelect = !!selectArray.length;
+    var isSelect = options.selectList ? !!options.selectList.length : false;
 
     var classInput = options.classInput ? (' '+options.classInput) : '';
     if ((isDate || isDateRange) && !twoFor) classInput += ' datepicker-here';
@@ -45,13 +44,13 @@ mixin input-block(options)
           span(class='input-block__'+buttonMode)
         if (isSelect)
           ul(class='input-block__select-list')
-            each val in selectArray
+            each obj, ind in options.selectList
               li(class='input-block__select-elem')
                 p(class='input-block__select-left')
-                  span(class='input-block__select-name')= val
+                  span(class='input-block__select-name') !{obj.caption}
                 p(class='input-block__select-right')
                   span(class='input-block__select-minus' disabled)= '-'
-                  span(class='input-block__select-quantity')= '0'
+                  span(class='input-block__select-sum')= obj.sum ? obj.sum : 0
                   span(class='input-block__select-plus')= '+'
     else
       input(class='input-block__input'+classInput id=inputId type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

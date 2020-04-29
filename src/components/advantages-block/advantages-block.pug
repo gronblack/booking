@@ -1,9 +1,10 @@
 mixin advantages-block(options)
   -
     var data = options.data;
+    var attrClass = attributes.class ? ' '+attributes.class : '';
 
   if !!data.length
-    ul.advantages-block
+    ul(class='advantages-block'+attrClass)
       each obj, ind in data
         li.advantages-block__elem
           .advantages-block__left

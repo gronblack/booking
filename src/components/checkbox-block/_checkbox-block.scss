@@ -1,15 +1,13 @@
 .checkbox-block {
-  margin: 0 0 20px;
+  margin-bottom: 20px;
 
   &_expandable &__caption {
     cursor: pointer;
+    position: relative;
   }
 
   &__caption {
-    position: relative;
-    padding: 5px 0;
-    margin: 0;
-    margin-bottom: 7px;
+    margin-bottom: 12px;
 
     font-size: 12px;
     line-height: 15px;
@@ -20,10 +18,6 @@
   &__elem {
     padding: 6px 0;
     color: $darkShade05;
-
-    &:hover {
-      color: unset;
-    }
   }
 
   &__input {
@@ -31,9 +25,11 @@
   }
 
   &__label {
+    display: block;
     position: relative;
     padding-left: 30px;
     cursor: pointer;
+    user-select: none;
 
     &::before {
       content: '';
@@ -47,6 +43,10 @@
       border: 1px solid $darkShade025;
       box-sizing: border-box;
       border-radius: 4px;
+    }
+
+    &:hover, &:focus {
+      color: $darkShade075;
     }
   }
 
@@ -74,8 +74,8 @@
     position: absolute;
     height: 100%;
     width: rem(40);
-    right: -1px;
-    top: 5px;
+    right: 0;
+    top: 1px;
     cursor: pointer;
 
     &::before {
@@ -84,7 +84,7 @@
       position: absolute;
 
       top: 0;
-      right: rem(16);
+      right: 18px;
       @include size(9px);
       border: 2px solid $darkShade05;
       border-right: none;
@@ -97,10 +97,57 @@
     top: 5px;
   }
 
-  &__list {
+  &_expandable &__list {
     display: none;
   }
   &.expanded &__list {
     display: block;
   }
+
+
+  // toggler
+  &_toggler &__caption {
+    margin-bottom: 8px;
+  }
+
+  &_toggler &__elem {
+    padding: 8px 0;
+  }
+
+  &_toggler &__label {
+    padding-left: 50px;
+    color: $darkShade075;
+
+    &::before {
+      @include size(40px, 20px);
+      background: #FFFFFF;
+      border: 1px solid $darkShade025;
+      border-radius: 10px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      @include size(12px);
+
+      position: absolute;
+      top: 4px;
+      left: 4px;
+
+      border-radius: 50%;
+      background: $darkShade025;
+    }
+  }
+
+  &_toggler &__input:checked + &__label {
+    &::after {
+      @include size(12px);
+      top: 4px;
+      left: 24px;
+
+      border-radius: 50%;
+      background: linear-gradient(180deg, $purple 0%, $blue 100%);
+    }
+  }
+
 }

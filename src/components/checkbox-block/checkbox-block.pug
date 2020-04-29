@@ -1,26 +1,27 @@
 mixin checkbox-block(options)
   -
-    var caption = options.caption ? options.caption : false;
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
-    var selectArray = options.selectList ? options.selectList.split('|') : [];
-    var checkedArray = options.checkedList ? options.checkedList.split('|') : [];
-    var isSelect = !!selectArray.length;
-    var expButtonId = isSelect ? blockId : false;
+    var caption = options.caption ? options.caption : false;
+
+    var isExpandable = options.expandable ? options.expandable : false;
+    var expButtonId = isExpandable ? blockId : false;
+    var expClass = isExpandable ? ' checkbox-block_expandable' : '';
+
+    var isToggler = options.toggler ? options.toggler : false;
+    var togglerClass = isToggler ? ' checkbox-block_toggler' : '';
 
     var attrClass = attributes.class ? ' '+attributes.class : '';
-    var expClass = isSelect ? ' checkbox-block_expandable' : '';
-    var addClass = expClass +  attrClass;
+    var addClass = expClass + togglerClass + attrClass;
 
   div(id=blockId class='checkbox-block'+addClass)
     if (caption)
       p(class="checkbox-block__caption" data-exp-button-for=expButtonId)= caption
-        if (isSelect)
+        if (isExpandable)
           span.checkbox-block__dropdown-button
-    if (isSelect)
+    if (!!options.selectList.length)
       ul.checkbox-block__list
-        each val, ind in selectArray
+        each obj, ind in options.selectList
           li.checkbox-block__elem
             - var locId = blockId+'-'+ind
-            - var checked = checkedArray.includes(ind.toString())
-            input(class="checkbox-block__input" id=locId type="checkbox" value=val checked=checked)
-            label(class="checkbox-block__label" for=locId)= val
+            input(class="checkbox-block__input" id=locId type="checkbox" value=obj.caption checked=obj.checked)
+            label(class="checkbox-block__label" for=locId) !{obj.caption}

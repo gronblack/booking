@@ -2,6 +2,7 @@ include ../../components/input-block/input-block
 include ../../components/date-pair/date-pair
 include ../../components/checkbox-block/checkbox-block
 include ../../components/advantages-block/advantages-block
+include ../../components/radio-block/radio-block
 
 doctype html
 html(lang="ru")
@@ -9,26 +10,127 @@ html(lang="ru")
     meta(charset="UTF-8")
     title Form Elements
   body
-    .container.wrapper
+    .wrapper
       .column
         +input-block({label: "text field", placeholder: "Email"})
         +input-block({label: "text field", value: "This is pretty awesome"})(class="input-block_focused")
-        +input-block({blockId: "dropdown-1", mode: "dropdown", label: "Dropdown", selectQuestion: "Сколько гостей", selectList: "взрослые|дети|младенцы"})
-        +input-block({mode: "date", inputId: "ui-single-date", label: "Masked text field", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})(class="mb40")
-        +date-pair({blockId: "date-pair-1", mode: "dropdown", classInput: "field-small", label: "Date dropdown", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000" })(class="mb20")
+        +input-block({
+          blockId: "dropdown-1",
+          mode: "dropdown",
+          label: "Dropdown",
+          selectQuestion: "Сколько гостей",
+          selectList: [
+            {caption: "взрослые"},
+            {caption: "дети"},
+            {caption: "младенцы"}
+          ]
+        })
+        +input-block({
+          mode: "date",
+          inputId: "ui-single-date",
+          label: "Masked text field",
+          placeholder: "ДД.ММ.ГГГГ",
+          mask: "00.00.0000"
+        })(class="mb40")
+        +date-pair({
+          blockId: "date-pair-1",
+          mode: "dropdown",
+          classInput: "field-small",
+          label: "Date dropdown",
+          placeholder: "ДД.ММ.ГГГГ",
+          mask: "00.00.0000"
+        })(class="mb20")
 
         .column(id="filter-column")
-          +input-block({mode: "date-range|dropdown", classInput: "datepicker-small", label: "Filter date dropdown"})(class="mb40")
+          +input-block({
+            blockId: "",
+            mode: "date-range|dropdown",
+            classInput: "datepicker-small",
+            label: "Filter date dropdown"
+          })(class="mb40")
           +input-block({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
-          +input-block({mode: "dropdown", label: "Dropdown", classInput: "canted", value: "2 спальни, 2 кровати...", selectList: "спальни|кровати|ванные комнаты"})
-          +input-block({blockId: "dropdown-expanded", mode: "dropdown", label: "Dropdown", classInput: "canted", selectQuestion: "Какие удобства", selectList: "спальни|кровати|ванные комнаты"})(class='expanded')
-          +checkbox-block({blockId: "checkbox-minimized", caption: "Expandable checkbox list", selectList: "Завтрак|Письменный стол|Стул для кормления|Кроватка|Телевизор|Шампунь"})
-          +checkbox-block({blockId: "checkbox-bottom", caption: "Expandable checkbox list", selectList: "Завтрак|Письменный стол|Стул для кормления|Кроватка|Телевизор|Шампунь|Телевизор|Шампунь", checkedList: "1|2|3"})(class='expanded')
+          +input-block({
+            mode: "dropdown",
+            label: "Dropdown",
+            classInput: "canted",
+            selectQuestion: "Какие удобства",
+            selectList: [
+              {caption: "спальни", sum: 2},
+              {caption: "кровати", sum: 2},
+              {caption: "ванные комнаты"}
+            ]
+          })(class="recount")
+          +input-block({
+            blockId: "dropdown-expanded",
+            mode: "dropdown",
+            label: "Dropdown",
+            classInput: "canted",
+            selectQuestion: "Какие удобства",
+            selectList: [
+              {caption: "спальни", sum: 2},
+              {caption: "кровати", sum: 2},
+              {caption: "ванные комнаты"}
+            ]
+          })(class='expanded recount')
+
+          +checkbox-block({
+            blockId: "checkbox-minimized",
+            caption: "Expandable checkbox list",
+            selectList: [
+              {caption: "Завтрак"},
+              {caption: "Письменный стол"},
+              {caption: "Стул для кормления"},
+              {caption: "Кроватка"},
+              {caption: "Телевизор"},
+              {caption: "Шампунь"}
+            ],
+            expandable: true
+          })
+          +checkbox-block({
+            blockId: "checkbox-bottom",
+            caption: "Expandable checkbox list",
+            selectList: [
+              {caption: "Завтрак"},
+              {caption: "Письменный стол", checked: true},
+              {caption: "Стул для кормления", checked: true},
+              {caption: "Кроватка", checked: true},
+              {caption: "Телевизор"},
+              {caption: "Шампунь"},
+              {caption: "Телевизор"},
+              {caption: "Шампунь"},
+            ],
+            expandable: true
+          })(class='expanded')
 
         .column(id="advantages-column")
-          +advantages-block({ data: [
-                { caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены" },
-                { caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален" }
-                ]})
+          +advantages-block({
+            data: [
+              {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
+              {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"}
+            ]
+          })
       .column
-      .column
+        +checkbox-block({
+          blockId: "checkbox-top",
+          caption: "Checkbox buttons",
+          selectList: [
+            {caption: "Можно курить"},
+            {caption: "Можно с питомцами", checked: true},
+            {caption: "Можно пригласить гостей<br>(до 10 человек)", checked: true}]
+        })
+        +radio-block({
+          caption: "Radio buttons",
+          data: [
+            {value: "male", label: "Мужчина"},
+            {value: "female", label: "Женщина"}
+          ]
+        })(class="mb40")
+        +checkbox-block({
+          toggler: true,
+          caption: "Toggle",
+          selectList: [
+            {caption: "Получать спецпредложения", checked: true},
+            {caption: "Получать спецпредложения"}
+          ]
+        })
+      //.column

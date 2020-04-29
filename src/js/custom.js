@@ -3,6 +3,36 @@ $(document).ready(function () {
   const DATE_FORMATTER = new Intl.DateTimeFormat("ru");
   const SELECT_STRING_LIMIT = 27;
 
+  var cutString = function (string, limit) {
+    if (string.length <= limit) return string;
+    return string.substr(0, (limit-3)) + '...';
+  };
+
+  //recount list selected elements and write summary in input
+  var recountSelectValue = function (inputNode) {
+    inputNode = $(inputNode);
+    if (!inputNode.length) return false;
+
+    var selectElems = inputNode.closest('.input-block__content').find('.input-block__select-elem');
+    if (selectElems.length) {
+      let result = '';
+      selectElems.each(function (i, elem) {
+        let sum = parseInt($(elem).find('.input-block__select-sum').text());
+        if (sum) result += sum+' '+$(elem).find('.input-block__select-name').text()+', ';
+
+        $(elem).find('.input-block__select-minus').attr('disabled', sum === 0);
+      });
+      if (result.length) {
+        result = result.slice(0, -2) + '...';
+        inputNode.val(cutString(result, SELECT_STRING_LIMIT));
+      }
+      else inputNode.val(inputNode.attr('data-select-question'));
+
+      return true;
+    }
+    return false;
+  };
+
   // dd.mm.yyyy to yyyy-mm-dd
   var correctDateString = function (dateString, separator = '.') {
     var parts = dateString.split(separator);
@@ -181,16 +211,16 @@ $(document).ready(function () {
     }
   });
 
-  // change quantity in dropdown select block
+  // change sum in dropdown select block
   $('.input-block__select-minus, .input-block__select-plus').on('click', function () {
-    var quantityElem = $(this).siblings('.input-block__select-quantity');
-    var quantity = parseInt(quantityElem.text(), 10);
+    var sumElem = $(this).siblings('.input-block__select-sum');
+    var sum = parseInt(sumElem.text(), 10);
     if ($(this).hasClass('input-block__select-plus')) {
-      quantityElem.text(++quantity);
-      $(this).siblings('.input-block__select-minus').attr('disabled', quantity === 0);
+      sumElem.text(++sum);
+      //$(this).siblings('.input-block__select-minus').attr('disabled', sum === 0);
     } else {
-      quantityElem.text(--quantity);
-      $(this).attr('disabled', quantity === 0);
+      sumElem.text(--sum);
+      //$(this).attr('disabled', sum === 0);
     }
     recountSelectValue($(this).closest('.input-block__content').find('.input-block__input'));
   });
@@ -200,30 +230,8 @@ $(document).ready(function () {
     $('#'+$(this).attr('data-exp-button-for')).toggleClass('expanded');
   });
 
-  var recountSelectValue = function (inputNode) {
-    inputNode = $(inputNode);
-    if (!inputNode.length) return false;
+  $('.input-block.recount .input-block__input').each(function () {
+    recountSelectValue(this);
+  });
 
-    var selectElems = inputNode.closest('.input-block__content').find('.input-block__select-elem');
-    if (selectElems.length) {
-      let result = '';
-      selectElems.each(function (i, elem) {
-        let quantity = parseInt($(elem).find('.input-block__select-quantity').text());
-        if (quantity) result += quantity+' '+$(elem).find('.input-block__select-name').text()+', ';
-      });
-      if (result.length) {
-        result = result.slice(0, -2) + '...';
-        inputNode.val(cutString(result, SELECT_STRING_LIMIT));
-      }
-      else inputNode.val(inputNode.attr('data-select-question'));
-
-      return true;
-    }
-    return false;
-  };
-
-  var cutString = function (string, limit) {
-    if (string.length <= limit) return string;
-    return string.substr(0, (limit-3)) + '...';
-  };
 });
