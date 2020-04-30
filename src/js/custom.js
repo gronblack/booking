@@ -225,13 +225,28 @@ $(document).ready(function () {
     recountSelectValue($(this).closest('.input-block__content').find('.input-block__input'));
   });
 
-  // toggle select block
+  // select block toggle
   $('[data-exp-button-for]').on('click', function () {
     $('#'+$(this).attr('data-exp-button-for')).toggleClass('expanded');
   });
 
+  // recount input with lists
   $('.input-block.recount .input-block__input').each(function () {
     recountSelectValue(this);
+  });
+
+  $('.like-button').on('click', function () {
+    const VOTED_CLASS = 'like-button_voted';
+    const countElem = $(this).find('.like-button__count');
+    var count = parseInt(countElem.text(), 10);
+
+    if ($(this).hasClass(VOTED_CLASS)) {
+      $(this).removeClass(VOTED_CLASS);
+      countElem.text(--count);
+    } else {
+      $(this).addClass(VOTED_CLASS);
+      countElem.text(++count);
+    }
   });
 
 });

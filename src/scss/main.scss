@@ -10,6 +10,14 @@ body {
   padding: 0;
 }
 
+.caption {
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
 .container {
   display: flex;
   margin: 0 auto;
@@ -225,3 +233,4 @@ body {
 @import "../components/checkbox-block/checkbox-block";
 @import "../components/advantages-block/advantages-block";
 @import "../components/radio-block/radio-block";
+@import "../components/like-button/like-button";
