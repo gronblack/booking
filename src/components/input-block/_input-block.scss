@@ -16,7 +16,7 @@
     font: inherit;
     border: 1px solid $darkShade025;
     border-radius: $borderRadius;
-    padding: 12px 15px;
+    padding: 12px 14px;
     //min-width: 320px;
     width: 100%;
     color: $darkShade075;
@@ -36,7 +36,7 @@
     border-color: $darkShade05;
   }
 
-  &.expanded &__select-list {
+  &.expanded &__select-wrapper {
     display: block;
   }
 
@@ -94,16 +94,18 @@
     }
   }
 
-  &__select-list {
+  &__select-wrapper {
     display: none;
-    padding: 6px 6px 7px 13px;
-
-    font-size: 12px;
-    line-height: 15px;
-
     border: 1px solid $darkShade05;
     border-top: none;
     border-radius: 0 0 $borderRadius $borderRadius;
+  }
+
+  &__select-list {
+    padding: 5px 6px 7px 14px;
+
+    font-size: 12px;
+    line-height: 15px;
   }
   &__select-elem {
     display: flex;
@@ -155,5 +157,37 @@
     opacity: .38;
     pointer-events: none;
   }
+
+  &__buttons {
+    display: flex;
+    padding: 4px 7px 4px 14px;
+  }
+
+  &__clear-button,
+  &__apply-button {
+    padding: 8px 0;
+    font-family: $mainFont;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+    background: #ffffff;
+
+    &:hover, &:focus {
+      background: #f0f0f0;
+    }
+  }
+  &__clear-button {
+    color: $darkShade05;
+    margin-right: auto;
+  }
+  &__apply-button {
+    color: $purple;
+    margin-left: auto;
+  }
+
 
 }

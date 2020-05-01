@@ -32,6 +32,9 @@ mixin input-block(options)
     var buttonMode = isDropdown ? 'dropdown-button' : 'subscribe-button';
     var expButtonId = isSelect ? blockId : false;
 
+    var applyButton = options.applyButton ? options.applyButton : false;
+    var clearButton = options.clearButton ? options.clearButton : false;
+
   div(id=blockId class='input-block'+addClass data-dropdown-for=dataDropdownFor)
     if (label)
       label(class='input-block__label' for=inputId)= label
@@ -43,14 +46,21 @@ mixin input-block(options)
             data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor data-select-question=selectQuestion)
           span(class='input-block__'+buttonMode)
         if (isSelect)
-          ul(class='input-block__select-list')
-            each obj, ind in options.selectList
-              li(class='input-block__select-elem')
-                p(class='input-block__select-left')
-                  span(class='input-block__select-name') !{obj.caption}
-                p(class='input-block__select-right')
-                  span(class='input-block__select-minus' disabled)= '-'
-                  span(class='input-block__select-sum')= obj.sum ? obj.sum : 0
-                  span(class='input-block__select-plus')= '+'
+          div(class='input-block__select-wrapper')
+            ul(class='input-block__select-list')
+              each obj, ind in options.selectList
+                li(class='input-block__select-elem')
+                  p(class='input-block__select-left')
+                    span(class='input-block__select-name') !{obj.caption}
+                  p(class='input-block__select-right')
+                    span(class='input-block__select-minus' disabled)= '-'
+                    span(class='input-block__select-sum')= obj.sum ? obj.sum : 0
+                    span(class='input-block__select-plus')= '+'
+            if (applyButton || clearButton)
+              p(class='input-block__buttons')
+                if (clearButton)
+                  button(class='input-block__clear-button')= 'Очистить'
+                if (applyButton)
+                  button(class='input-block__apply-button' data-exp-button-for=expButtonId)= 'Применить'
     else
       input(class='input-block__input'+classInput id=inputId type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

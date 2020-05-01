@@ -4,6 +4,7 @@ include ../../components/checkbox-block/checkbox-block
 include ../../components/advantages-block/advantages-block
 include ../../components/radio-block/radio-block
 include ../../components/like-button/like-button
+include ../../components/rate-block/rate-block
 
 doctype html
 html(lang="ru")
@@ -136,7 +137,23 @@ html(lang="ru")
           ]
         })
         p.caption= 'Like button'
-        div(id='like-buttons-wrapper')
+        div(id='like-buttons-wrapper' class="mb40")
           +like-button({count: 2})
           +like-button({count: 12, voted: true})
+        p.caption= 'Rate button'
+        div(id='rate-block-wrapper' class='row')
+          +rate-block({blockId: "rate-block1", rate: 3.8})
+          +rate-block({blockId: "rate-block2", rate: 5})
+        +input-block({
+          mode: "dropdown",
+          label: "Dropdown",
+          classInput: "canted",
+          selectQuestion: "Сколько гостей",
+          selectList: [
+            {caption: "взрослые"},
+            {caption: "дети"},
+            {caption: "младенцы"}
+          ],
+          applyButton: true
+        })(class='expanded')
       //.column

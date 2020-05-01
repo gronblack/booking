@@ -225,14 +225,21 @@ $(document).ready(function () {
     recountSelectValue($(this).closest('.input-block__content').find('.input-block__input'));
   });
 
-  // select block toggle
-  $('[data-exp-button-for]').on('click', function () {
-    $('#'+$(this).attr('data-exp-button-for')).toggleClass('expanded');
+  // input with lists: click on clear button
+  $('.input-block__clear-button').on('click', function () {
+    var wrapper = $(this).closest('.input-block__content');
+    wrapper.find('.input-block__select-sum').text(0);
+    recountSelectValue(wrapper.find('.input-block__input'));
   });
 
   // recount input with lists
   $('.input-block.recount .input-block__input').each(function () {
     recountSelectValue(this);
+  });
+
+  // select block toggle
+  $('[data-exp-button-for]').on('click', function () {
+    $('#'+$(this).attr('data-exp-button-for')).toggleClass('expanded');
   });
 
   $('.like-button').on('click', function () {
