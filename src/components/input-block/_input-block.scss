@@ -2,7 +2,7 @@
   // default text field
   display: flex;
   flex-direction: column;
-  margin-bottom: 21px;
+  margin-bottom: 20px;
 
   &__label {
     font-size: 12px;
@@ -63,8 +63,8 @@
     }
   }
   &__dropdown-button::before {
-    top: rem(13);
-    right: rem(16);
+    top: 16px;
+    right: 18px;
     @include size(9px);
     border: 2px solid $darkShade05;
     border-right: none;
@@ -102,7 +102,7 @@
   }
 
   &__select-list {
-    padding: 5px 6px 7px 14px;
+    padding: 6px 6px 7px 14px;
 
     font-size: 12px;
     line-height: 15px;

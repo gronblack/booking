@@ -2,6 +2,7 @@ mixin checkbox-block(options)
   -
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
     var caption = options.caption ? options.caption : false;
+    var rich = options.rich ? options.rich : false;
 
     var isExpandable = options.expandable ? options.expandable : false;
     var expButtonId = isExpandable ? blockId : false;
@@ -21,7 +22,10 @@ mixin checkbox-block(options)
     if (!!options.selectList.length)
       ul.checkbox-block__list
         each obj, ind in options.selectList
-          li.checkbox-block__elem
-            - var locId = blockId+'-'+ind
+          - var locId = blockId+'-'+ind
+          - var rich = obj.rich ? '<p class="checkbox-block__rich-text">'+obj.rich+'</p>' : '';
+          - var elemRich = obj.rich ? ' checkbox-block__elem_rich' : '';
+          - var labelRich = obj.rich ? ' checkbox-block__label_rich' : '';
+          li(class='checkbox-block__elem'+elemRich)
             input(class="checkbox-block__input" id=locId type="checkbox" value=obj.caption checked=obj.checked)
-            label(class="checkbox-block__label" for=locId) !{obj.caption}
+            label(class="checkbox-block__label"+labelRich for=locId) !{rich}!{obj.caption}

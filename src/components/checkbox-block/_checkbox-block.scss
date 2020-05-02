@@ -6,6 +6,14 @@
     position: relative;
   }
 
+  &__rich-text {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: $darkShade075;
+    margin-bottom: 5px;
+  }
+
   &__caption {
     margin-bottom: 12px;
 
@@ -18,6 +26,11 @@
   &__elem {
     padding: 6px 0;
     color: $darkShade05;
+
+    &_rich {
+      padding-top: 4px;
+      padding-bottom: 5px;
+    }
   }
 
   &__input {
@@ -30,6 +43,11 @@
     padding-left: 30px;
     cursor: pointer;
     user-select: none;
+
+    &_rich {
+      font-size: 12px;
+      line-height: 14px;
+    }
 
     &::before {
       content: '';

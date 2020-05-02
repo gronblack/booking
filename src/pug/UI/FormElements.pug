@@ -145,6 +145,7 @@ html(lang="ru")
           +rate-block({blockId: "rate-block1", rate: 3.8})
           +rate-block({blockId: "rate-block2", rate: 5})
         +input-block({
+          blockId: "input-list-apply",
           mode: "dropdown",
           label: "Dropdown",
           classInput: "canted",
@@ -156,4 +157,11 @@ html(lang="ru")
           ],
           applyButton: true
         })(class='expanded')
+        +checkbox-block({
+          caption: "Rich checkbox buttons",
+          selectList: [
+            {rich: "Широкий коридор", caption: "Ширина коридоров в номере<br>не менее 91 см."},
+            {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
+          ]
+        })
       //.column

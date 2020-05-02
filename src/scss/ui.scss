@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   width: 320px;
-  margin-right: 125px;
+  margin-right: 127px;
 }
 
 .row {
@@ -37,11 +37,11 @@
 }
 
 #dropdown-expanded {
-  margin-bottom: 53px;
+  margin-bottom: 55px;
 }
 
 #checkbox-minimized {
-  margin-bottom: 37px;
+  margin-bottom: 38px;
 }
 
 #checkbox-bottom {
@@ -70,5 +70,9 @@
   margin-left: 2px;
   margin-top: 2px;
   width: 260px;
-  margin-bottom: 200px;
+  margin-bottom: 198px;
+}
+
+#input-list-apply {
+  margin-bottom: 99px;
 }
