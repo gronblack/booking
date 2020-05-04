@@ -4,9 +4,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const webpack = require("webpack");
 
-function _path(p) {
+var _path = function (p) {
   return path.join(__dirname, p);
-}
+};
 
 const PATHS = {
   src: _path('../src'),
@@ -18,6 +18,14 @@ const PAGES = {
   PAGES: fs.readdirSync(`${PATHS.src}/pug`).filter(fileName => fileName.endsWith('.pug')),
   PAGES_UI: fs.readdirSync(`${PATHS.src}/pug/UI`).filter(fileName => fileName.endsWith('.pug'))
 };
+
+// components subdirs 'img' to object array
+let IMAGES = [];
+fs.readdirSync(`${PATHS.src}/components/`).forEach(dirName => {
+  var from = `${PATHS.src}/components/${dirName}/img/`;
+  if (fs.existsSync(from))
+    IMAGES.push({ from: from, to: `${PATHS.dist}/img/` })
+});
 
 module.exports = {
   externals: {
@@ -107,8 +115,9 @@ module.exports = {
       filename: 'css/[name].[contenthash].css'
     }),
     new CopyWebpackPlugin([
-      { from: `${PATHS.src}/fonts`, to: `${PATHS.dist}/fonts` },
-      { from: `${PATHS.src}/img`, to: `${PATHS.dist}/img` }
+      { from: `${PATHS.src}/fonts/`, to: `${PATHS.dist}/fonts/` },
+      { from: `${PATHS.src}/img/`, to: `${PATHS.dist}/img/` },
+      ...IMAGES
     ]),
     new webpack.ProvidePlugin({
       $: 'jquery',

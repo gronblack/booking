@@ -13,14 +13,14 @@ $(document).ready(function () {
     inputNode = $(inputNode);
     if (!inputNode.length) return false;
 
-    var selectElems = inputNode.closest('.input-block__content').find('.input-block__select-elem');
+    var selectElems = inputNode.closest('.input__content').find('.input__select-elem');
     if (selectElems.length) {
       let result = '';
       selectElems.each(function (i, elem) {
-        let sum = parseInt($(elem).find('.input-block__select-sum').text());
-        if (sum) result += sum+' '+$(elem).find('.input-block__select-name').text()+', ';
+        let sum = parseInt($(elem).find('.input__select-sum').text());
+        if (sum) result += sum+' '+$(elem).find('.input__select-name').text()+', ';
 
-        $(elem).find('.input-block__select-minus').attr('disabled', sum === 0);
+        $(elem).find('.input__select-minus').attr('disabled', sum === 0);
       });
       if (result.length) {
         result = result.slice(0, -2) + '...';
@@ -152,7 +152,7 @@ $(document).ready(function () {
           dp.$datepicker.width(widthElem.outerWidth());
 
           if (!window['dpCustomized'].includes(dp.id)) {
-            let inputs = pairWrapper.length ? pairWrapper.find('.input-block__input') : $(dp.el);
+            let inputs = pairWrapper.length ? pairWrapper.find('.input__input') : $(dp.el);
 
             // add apply button
             let newButton = $('<span class="datepicker--button" data-action="selectDate">Применить</span>');
@@ -189,7 +189,7 @@ $(document).ready(function () {
   });
 
   // set date on input change
-  $('.input-block__input[data-is-date]').on('input', function () {
+  $('.input__input[data-is-date]').on('input', function () {
     setDateFromInput(this);
   });
 
@@ -212,28 +212,28 @@ $(document).ready(function () {
   });
 
   // change sum in dropdown select block
-  $('.input-block__select-minus, .input-block__select-plus').on('click', function () {
-    var sumElem = $(this).siblings('.input-block__select-sum');
+  $('.input__select-minus, .input__select-plus').on('click', function () {
+    var sumElem = $(this).siblings('.input__select-sum');
     var sum = parseInt(sumElem.text(), 10);
-    if ($(this).hasClass('input-block__select-plus')) {
+    if ($(this).hasClass('input__select-plus')) {
       sumElem.text(++sum);
-      //$(this).siblings('.input-block__select-minus').attr('disabled', sum === 0);
+      //$(this).siblings('.input__select-minus').attr('disabled', sum === 0);
     } else {
       sumElem.text(--sum);
       //$(this).attr('disabled', sum === 0);
     }
-    recountSelectValue($(this).closest('.input-block__content').find('.input-block__input'));
+    recountSelectValue($(this).closest('.input__content').find('.input__input'));
   });
 
   // input with lists: click on clear button
-  $('.input-block__clear-button').on('click', function () {
-    var wrapper = $(this).closest('.input-block__content');
-    wrapper.find('.input-block__select-sum').text(0);
-    recountSelectValue(wrapper.find('.input-block__input'));
+  $('.input__clear-button').on('click', function () {
+    var wrapper = $(this).closest('.input__content');
+    wrapper.find('.input__select-sum').text(0);
+    recountSelectValue(wrapper.find('.input__input'));
   });
 
   // recount input with lists
-  $('.input-block.recount .input-block__input').each(function () {
+  $('.input.recount .input__input').each(function () {
     recountSelectValue(this);
   });
 

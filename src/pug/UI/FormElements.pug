@@ -1,10 +1,10 @@
-include ../../components/input-block/input-block
+include ../../components/input/input
 include ../../components/date-pair/date-pair
-include ../../components/checkbox-block/checkbox-block
-include ../../components/advantages-block/advantages-block
-include ../../components/radio-block/radio-block
+include ../../components/checkbox/checkbox
+include ../../components/advantages/advantages
+include ../../components/radio/radio
 include ../../components/like-button/like-button
-include ../../components/rate-block/rate-block
+include ../../components/rate/rate
 
 doctype html
 html(lang="ru")
@@ -14,9 +14,9 @@ html(lang="ru")
   body
     .wrapper
       .column
-        +input-block({label: "text field", placeholder: "Email"})
-        +input-block({label: "text field", value: "This is pretty awesome"})(class="input-block_focused")
-        +input-block({
+        +input({label: "text field", placeholder: "Email"})
+        +input({label: "text field", value: "This is pretty awesome"})(class="input_focused")
+        +input({
           blockId: "dropdown-1",
           mode: "dropdown",
           label: "Dropdown",
@@ -27,7 +27,7 @@ html(lang="ru")
             {caption: "младенцы"}
           ]
         })
-        +input-block({
+        +input({
           mode: "date",
           inputId: "ui-single-date",
           label: "Masked text field",
@@ -44,14 +44,14 @@ html(lang="ru")
         })(class="mb20")
 
         .column(id="filter-column")
-          +input-block({
+          +input({
             blockId: "",
             mode: "date-range|dropdown",
             classInput: "datepicker-small",
             label: "Filter date dropdown"
           })(class="mb40")
-          +input-block({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
-          +input-block({
+          +input({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
+          +input({
             mode: "dropdown",
             label: "Dropdown",
             classInput: "canted",
@@ -62,7 +62,7 @@ html(lang="ru")
               {caption: "ванные комнаты"}
             ]
           })(class="recount")
-          +input-block({
+          +input({
             blockId: "dropdown-expanded",
             mode: "dropdown",
             label: "Dropdown",
@@ -75,7 +75,7 @@ html(lang="ru")
             ]
           })(class='expanded recount')
 
-          +checkbox-block({
+          +checkbox({
             blockId: "checkbox-minimized",
             caption: "Expandable checkbox list",
             selectList: [
@@ -88,7 +88,7 @@ html(lang="ru")
             ],
             expandable: true
           })
-          +checkbox-block({
+          +checkbox({
             blockId: "checkbox-bottom",
             caption: "Expandable checkbox list",
             selectList: [
@@ -105,14 +105,14 @@ html(lang="ru")
           })(class='expanded')
 
         .column(id="advantages-column")
-          +advantages-block({
+          +advantages({
             data: [
               {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
               {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"}
             ]
           })
       .column
-        +checkbox-block({
+        +checkbox({
           blockId: "checkbox-top",
           caption: "Checkbox buttons",
           selectList: [
@@ -120,14 +120,14 @@ html(lang="ru")
             {caption: "Можно с питомцами", checked: true},
             {caption: "Можно пригласить гостей<br>(до 10 человек)", checked: true}]
         })
-        +radio-block({
+        +radio({
           caption: "Radio buttons",
           data: [
             {value: "male", label: "Мужчина"},
             {value: "female", label: "Женщина"}
           ]
         })(class="mb40")
-        +checkbox-block({
+        +checkbox({
           blockId: "checkbox-toggler",
           toggler: true,
           caption: "Toggle",
@@ -141,10 +141,10 @@ html(lang="ru")
           +like-button({count: 2})
           +like-button({count: 12, voted: true})
         p.caption= 'Rate button'
-        div(id='rate-block-wrapper' class='row')
-          +rate-block({blockId: "rate-block1", rate: 3.8})
-          +rate-block({blockId: "rate-block2", rate: 5})
-        +input-block({
+        div(id='rate-wrapper' class='row')
+          +rate({blockId: "rate-block1", rate: 3.8})
+          +rate({blockId: "rate-block2", rate: 5})
+        +input({
           blockId: "input-list-apply",
           mode: "dropdown",
           label: "Dropdown",
@@ -157,7 +157,7 @@ html(lang="ru")
           ],
           applyButton: true
         })(class='expanded')
-        +checkbox-block({
+        +checkbox({
           caption: "Rich checkbox buttons",
           selectList: [
             {rich: "Широкий коридор", caption: "Ширина коридоров в номере<br>не менее 91 см."},

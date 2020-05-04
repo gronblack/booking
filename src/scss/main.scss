@@ -229,9 +229,9 @@ body {
   }
 }
 
-@import "../components/input-block/input-block";
-@import "../components/checkbox-block/checkbox-block";
-@import "../components/advantages-block/advantages-block";
-@import "../components/radio-block/radio-block";
+@import "../components/input/input";
+@import "../components/checkbox/checkbox";
+@import "../components/advantages/advantages";
+@import "../components/radio/radio";
 @import "../components/like-button/like-button";
-@import "../components/rate-block/rate-block";
+@import "../components/rate/rate";

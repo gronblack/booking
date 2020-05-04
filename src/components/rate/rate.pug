@@ -1,4 +1,4 @@
-mixin rate-block(options)
+mixin rate(options)
   -
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
     var name = options.name ? options.name : '_' + Math.random().toString(36).substr(2, 9);
@@ -8,15 +8,15 @@ mixin rate-block(options)
     var rateDecimal = rate - rateTrunc;
     var widthDecimal = 100 * (Math.asin( 2 * rateDecimal - 1 ) / Math.PI + 0.5)  // nonlinear filling looks better
 
-    var interactiveClass = options.interactive ? ' rate-block_interactive' : '';
+    var interactiveClass = options.interactive ? ' rate_interactive' : '';
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = interactiveClass + attrClass;
 
-  div(id=blockId class='rate-block'+addClass)
+  div(id=blockId class='rate'+addClass)
     - for(var i = max; i > 0; i--)
-      input(id=blockId+'-'+i class='rate-block__value' data-value=i name=name type='radio')
-      label(for=blockId+'-'+i class='rate-block__star')
+      input(id=blockId+'-'+i class='rate__value' data-value=i name=name type='radio')
+      label(for=blockId+'-'+i class='rate__star')
         if (i <= rateTrunc)
-          span(class='rate-block__star-filled')
+          span(class='rate__star-filled')
         if ((i - rate) < 1 && (i - rate) > 0)
-          span(class='rate-block__star-filled' style="width:"+widthDecimal+'%')
+          span(class='rate__star-filled' style="width:"+widthDecimal+'%')

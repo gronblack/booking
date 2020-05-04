@@ -1,4 +1,4 @@
-mixin input-block(options)
+mixin input(options)
   -
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
     var inputId = options.inputId ? options.inputId : '_' + Math.random().toString(36).substr(2, 9);
@@ -35,32 +35,32 @@ mixin input-block(options)
     var applyButton = options.applyButton ? options.applyButton : false;
     var clearButton = options.clearButton ? options.clearButton : false;
 
-  div(id=blockId class='input-block'+addClass data-dropdown-for=dataDropdownFor)
+  div(id=blockId class='input'+addClass data-dropdown-for=dataDropdownFor)
     if (label)
-      label(class='input-block__label' for=inputId)= label
+      label(class='input__label' for=inputId)= label
     if (isDropdown || isSubscribe)
-      div(class='input-block__content')
-        div(class='input-block__input-wrapper' data-exp-button-for=expButtonId)
-          input(class='input-block__input'+classInput
+      div(class='input__content')
+        div(class='input__input-wrapper' data-exp-button-for=expButtonId)
+          input(class='input__input'+classInput
             id=inputId type=type placeholder=placeholder value=value readonly=readonly data-mask=mask data-is-date=isDate
             data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor data-select-question=selectQuestion)
-          span(class='input-block__'+buttonMode)
+          span(class='input__'+buttonMode)
         if (isSelect)
-          div(class='input-block__select-wrapper')
-            ul(class='input-block__select-list')
+          div(class='input__select-wrapper')
+            ul(class='input__select-list')
               each obj, ind in options.selectList
-                li(class='input-block__select-elem')
-                  p(class='input-block__select-left')
-                    span(class='input-block__select-name') !{obj.caption}
-                  p(class='input-block__select-right')
-                    span(class='input-block__select-minus' disabled)= '-'
-                    span(class='input-block__select-sum')= obj.sum ? obj.sum : 0
-                    span(class='input-block__select-plus')= '+'
+                li(class='input__select-elem')
+                  p(class='input__select-left')
+                    span(class='input__select-name') !{obj.caption}
+                  p(class='input__select-right')
+                    span(class='input__select-minus' disabled)= '-'
+                    span(class='input__select-sum')= obj.sum ? obj.sum : 0
+                    span(class='input__select-plus')= '+'
             if (applyButton || clearButton)
-              p(class='input-block__buttons')
+              p(class='input__buttons')
                 if (clearButton)
-                  button(class='input-block__clear-button')= 'Очистить'
+                  button(class='input__clear-button')= 'Очистить'
                 if (applyButton)
-                  button(class='input-block__apply-button' data-exp-button-for=expButtonId)= 'Применить'
+                  button(class='input__apply-button' data-exp-button-for=expButtonId)= 'Применить'
     else
-      input(class='input-block__input'+classInput id=inputId type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)
+      input(class='input__input'+classInput id=inputId type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

@@ -1,0 +1,15 @@
+mixin advantages(options)
+  -
+    var data = options.data;
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+
+  if !!data.length
+    ul(class='advantages'+attrClass)
+      each obj, ind in data
+        li.advantages__elem
+          .advantages__left
+            img(class='advantages__img' src=obj.img)
+          .advantages__right
+            p.advantages__caption
+              strong= obj.caption
+            p.advantages__text= obj.text

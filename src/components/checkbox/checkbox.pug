@@ -1,0 +1,31 @@
+mixin checkbox(options)
+  -
+    var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
+    var caption = options.caption ? options.caption : false;
+    var rich = options.rich ? options.rich : false;
+
+    var isExpandable = options.expandable ? options.expandable : false;
+    var expButtonId = isExpandable ? blockId : false;
+    var expClass = isExpandable ? ' checkbox_expandable' : '';
+
+    var isToggler = options.toggler ? options.toggler : false;
+    var togglerClass = isToggler ? ' checkbox_toggler' : '';
+
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = expClass + togglerClass + attrClass;
+
+  div(id=blockId class='checkbox'+addClass)
+    if (caption)
+      p(class="checkbox__caption" data-exp-button-for=expButtonId)= caption
+        if (isExpandable)
+          span.checkbox__dropdown-button
+    if (!!options.selectList.length)
+      ul.checkbox__list
+        each obj, ind in options.selectList
+          - var locId = blockId+'-'+ind
+          - var rich = obj.rich ? '<p class="checkbox__rich-text">'+obj.rich+'</p>' : '';
+          - var elemRich = obj.rich ? ' checkbox__elem_rich' : '';
+          - var labelRich = obj.rich ? ' checkbox__label_rich' : '';
+          li(class='checkbox__elem'+elemRich)
+            input(class="checkbox__input" id=locId type="checkbox" value=obj.caption checked=obj.checked)
+            label(class="checkbox__label"+labelRich for=locId) !{rich}!{obj.caption}
