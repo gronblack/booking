@@ -1,7 +1,6 @@
 @import "utils/vars";
 
 .wrapper {
-  display: flex;
   margin: 140px auto;
   width: 1160px;
 }
@@ -19,13 +18,12 @@
   margin-right: 127px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
+.column-small {
+  width: 266px;
 }
 
-#filter-column {
-  width: 266px;
+.row {
+  display: flex;
 }
 
 #dropdown-1 {
@@ -37,11 +35,11 @@
 }
 
 #dropdown-expanded {
-  margin-bottom: 55px;
+  margin-bottom: 54px;
 }
 
 #checkbox-minimized {
-  margin-bottom: 38px;
+  margin-bottom: 49px;
 }
 
 #checkbox-bottom {
@@ -67,9 +65,12 @@
 }
 
 #rate-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 260px;
+
   margin-left: 2px;
   margin-top: 2px;
-  width: 260px;
   margin-bottom: 198px;
 }
 

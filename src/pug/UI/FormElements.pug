@@ -13,97 +13,154 @@ html(lang="ru")
     title Form Elements
   body
     .wrapper
-      .column
-        +input({label: "text field", placeholder: "Email"})
-        +input({label: "text field", value: "This is pretty awesome"})(class="input_focused")
-        +input({
-          blockId: "dropdown-1",
-          mode: "dropdown",
-          label: "Dropdown",
-          selectQuestion: "Сколько гостей",
-          selectList: [
-            {caption: "взрослые"},
-            {caption: "дети"},
-            {caption: "младенцы"}
-          ]
-        })
-        +input({
-          mode: "date",
-          inputId: "ui-single-date",
-          label: "Masked text field",
-          placeholder: "ДД.ММ.ГГГГ",
-          mask: "00.00.0000"
-        })(class="mb40")
-        +date-pair({
-          blockId: "date-pair-1",
-          mode: "dropdown",
-          classInput: "field-small",
-          label: "Date dropdown",
-          placeholder: "ДД.ММ.ГГГГ",
-          mask: "00.00.0000"
-        })(class="mb20")
-
-        .column(id="filter-column")
+      .row
+        .column
+          +input({label: "text field", placeholder: "Email"})
+          +input({label: "text field", value: "This is pretty awesome"})(class="input_focused")
           +input({
-            blockId: "",
-            mode: "date-range|dropdown",
-            classInput: "datepicker-small",
-            label: "Filter date dropdown"
-          })(class="mb40")
-          +input({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
-          +input({
+            blockId: "dropdown-1",
             mode: "dropdown",
             label: "Dropdown",
-            classInput: "canted",
-            selectQuestion: "Какие удобства",
+            selectQuestion: "Сколько гостей",
             selectList: [
-              {caption: "спальни", sum: 2},
-              {caption: "кровати", sum: 2},
-              {caption: "ванные комнаты"}
+              {caption: "взрослые"},
+              {caption: "дети"},
+              {caption: "младенцы"}
             ]
-          })(class="recount")
-          +input({
-            blockId: "dropdown-expanded",
-            mode: "dropdown",
-            label: "Dropdown",
-            classInput: "canted",
-            selectQuestion: "Какие удобства",
-            selectList: [
-              {caption: "спальни", sum: 2},
-              {caption: "кровати", sum: 2},
-              {caption: "ванные комнаты"}
-            ]
-          })(class='expanded recount')
-
-          +checkbox({
-            blockId: "checkbox-minimized",
-            caption: "Expandable checkbox list",
-            selectList: [
-              {caption: "Завтрак"},
-              {caption: "Письменный стол"},
-              {caption: "Стул для кормления"},
-              {caption: "Кроватка"},
-              {caption: "Телевизор"},
-              {caption: "Шампунь"}
-            ],
-            expandable: true
           })
-          +checkbox({
-            blockId: "checkbox-bottom",
-            caption: "Expandable checkbox list",
-            selectList: [
-              {caption: "Завтрак"},
-              {caption: "Письменный стол", checked: true},
-              {caption: "Стул для кормления", checked: true},
-              {caption: "Кроватка", checked: true},
-              {caption: "Телевизор"},
-              {caption: "Шампунь"},
-              {caption: "Телевизор"},
-              {caption: "Шампунь"},
-            ],
-            expandable: true
-          })(class='expanded')
+          +input({
+            mode: "date",
+            inputId: "ui-single-date",
+            label: "Masked text field",
+            placeholder: "ДД.ММ.ГГГГ",
+            mask: "00.00.0000"
+          })(class="mb40")
+          +date-pair({
+            blockId: "date-pair-1",
+            mode: "dropdown",
+            classInput: "field-small",
+            label: "Date dropdown",
+            placeholder: "ДД.ММ.ГГГГ",
+            mask: "00.00.0000"
+          })(class="mb20")
 
+          .column-small
+            +input({
+              blockId: "",
+              mode: "date-range|dropdown",
+              classInput: "datepicker-small",
+              label: "Filter date dropdown"
+            })(class="mb40")
+            +input({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
+        .column
+          +checkbox({
+            blockId: "checkbox-top",
+            caption: "Checkbox buttons",
+            selectList: [
+              {caption: "Можно курить"},
+              {caption: "Можно с питомцами", checked: true},
+              {caption: "Можно пригласить гостей<br>(до 10 человек)", checked: true}]
+          })
+          +radio({
+            caption: "Radio buttons",
+            data: [
+              {value: "male", label: "Мужчина"},
+              {value: "female", label: "Женщина"}
+            ]
+          })(class="mb40")
+          +checkbox({
+            blockId: "checkbox-toggler",
+            toggler: true,
+            caption: "Toggle",
+            selectList: [
+              {caption: "Получать спецпредложения", checked: true},
+              {caption: "Получать спецпредложения"}
+            ]
+          })
+          p.caption= 'Like button'
+          div(id='like-buttons-wrapper' class="mb40")
+            +like-button({count: 2})
+            +like-button({count: 12, voted: true})
+          p.caption= 'Rate button'
+          div(id='rate-wrapper' class='row-between')
+            +rate({blockId: "rate-block1", rate: 3.8})
+            +rate({blockId: "rate-block2", rate: 5})
+      .row
+        .column
+          .column-small
+            +input({
+              mode: "dropdown",
+              label: "Dropdown",
+              classInput: "canted",
+              selectQuestion: "Какие удобства",
+              selectList: [
+                {caption: "спальни", sum: 2},
+                {caption: "кровати", sum: 2},
+                {caption: "ванные комнаты"}
+              ]
+            })(class="recount")
+            +input({
+              blockId: "dropdown-expanded",
+              mode: "dropdown",
+              label: "Dropdown",
+              classInput: "canted",
+              selectQuestion: "Какие удобства",
+              selectList: [
+                {caption: "спальни", sum: 2},
+                {caption: "кровати", sum: 2},
+                {caption: "ванные комнаты"}
+              ]
+            })(class='expanded recount')
+            +checkbox({
+              blockId: "checkbox-minimized",
+              caption: "Expandable checkbox list",
+              selectList: [
+                {caption: "Завтрак"},
+                {caption: "Письменный стол"},
+                {caption: "Стул для кормления"},
+                {caption: "Кроватка"},
+                {caption: "Телевизор"},
+                {caption: "Шампунь"}
+              ],
+              expandable: true
+            })
+            +checkbox({
+              blockId: "checkbox-bottom",
+              caption: "Expandable checkbox list",
+              selectList: [
+                {caption: "Завтрак"},
+                {caption: "Письменный стол", checked: true},
+                {caption: "Стул для кормления", checked: true},
+                {caption: "Кроватка", checked: true},
+                {caption: "Телевизор"},
+                {caption: "Шампунь"},
+                {caption: "Телевизор"},
+                {caption: "Шампунь"},
+              ],
+              expandable: true
+            })(class='expanded')
+        .column
+          +input({
+            blockId: "input-list-apply",
+            mode: "dropdown",
+            label: "Dropdown",
+            classInput: "canted",
+            selectQuestion: "Сколько гостей",
+            selectList: [
+              {caption: "взрослые"},
+              {caption: "дети"},
+              {caption: "младенцы"}
+            ],
+            applyButton: true
+          })(class='expanded')
+          +checkbox({
+            caption: "Rich checkbox buttons",
+            selectList: [
+              {rich: "Широкий коридор", caption: "Ширина коридоров в номере<br>не менее 91 см."},
+              {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
+            ]
+          })
+      .row
         .column(id="advantages-column")
           +advantages({
             data: [
@@ -111,57 +168,5 @@ html(lang="ru")
               {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"}
             ]
           })
-      .column
-        +checkbox({
-          blockId: "checkbox-top",
-          caption: "Checkbox buttons",
-          selectList: [
-            {caption: "Можно курить"},
-            {caption: "Можно с питомцами", checked: true},
-            {caption: "Можно пригласить гостей<br>(до 10 человек)", checked: true}]
-        })
-        +radio({
-          caption: "Radio buttons",
-          data: [
-            {value: "male", label: "Мужчина"},
-            {value: "female", label: "Женщина"}
-          ]
-        })(class="mb40")
-        +checkbox({
-          blockId: "checkbox-toggler",
-          toggler: true,
-          caption: "Toggle",
-          selectList: [
-            {caption: "Получать спецпредложения", checked: true},
-            {caption: "Получать спецпредложения"}
-          ]
-        })
-        p.caption= 'Like button'
-        div(id='like-buttons-wrapper' class="mb40")
-          +like-button({count: 2})
-          +like-button({count: 12, voted: true})
-        p.caption= 'Rate button'
-        div(id='rate-wrapper' class='row')
-          +rate({blockId: "rate-block1", rate: 3.8})
-          +rate({blockId: "rate-block2", rate: 5})
-        +input({
-          blockId: "input-list-apply",
-          mode: "dropdown",
-          label: "Dropdown",
-          classInput: "canted",
-          selectQuestion: "Сколько гостей",
-          selectList: [
-            {caption: "взрослые"},
-            {caption: "дети"},
-            {caption: "младенцы"}
-          ],
-          applyButton: true
-        })(class='expanded')
-        +checkbox({
-          caption: "Rich checkbox buttons",
-          selectList: [
-            {rich: "Широкий коридор", caption: "Ширина коридоров в номере<br>не менее 91 см."},
-            {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
-          ]
-        })
-      //.column
+        .column
+          
