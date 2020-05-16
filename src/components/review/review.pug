@@ -1,0 +1,22 @@
+mixin review(options)
+  -
+    var text = options.text ? options.text : '';
+    var likes = options.likes ? options.likes : 0;
+    var href = options.person.href ? options.person.href : '#';
+    var date = options.date ? new Date(options.date) : '';
+    var dateFormat = date ? `${ ('0'+date.getDate()).slice(-2) }.${ ('0'+(date.getMonth()+1)).slice(-2) }.${ date.getFullYear() }` : '';
+
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+  blockquote(class='review'+addClass)
+    div(class='review__top')
+      a(class='review__img' href=href)
+        img(src=options.person.img)
+      p(class='review__caption')
+        cite
+          a(href=href)= options.person.name
+        time(datetime=date)= dateFormat
+    div(class='review__bottom')
+      +like-button({count: likes, voted: true})(class='review__likes')
+      p(class='review__text') !{text}

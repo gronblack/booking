@@ -1,0 +1,36 @@
+.review {
+  &__top, &__bottom {
+    display: flex;
+  }
+
+  &__bottom {
+    padding: 10px 4px;
+  }
+
+  &__caption {
+    font-size: 14px;
+    line-height: 24px;
+    color: $darkShade075;
+
+    a {
+      display: block;
+      font-weight: 700;
+      font-style: normal;
+      color: $darkShade075;
+    }
+  }
+
+  &__img {
+    margin-right: 10px;
+  }
+
+  &__likes {
+    margin-top: 2px;
+    margin-right: 14px;
+  }
+
+  &__text {
+    color: $darkShade075;
+    line-height: 24px;
+  }
+}

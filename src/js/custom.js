@@ -1,7 +1,15 @@
+import TimeAgo from "javascript-time-ago/modules/JavascriptTimeAgo";
+import TimeAgoRu from "javascript-time-ago/locale/ru";
+
 $(document).ready(function () {
-  const NOW_DATE = Date.now();
-  const DATE_FORMATTER = new Intl.DateTimeFormat("ru");
+  const DATE_FORMATTER = new Intl.DateTimeFormat('ru-RU');
   const SELECT_STRING_LIMIT = 27;
+
+  TimeAgo.addLocale(TimeAgoRu);
+  const timeAgo = new TimeAgo('ru-RU');
+  $('[datetime]').each(function () {
+    $(this).text(timeAgo.format(new Date($(this).attr('datetime'))));
+  });
 
   var cutString = function (string, limit) {
     if (string.length <= limit) return string;

@@ -1,0 +1,24 @@
+mixin review(options)
+  -
+    var DATE_FORMATTER = new Intl.DateTimeFormat('ru-RU', {
+      weekday: "short",
+      year: "numeric",
+      month: "long",
+      day: "numeric"});
+
+    var text = options.text ? options.text : false;
+    var likes = options.likes ? options.likes : false;
+    var date = options.date ? options.date : false;
+    var href = options.person.href ? options.person.href : '#';
+
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+  blockquote(class='review'+addClass)
+    div(class='review__top')
+      a(class='review__img' href=href)
+        img(src=options.person.img)
+      p(class='review__caption')
+        a(href=href)
+          span(class='review__name')= options.person.name
+        time(datetime=date)= DATE_FORMATTER.format(date)

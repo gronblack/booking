@@ -20,11 +20,11 @@ const PAGES = {
 };
 
 // components subdirs 'img' to object array
-let IMAGES = [];
+let COMPONENTS_IMAGES = [];
 fs.readdirSync(`${PATHS.src}/components/`).forEach(dirName => {
   var from = `${PATHS.src}/components/${dirName}/img/`;
   if (fs.existsSync(from))
-    IMAGES.push({ from: from, to: `${PATHS.dist}/img/` })
+    COMPONENTS_IMAGES.push({ from: from, to: `${PATHS.dist}/img/` })
 });
 
 module.exports = {
@@ -97,11 +97,37 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]'
-        }
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 10
+              },
+              optipng: {
+                optimizationLevel: 1
+              },
+              pngquant: {
+                strip: true,
+                quality: [0.6, 0.9]
+              },
+              svgo: {
+                removeDoctype: true
+              },
+              gifsicle: {
+                interlaced: true
+              }
+            }
+          }
+        ]
       }
     ]
   },
@@ -117,7 +143,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/fonts/`, to: `${PATHS.dist}/fonts/` },
       { from: `${PATHS.src}/img/`, to: `${PATHS.dist}/img/` },
-      ...IMAGES
+      ...COMPONENTS_IMAGES
     ]),
     new webpack.ProvidePlugin({
       $: 'jquery',

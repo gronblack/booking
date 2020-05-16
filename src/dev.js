@@ -9,4 +9,8 @@ import './scss/ui.scss';
 import maskPlugin from 'jquery-mask-plugin';
 import datepicker from 'air-datepicker';
 
+// not working!!!
+//import TimeAgo from 'javascript-time-ago';
+//import ru from 'javascript-time-ago/locale/ru';
+
 import './js/custom';
