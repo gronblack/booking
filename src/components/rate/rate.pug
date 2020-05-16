@@ -1,14 +1,14 @@
 mixin rate(options)
   -
-    var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
-    var name = options.name ? options.name : '_' + Math.random().toString(36).substr(2, 9);
-    var max = options.max ? parseInt(options.max) : 5;
-    var rate = options.rate ? parseFloat(options.rate) : 0;
+    var blockId = (options && options.blockId) ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
+    var name = (options && options.name) ? options.name : '_' + Math.random().toString(36).substr(2, 9);
+    var max = (options && options.max) ? parseInt(options.max) : 5;
+    var rate = (options && options.rate) ? parseFloat(options.rate) : 0;
     var rateTrunc = Math.trunc(rate);
     var rateDecimal = rate - rateTrunc;
     var widthDecimal = 100 * (Math.asin( 2 * rateDecimal - 1 ) / Math.PI + 0.5)  // nonlinear filling looks better
 
-    var interactiveClass = options.interactive ? ' rate_interactive' : '';
+    var interactiveClass = (options && options.interactive) ? ' rate_interactive' : '';
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = interactiveClass + attrClass;
 

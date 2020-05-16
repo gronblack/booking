@@ -1,9 +1,10 @@
 mixin like-button(options)
   -
-    var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
-    var count = options.count ? options.count : false;
+    var blockId = (options && options.blockId) ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
+    var count = (options && options.count) ? options.count : false;
+
     var attrClass = attributes.class ? ' '+attributes.class : '';
-    var votedClass = options.voted ? ' like-button_voted' : '';
+    var votedClass = (options && options.voted) ? ' like-button_voted' : '';
     var addClass = votedClass + attrClass;
 
   p(id=blockId class='like-button'+addClass)

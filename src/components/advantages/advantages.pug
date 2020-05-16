@@ -1,6 +1,7 @@
 mixin advantages(options)
   -
-    var data = options.data;
+    var data = (options && options.data) ? options.data : [];
+
     var attrClass = attributes.class ? ' '+attributes.class : '';
 
   if !!data.length

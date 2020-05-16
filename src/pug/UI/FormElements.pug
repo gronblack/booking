@@ -6,6 +6,7 @@ include ../../components/radio/radio
 include ../../components/like-button/like-button
 include ../../components/rate/rate
 include ../../components/review/review
+include ../../components/range/range
 
 doctype html
 html(lang="ru")
@@ -53,7 +54,7 @@ html(lang="ru")
               label: "Filter date dropdown"
             })(class="mb40")
             +input({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
-        .column
+        .column#column1-2
           +checkbox({
             blockId: "checkbox-top",
             caption: "Checkbox buttons",
@@ -86,6 +87,9 @@ html(lang="ru")
           div(id='rate-wrapper' class='row-between')
             +rate({blockId: "rate-block1", rate: 3.8})
             +rate({blockId: "rate-block2", rate: 5})
+        .column
+          .column-small
+            +range({caption: "Range slider", min: 0, max: 16000, start: 5000, end: 10000, symbol: "₽"})
       .row
         .column
           .column-small

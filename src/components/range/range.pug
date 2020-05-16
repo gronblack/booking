@@ -1,0 +1,23 @@
+mixin range(options)
+  -
+    var caption = options.caption ? options.caption : false;
+    var min = options.min ? options.min : 0;
+    var start = options.start ? options.start : min;
+    var startFormat = start.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+    var end = options.end ? options.end : options.max;
+    var endFormat = end.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+    var symbol = options.symbol ? options.symbol : '';
+
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+  div(class='range'+addClass data-range-slider data-min=min data-max=options.max data-start=start data-end=end)
+    div(class='range__top')
+      if (caption)
+        p(class='range__caption')= caption
+      span(class='range__fact')= `${startFormat}${symbol} - ${endFormat}${symbol}`
+    div(class='range__bottom')
+      div(class='range__bar')
+        div(class='range__bar-filled')
+        div(class='range__bar-pin-one')
+        div(class='range__bar-pin-two')

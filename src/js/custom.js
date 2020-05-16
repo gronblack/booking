@@ -11,6 +11,31 @@ $(document).ready(function () {
     $(this).text(timeAgo.format(new Date($(this).attr('datetime'))));
   });
 
+  // range-slider initialize
+  $('[data-range-slider]').each(function () {
+    var min = parseInt($(this).attr('data-min'));
+    var max = parseInt($(this).attr('data-max'));
+    if (min > max) min = [max, max = min][0];         // swap
+
+    var start = parseInt($(this).attr('data-start'));
+    var end = parseInt($(this).attr('data-end'));
+    if (start > end) start = [end, end = start][0];   // swap
+
+    var bar = $(this).find('.range__bar');
+    var k = bar.width() / (max - min);                   // px/point
+
+    // filled bar position
+    bar.find('.range__bar-filled').css({width: k*(end - start), left: k*start});
+
+    // pin one position
+    var pinOne = bar.find('.range__bar-pin-one');
+    pinOne.css('left', k * start - pinOne.outerWidth() / 2);
+
+    // pin two position
+    var pinTwo = bar.find('.range__bar-pin-two');
+    pinTwo.css('left', k * end - pinTwo.outerWidth() / 2);
+  });
+
   var cutString = function (string, limit) {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';

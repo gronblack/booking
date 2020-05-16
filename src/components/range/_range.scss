@@ -1,0 +1,50 @@
+.range {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 23px;
+  }
+
+  &__caption {
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__fact {
+    font-size: 12px;
+    line-height: 15px;
+    color: $darkShade05;
+  }
+
+  &__bar {
+    height: 6px;
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: 1px solid $darkShade025;
+  }
+
+  &__bar-filled {
+    position: absolute;
+    height: inherit;
+    top: -1px;
+    background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+  }
+
+  &__bar-pin-one,
+  &__bar-pin-two {
+    position: absolute;
+    top: -6px;
+    box-sizing: content-box;
+    @include size(12px);
+    background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+
+    &:hover, &:focus {
+      background: linear-gradient(180deg, #b7e7cb, #b3e9f5);
+    }
+  }
+}
