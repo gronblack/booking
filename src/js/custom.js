@@ -11,7 +11,7 @@ $(document).ready(function () {
     $(this).text(timeAgo.format(new Date($(this).attr('datetime'))));
   });
 
-  // range-slider initialize
+  // ----------- range-slider begin -------------
   $('.range').each(function () {
     var storage = JSON.parse(JSON.stringify($(this).data()));
     var min = storage['min'];
@@ -56,55 +56,67 @@ $(document).ready(function () {
     [pinOne, pinTwo].forEach(elem =>
       elem.on('mousedown', function (e) {
         e.preventDefault();
-        Object.assign(storage, { shift: e.clientX, cursorLeftLimit: -1, cursorRightLimit: -1 });
+        Object.assign(storage, {
+          elemCurrent: elem,
+          shift: e.clientX,
+          cursorLeftLimit: -1,
+          cursorRightLimit: -1,
+          elemFactStart: factStart,
+          elemFactEnd: factEnd,
+          elemBarFilled: barFilled,
+          elemPinOne: pinOne,
+          elemPinTwo: pinTwo
+        });
 
-        $(document).on('mousemove', elem, onMouseMove);
-        $(document).on('mouseup', onMouseUp);
+        $(document).on('mousemove', storage, rangeOnMouseMove);
+        $(document).on('mouseup', rangeOnMouseUp);
       })
     );
-
-    var onMouseMove = function (e) {
-      var cursorLeftLimit = storage['cursorLeftLimit'];
-      var cursorRightLimit = storage['cursorRightLimit'];
-
-      if (((cursorLeftLimit !== -1) && e.clientX < cursorLeftLimit)
-          || ((cursorRightLimit !== -1) && e.clientX > cursorRightLimit)) {
-        return false;
-      }
-
-      var shift = storage['shift'] - e.clientX;
-      storage['shift'] = e.clientX;
-
-      var newValue = parseFloat(e.data.css('left')) - shift;
-      var minValue = storage['minPX'];
-      if (newValue < minValue) {
-        newValue = minValue;
-        storage['cursorLeftLimit'] = e.clientX - e.data.outerWidth() / 2;
-      }
-
-      var maxValue = storage['maxPX'];
-      if (newValue > maxValue) {
-        newValue = maxValue;
-        storage['cursorRightLimit'] = e.clientX - e.data.outerWidth() / 2;
-      }
-      e.data.css('left', newValue);
-
-      // change fact range limits
-      var digitOne = (parseFloat(pinOne.css('left')) + pinOne.outerWidth() / 2) / storage['k'] + storage['min'];
-      var digitTwo = (parseFloat(pinTwo.css('left')) + pinTwo.outerWidth() / 2) / storage['k'] + storage['min'];
-      storage['start'] = Math.min(digitOne, digitTwo);
-      storage['end'] = Math.max(digitOne, digitTwo);
-      factStart.text(Math.round(storage['start']));
-      factEnd.text(Math.round(storage['end']));
-      barFilled.css({width: k*(storage['end'] - storage['start']), left: k * (storage['start'] - storage['min'])});
-    };
-
-    var onMouseUp = function (e) {
-      e.preventDefault();
-      $(this).off('mousemove', onMouseMove);
-      $(this).off('mouseup', onMouseUp);
-    };
   });
+
+  var rangeOnMouseMove = function (e) {
+    var storage = e.data;
+    var cursorLeftLimit = storage['cursorLeftLimit'];
+    var cursorRightLimit = storage['cursorRightLimit'];
+
+    if (((cursorLeftLimit !== -1) && e.clientX < cursorLeftLimit)
+        || ((cursorRightLimit !== -1) && e.clientX > cursorRightLimit)) {
+      return false;
+    }
+
+    var shift = storage['shift'] - e.clientX;
+    storage['shift'] = e.clientX;
+
+    var newValue = parseFloat(storage['elemCurrent'].css('left')) - shift;
+    var minValue = storage['minPX'];
+    if (newValue < minValue) {
+      newValue = minValue;
+      storage['cursorLeftLimit'] = e.clientX - storage['elemCurrent'].outerWidth() / 2;
+    }
+
+    var maxValue = storage['maxPX'];
+    if (newValue > maxValue) {
+      newValue = maxValue;
+      storage['cursorRightLimit'] = e.clientX - storage['elemCurrent'].outerWidth() / 2;
+    }
+    storage['elemCurrent'].css('left', newValue);
+
+    // change fact range limits
+    var digitOne = (parseFloat(storage['elemPinOne'].css('left')) + storage['elemPinOne'].outerWidth() / 2) / storage['k'] + storage['min'];
+    var digitTwo = (parseFloat(storage['elemPinTwo'].css('left')) + storage['elemPinTwo'].outerWidth() / 2) / storage['k'] + storage['min'];
+    storage['start'] = Math.min(digitOne, digitTwo);
+    storage['end'] = Math.max(digitOne, digitTwo);
+    storage['elemFactStart'].text(Math.round(storage['start']));
+    storage['elemFactEnd'].text(Math.round(storage['end']));
+    storage['elemBarFilled'].css({width: storage['k']*(storage['end'] - storage['start']), left: storage['k'] * (storage['start'] - storage['min'])});
+  };
+
+  var rangeOnMouseUp = function (e) {
+    e.preventDefault();
+    $(this).off('mousemove', rangeOnMouseMove);
+    $(this).off('mouseup', rangeOnMouseUp);
+  };
+  // ----------- range-slider end -------------
 
 
   var cutString = function (string, limit) {
@@ -182,7 +194,7 @@ $(document).ready(function () {
   var setDateToDP = function(dp, date) {
     if (Array.isArray(date)) {
       let dateResult = [];
-      date.forEach(function (value, i) {
+      date.forEach((value) => {
         if (isValidDate(value)) dateResult.push(new Date(correctDateString(value)));
         else return false;
       });
