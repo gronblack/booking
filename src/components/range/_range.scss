@@ -44,6 +44,7 @@
     background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
     border: 2px solid #ffffff;
     border-radius: 50%;
+    cursor: pointer;
 
     &:hover, &:focus {
       background: linear-gradient(180deg, #b7e7cb, #b3e9f5);

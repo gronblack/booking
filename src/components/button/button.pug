@@ -1,0 +1,19 @@
+include ../arrow-button/arrow-button
+
+mixin button(options)
+  -
+    var id = (options && options.id) ? options.id : false;
+    var text = (options && options.text) ? options.text : 'Button';
+    var hollow = (options && options.hollow) ? options.hollow : false;
+    var link = (options && options.link) ? options.link : false;
+    var subscribe = (options && options.subscribe) ? options.subscribe : false;
+
+    var hollowClass = hollow ? ' button_hollow' : '';
+    var linkClass = link ? ' button_link' : '';
+    var subscribeClass = subscribe ? ' button_subscribe' : '';
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass + hollowClass + linkClass + subscribeClass;
+
+  button(class='button'+addClass id=id) !{text}
+    if (subscribe)
+      +arrow-button({white: true})(class='button__arrow')

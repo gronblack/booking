@@ -1,0 +1,9 @@
+mixin arrow-button(options)
+  -
+    var white = (options && options.white) ? options.white : false;
+
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var whiteClass = white ? ' arrow-button_white' : '';
+    var addClass = attrClass + whiteClass;
+
+  span(class='arrow-button'+addClass)

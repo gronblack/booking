@@ -1,0 +1,46 @@
+.button {
+  position: relative;
+  padding: 15px 20px;
+
+  font-family: $mainFont;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  cursor: pointer;
+
+  background: linear-gradient(180deg, $purple 0%, $blue 100%);
+  border-radius: 22px;
+
+  &:hover, &:focus, &.hover {
+    opacity: .5;
+  }
+
+  &_hollow {
+    color: $purple;
+    box-shadow: inset 0 0 0 2px $purple;;
+    background: none;
+  }
+
+  &_link {
+    padding: 0;
+    color: $purple;
+    border-radius: 0;
+    background: none;
+
+    &:hover, &:focus, &.hover {
+      opacity: unset;
+      color: $darkShade05;
+      line-height: 17px;
+    }
+  }
+
+  &_subscribe {
+    width: 100%;
+  }
+
+  &__arrow {
+    right: 1px !important;
+  }
+}

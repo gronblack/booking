@@ -1,0 +1,42 @@
+.arrow-button {
+  position: absolute;
+  height: 100%;
+  width: rem(40);
+  right: 0;
+  top: 0;
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 15px;
+    width: 14px;
+    height: 2px;
+    background: $purple;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: calc(50% - 6px);
+    right: 15px;
+    width: 12px;
+    height: 12px;
+    border: 2px solid $purple;
+    border-right: none;
+    border-bottom: none;
+    transform: rotate(135deg);
+  }
+
+  &_white {
+    &::before {
+      background: #ffffff;
+    }
+    &::after {
+      border-color: #ffffff;
+    }
+  }
+}
