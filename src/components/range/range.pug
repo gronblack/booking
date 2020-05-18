@@ -11,11 +11,15 @@ mixin range(options)
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass;
 
-  div(class='range'+addClass data-range-slider data-min=min data-max=options.max data-start=start data-end=end)
+  div(class='range'+addClass data-range-slider=true data-min=min data-max=options.max data-start=start data-end=end)
     div(class='range__top')
       if (caption)
         p(class='range__caption')= caption
-      span(class='range__fact')= `${startFormat}${symbol} - ${endFormat}${symbol}`
+      p(class='range__fact')
+        span(class='range__fact-start')= startFormat
+        span= symbol+' - '
+        span(class='range__fact-end')= endFormat
+        span= symbol
     div(class='range__bottom')
       div(class='range__bar')
         div(class='range__bar-filled')

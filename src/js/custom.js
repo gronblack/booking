@@ -12,29 +12,100 @@ $(document).ready(function () {
   });
 
   // range-slider initialize
-  $('[data-range-slider]').each(function () {
-    var min = parseInt($(this).attr('data-min'));
-    var max = parseInt($(this).attr('data-max'));
+  $('.range').each(function () {
+    var storage = JSON.parse(JSON.stringify($(this).data()));
+    var min = storage['min'];
+    var max = storage['max'];
     if (min > max) min = [max, max = min][0];         // swap
 
-    var start = parseInt($(this).attr('data-start'));
-    var end = parseInt($(this).attr('data-end'));
+    var start = storage['start'];
+    if (start < min || start > max) start = min;
+    var end = storage['end'];
+    if (end < min || end > max) end = max;
     if (start > end) start = [end, end = start][0];   // swap
 
     var bar = $(this).find('.range__bar');
-    var k = bar.width() / (max - min);                   // px/point
+    var k = bar.width() / (max - min);        // px/point
 
     // filled bar position
-    bar.find('.range__bar-filled').css({width: k*(end - start), left: k*start});
+    var barFilled = bar.find('.range__bar-filled');
+    barFilled.css({width: k*(end - start), left: k * (start - min)});
 
     // pin one position
     var pinOne = bar.find('.range__bar-pin-one');
-    pinOne.css('left', k * start - pinOne.outerWidth() / 2);
+    pinOne.css('left', k * (start - min) - pinOne.outerWidth() / 2);
 
     // pin two position
     var pinTwo = bar.find('.range__bar-pin-two');
-    pinTwo.css('left', k * end - pinTwo.outerWidth() / 2);
+    pinTwo.css('left', k * (end - min) - pinTwo.outerWidth() / 2);
+
+    storage['min'] = min;
+    storage['max'] = max;
+    storage['start'] = start;
+    storage['end'] = end;
+    storage['k'] = k;
+    storage['minPX'] = 0 - pinOne.outerWidth() / 2;
+    storage['maxPX'] = bar.width() - pinOne.outerWidth() / 2;
+
+    var factStart = $(this).find('.range__fact-start');
+    var factEnd = $(this).find('.range__fact-end');
+    factStart.text(Math.round(storage['start']));
+    factEnd.text(Math.round(storage['end']));
+
+    // pin mouse events
+    [pinOne, pinTwo].forEach(elem =>
+      elem.on('mousedown', function (e) {
+        e.preventDefault();
+        Object.assign(storage, { shift: e.clientX, cursorLeftLimit: -1, cursorRightLimit: -1 });
+
+        $(document).on('mousemove', elem, onMouseMove);
+        $(document).on('mouseup', onMouseUp);
+      })
+    );
+
+    var onMouseMove = function (e) {
+      var cursorLeftLimit = storage['cursorLeftLimit'];
+      var cursorRightLimit = storage['cursorRightLimit'];
+
+      if (((cursorLeftLimit !== -1) && e.clientX < cursorLeftLimit)
+          || ((cursorRightLimit !== -1) && e.clientX > cursorRightLimit)) {
+        return false;
+      }
+
+      var shift = storage['shift'] - e.clientX;
+      storage['shift'] = e.clientX;
+
+      var newValue = parseFloat(e.data.css('left')) - shift;
+      var minValue = storage['minPX'];
+      if (newValue < minValue) {
+        newValue = minValue;
+        storage['cursorLeftLimit'] = e.clientX - e.data.outerWidth() / 2;
+      }
+
+      var maxValue = storage['maxPX'];
+      if (newValue > maxValue) {
+        newValue = maxValue;
+        storage['cursorRightLimit'] = e.clientX - e.data.outerWidth() / 2;
+      }
+      e.data.css('left', newValue);
+
+      // change fact range limits
+      var digitOne = (parseFloat(pinOne.css('left')) + pinOne.outerWidth() / 2) / storage['k'] + storage['min'];
+      var digitTwo = (parseFloat(pinTwo.css('left')) + pinTwo.outerWidth() / 2) / storage['k'] + storage['min'];
+      storage['start'] = Math.min(digitOne, digitTwo);
+      storage['end'] = Math.max(digitOne, digitTwo);
+      factStart.text(Math.round(storage['start']));
+      factEnd.text(Math.round(storage['end']));
+      barFilled.css({width: k*(storage['end'] - storage['start']), left: k * (storage['start'] - storage['min'])});
+    };
+
+    var onMouseUp = function (e) {
+      e.preventDefault();
+      $(this).off('mousemove', onMouseMove);
+      $(this).off('mouseup', onMouseUp);
+    };
   });
+
 
   var cutString = function (string, limit) {
     if (string.length <= limit) return string;
@@ -58,8 +129,7 @@ $(document).ready(function () {
       if (result.length) {
         result = result.slice(0, -2) + '...';
         inputNode.val(cutString(result, SELECT_STRING_LIMIT));
-      }
-      else inputNode.val(inputNode.attr('data-select-question'));
+      } else inputNode.val(inputNode.data('selectQuestion'));
 
       return true;
     }
@@ -124,7 +194,7 @@ $(document).ready(function () {
 
       let inputOne = dp.$el;
       if (inputOne.val()) inputOne.val(DATE_FORMATTER.format(dp.selectedDates[0]));
-      let inputTwo = $('#'+dp.$el.attr('data-one-for'));
+      let inputTwo = $('#'+dp.$el.data('oneFor'));
       if (inputTwo.val()) inputTwo.val(DATE_FORMATTER.format(dp.selectedDates[1]));
 
       return true;
@@ -141,8 +211,8 @@ $(document).ready(function () {
     var obj = $(input);
     if (!isValidDate(obj.val())) return false;
 
-    var pairOneId = obj.attr('data-two-for');
-    var pairTwoId = obj.attr('data-one-for');
+    var pairOneId = obj.data('twoFor');
+    var pairTwoId = obj.data('oneFor');
     if (pairOneId || pairTwoId) {
       if (pairOneId && !pairTwoId) pairTwoId = obj.attr('id');
       if (pairTwoId && !pairOneId) pairOneId = obj.attr('id');
@@ -163,7 +233,7 @@ $(document).ready(function () {
     var dpObject = $(this).data('datepicker');
     dpObject.id = Math.random().toString(36).substr(2, 9);  // add my own id
     dpObject.isDatePair = !!$(this).closest('.date-pair').length;
-    dpObject.isDateRange = $(this).attr('data-is-date-range') !== undefined;
+    dpObject.isDateRange = $(this).data('isDateRange') !== undefined;
     if ($(this).hasClass('datepicker-small')) dpObject.$content.addClass('datepicker-small');
     dpObject.update({
       navTitles: {
@@ -228,7 +298,7 @@ $(document).ready(function () {
 
   // show datepicker on dropdown-button click
   $('[data-dropdown-for]').on('click', function () {
-    var dp = $('#'+$(this).attr("data-dropdown-for")).data('datepicker');
+    var dp = $('#'+$(this).data('dropdownFor')).data('datepicker');
     if (dp != null && !dp.visible) dp.show();
   });
 
@@ -250,10 +320,8 @@ $(document).ready(function () {
     var sum = parseInt(sumElem.text(), 10);
     if ($(this).hasClass('input__select-plus')) {
       sumElem.text(++sum);
-      //$(this).siblings('.input__select-minus').attr('disabled', sum === 0);
     } else {
       sumElem.text(--sum);
-      //$(this).attr('disabled', sum === 0);
     }
     recountSelectValue($(this).closest('.input__content').find('.input__input'));
   });
@@ -272,7 +340,7 @@ $(document).ready(function () {
 
   // select block toggle
   $('[data-exp-button-for]').on('click', function () {
-    $('#'+$(this).attr('data-exp-button-for')).toggleClass('expanded');
+    $('#'+$(this).data('expButtonFor')).toggleClass('expanded');
   });
 
   $('.like-button').on('click', function () {
