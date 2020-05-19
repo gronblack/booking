@@ -6,6 +6,7 @@ mixin button(options)
     var text = (options && options.text) ? options.text : 'Button';
     var hollow = (options && options.hollow) ? options.hollow : false;
     var link = (options && options.link) ? options.link : false;
+    var expandFor = (options && options.expandFor) ? options.expandFor : false;
     var subscribe = (options && options.subscribe) ? options.subscribe : false;
 
     var hollowClass = hollow ? ' button_hollow' : '';
@@ -14,6 +15,6 @@ mixin button(options)
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass + hollowClass + linkClass + subscribeClass;
 
-  button(class='button'+addClass id=id) !{text}
+  button(class='button'+addClass id=id data-expand-for=expandFor) !{text}
     if (subscribe)
       +arrow-button({white: true})(class='button__arrow')

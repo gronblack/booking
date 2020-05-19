@@ -16,7 +16,7 @@ mixin checkbox(options)
 
   div(id=blockId class='checkbox'+addClass)
     if (caption)
-      p(class="checkbox__caption" data-exp-button-for=expButtonId)= caption
+      p(class="checkbox__caption" data-expand-for=expButtonId)= caption
         if (isExpandable)
           span.checkbox__dropdown-button
     if (!!options.selectList.length)

@@ -1,3 +1,5 @@
+include ../arrow-button/arrow-button
+
 mixin input(options)
   -
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
@@ -29,7 +31,6 @@ mixin input(options)
     var dataDropdownFor = false;
     if (isDropdown || isDate) dataDropdownFor = twoFor ? twoFor : inputId;
 
-    var buttonMode = isDropdown ? 'dropdown-button' : 'subscribe-button';
     var expButtonId = isSelect ? blockId : false;
 
     var applyButton = options.applyButton ? options.applyButton : false;
@@ -40,11 +41,14 @@ mixin input(options)
       label(class='input__label' for=inputId)= label
     if (isDropdown || isSubscribe)
       div(class='input__content')
-        div(class='input__input-wrapper' data-exp-button-for=expButtonId)
+        div(class='input__input-wrapper' data-expand-for=expButtonId)
           input(class='input__input'+classInput
             id=inputId type=type placeholder=placeholder value=value readonly=readonly data-mask=mask data-is-date=isDate
             data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor data-select-question=selectQuestion)
-          span(class='input__'+buttonMode)
+          if (isDropdown)
+            span(class='input__dropdown-button')
+          else
+            +arrow-button()(class='input__subscribe-button')
         if (isSelect)
           div(class='input__select-wrapper')
             ul(class='input__select-list')
@@ -61,6 +65,6 @@ mixin input(options)
                 if (clearButton)
                   button(class='input__clear-button')= 'Очистить'
                 if (applyButton)
-                  button(class='input__apply-button' data-exp-button-for=expButtonId)= 'Применить'
+                  +button({text: 'Применить', link: true, expandFor: expButtonId})(class='input__apply-button')
     else
       input(class='input__input'+classInput id=inputId type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

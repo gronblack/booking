@@ -270,7 +270,7 @@ $(document).ready(function () {
             let inputs = pairWrapper.length ? pairWrapper.find('.input__input') : $(dp.el);
 
             // add apply button
-            let newButton = $('<span class="datepicker--button" data-action="selectDate">Применить</span>');
+            let newButton = $('<button class="button button_link datepicker--button" data-action="selectDate">Применить</button>');
             dp.nav.$buttonsContainer.append(newButton);
             newButton.on('click', () => {
               if(!dp.isDateRange && setDateFromInput(dp.el)) dp.hide();
@@ -351,8 +351,8 @@ $(document).ready(function () {
   });
 
   // select block toggle
-  $('[data-exp-button-for]').on('click', function () {
-    $('#'+$(this).data('expButtonFor')).toggleClass('expanded');
+  $('[data-expand-for]').on('click', function () {
+    $('#'+$(this).data('expandFor')).toggleClass('expanded');
   });
 
   $('.like-button').on('click', function () {
