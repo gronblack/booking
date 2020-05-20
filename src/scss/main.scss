@@ -153,7 +153,7 @@ body {
     &.-selected-,
     &.-selected-.-other-month- {
       font-weight: 700;
-      background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+      background: linear-gradient(180deg, $green 0%, $turquoiseBlue 100%);
     }
     &.-selected-.-focus-:not(.-range-from-) {
       background: linear-gradient(180deg, #b7e7cb 0%, #b3e9f5 100%);
@@ -244,3 +244,4 @@ body {
 @import "../components/range/range";
 @import "../components/button/button";
 @import "../components/arrow-button/arrow-button";
+@import "../components/pagination/pagination";

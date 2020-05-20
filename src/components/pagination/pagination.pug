@@ -1,0 +1,29 @@
+include ../arrow-button/arrow-button
+
+mixin pagination(options)
+  -
+    var count = options.count ? options.count : 5;            // links count
+    var dots = (options.max > count) ? (count - 1) : false;   // dots-button position
+    var min = options.min ? options.min : 1;                  // min in displayed links
+    var current = options.current ? options.current : 1;      // current active link
+    var caption = options.caption ? options.caption : false;
+
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+  nav(class='pagination'+addClass)
+    ul(class='pagination__list')
+      - for (var i = 1; i <= count; i++)
+        li
+          -
+            var text = i
+            var modify = '';
+            if (i == current) modify = ' pagination__link_current';
+            if (i == dots) text = '...';
+            if (i == count) text = options.max;
+          a(class='pagination__link'+modify)= text
+      li
+        a(class='pagination__link pagination__link_next')
+          +arrow-button({white: true})
+    if (caption)
+      p(class='pagination__caption') !{caption}

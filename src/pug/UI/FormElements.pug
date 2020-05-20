@@ -9,6 +9,7 @@ include ../../components/review/review
 include ../../components/range/range
 include ../../components/button/button
 include ../../components/arrow-button/arrow-button
+include ../../components/pagination/pagination
 
 doctype html
 html(lang="ru")
@@ -103,8 +104,10 @@ html(lang="ru")
             .row.mb30
               +button({id: 'button-3', text: 'Click me', link: true})
               +button({text: 'Click me', link: true})(class='hover')
-            .row
+            .row.mb40
               +button({text: 'Перейти к оплате', subscribe: true})
+            p.caption= 'Pagination'
+            +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'})
       .row
         .column
           .column-small

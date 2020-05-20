@@ -32,7 +32,7 @@
     position: absolute;
     height: inherit;
     top: -1px;
-    background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+    background: linear-gradient(180deg, $green 0%, $turquoiseBlue 100%);
   }
 
   &__bar-pin-one,
@@ -41,7 +41,7 @@
     top: -6px;
     box-sizing: content-box;
     @include size(12px);
-    background: linear-gradient(180deg, $green 0%, #66D2EA 100%);
+    background: linear-gradient(180deg, $green 0%, $turquoiseBlue 100%);
     border: 2px solid #ffffff;
     border-radius: 50%;
     cursor: pointer;

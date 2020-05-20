@@ -1,0 +1,48 @@
+.pagination {
+  &__list {
+    display: flex;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include size(40px);
+    border-radius: 50%;
+    cursor: pointer;
+
+    color: $darkShade05;
+    font-size: 12px;
+    line-height: 15px;
+
+    &:hover, &:focus {
+      background: linear-gradient(180deg, $purple025 0%, $blue025 100%);
+    }
+  }
+
+  &__link_current {
+    color: #ffffff;
+    font-weight: 700;
+    background: linear-gradient(180deg, $purple 0%, $blue 100%);
+    pointer-events: none;
+  }
+
+  &__link_next {
+    position: relative;
+    background: linear-gradient(180deg, $green 0%, $turquoiseBlue 100%);
+
+    &:hover, &:focus {
+      background: linear-gradient(180deg, $green 0%, $turquoiseBlue 100%);
+      opacity: .5;
+    }
+  }
+
+  &__caption {
+    padding-top: 8px;
+    padding-left: 6px;
+    font-size: 14px;
+    line-height: 24px;
+    color: $darkShade075;
+  }
+}
