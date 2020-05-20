@@ -135,6 +135,13 @@ $(document).ready(function () {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';
   };
+  var decline = function (number) {//debugger
+    var lastDigit = number % 10;
+    if (number !== 11 && lastDigit === 1) return 'гость';
+
+    if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return 'гостя';
+    else return 'гостей';
+  };
 
   //recount list selected elements and write summary in input
   var recountSelectValue = function (inputNode) {
@@ -143,10 +150,27 @@ $(document).ready(function () {
 
     var selectElems = inputNode.closest('.input__content').find('.input__select-elem');
     if (selectElems.length) {
-      let result = '';
+
+      if (inputNode.data('selectCaption') !== undefined) {
+        var result = 0;
+        selectElems.each(function (i, elem) {
+          let sum = parseInt($(elem).find('.input__select-sum').text());
+          if (sum) result += sum;
+
+          $(elem).find('.input__select-minus').attr('disabled', sum === 0);
+        });
+
+        //debugger
+        if (result > 0) {
+          inputNode.val(result + ' ' + decline(result));
+        } else inputNode.val(inputNode.data('selectQuestion'));
+        return true;
+      }
+
+      var result = '';
       selectElems.each(function (i, elem) {
         let sum = parseInt($(elem).find('.input__select-sum').text());
-        if (sum) result += sum+' '+$(elem).find('.input__select-name').text()+', ';
+        if (sum) result += sum + ' '+$(elem).find('.input__select-name').text()+', ';
 
         $(elem).find('.input__select-minus').attr('disabled', sum === 0);
       });
@@ -154,7 +178,6 @@ $(document).ready(function () {
         result = result.slice(0, -2) + '...';
         inputNode.val(cutString(result, SELECT_STRING_LIMIT));
       } else inputNode.val(inputNode.data('selectQuestion'));
-
       return true;
     }
     return false;
