@@ -19,9 +19,9 @@ mixin checkbox(options)
       p(class="checkbox__caption" data-expand-for=expButtonId)= caption
         if (isExpandable)
           span.checkbox__dropdown-button
-    if (!!options.selectList.length)
+    if (!!options.list.length)
       ul.checkbox__list
-        each obj, ind in options.selectList
+        each obj, ind in options.list
           - var locId = blockId+'-'+ind
           - var rich = obj.rich ? '<p class="checkbox__rich-text">'+obj.rich+'</p>' : '';
           - var elemRich = obj.rich ? ' checkbox__elem_rich' : '';

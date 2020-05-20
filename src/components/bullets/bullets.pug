@@ -1,0 +1,9 @@
+mixin bullets(options)
+  -
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+  if (!!options.list.length)
+    ul(class='bullets'+addClass)
+      each item, ind in options.list
+        li(class='bullets__item') !{item}

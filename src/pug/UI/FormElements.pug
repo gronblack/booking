@@ -10,6 +10,7 @@ include ../../components/range/range
 include ../../components/button/button
 include ../../components/arrow-button/arrow-button
 include ../../components/pagination/pagination
+include ../../components/bullets/bullets
 
 doctype html
 html(lang="ru")
@@ -27,7 +28,7 @@ html(lang="ru")
             mode: "dropdown",
             label: "Dropdown",
             selectQuestion: "Сколько гостей",
-            selectList: [
+            list: [
               {caption: "взрослые"},
               {caption: "дети"},
               {caption: "младенцы"}
@@ -61,7 +62,7 @@ html(lang="ru")
           +checkbox({
             blockId: "checkbox-top",
             caption: "Checkbox buttons",
-            selectList: [
+            list: [
               {caption: "Можно курить"},
               {caption: "Можно с питомцами", checked: true},
               {caption: "Можно пригласить гостей<br>(до 10 человек)", checked: true}]
@@ -77,7 +78,7 @@ html(lang="ru")
             blockId: "checkbox-toggler",
             toggler: true,
             caption: "Toggle",
-            selectList: [
+            list: [
               {caption: "Получать спецпредложения", checked: true},
               {caption: "Получать спецпредложения"}
             ]
@@ -116,7 +117,7 @@ html(lang="ru")
               label: "Dropdown",
               classInput: "canted",
               selectQuestion: "Какие удобства",
-              selectList: [
+              list: [
                 {caption: "спальни", sum: 2},
                 {caption: "кровати", sum: 2},
                 {caption: "ванные комнаты"}
@@ -128,16 +129,48 @@ html(lang="ru")
               label: "Dropdown",
               classInput: "canted",
               selectQuestion: "Какие удобства",
-              selectList: [
+              list: [
                 {caption: "спальни", sum: 2},
                 {caption: "кровати", sum: 2},
                 {caption: "ванные комнаты"}
               ]
             })(class='expanded recount')
+        .column#column-2-2
+          +input({
+            blockId: "input-list-apply",
+            mode: "dropdown",
+            label: "Dropdown",
+            classInput: "canted",
+            selectQuestion: "Сколько гостей",
+            list: [
+              {caption: "взрослые"},
+              {caption: "дети"},
+              {caption: "младенцы"}
+            ],
+            applyButton: true
+          })(class='expanded')
+        .column
+          +input({
+            blockId: "input-list-apply-clear",
+            mode: "dropdown",
+            label: "Dropdown",
+            classInput: "canted",
+            selectQuestion: "Сколько гостей",
+            list: [
+              {caption: "взрослые"},
+              {caption: "дети"},
+              {caption: "младенцы"}
+            ],
+            applyButton: true,
+            clearButton: true
+          })(class='expanded')
+      .row
+        .column
+          .column-small
             +checkbox({
               blockId: "checkbox-minimized",
               caption: "Expandable checkbox list",
-              selectList: [
+              list: [
                 {caption: "Завтрак"},
                 {caption: "Письменный стол"},
                 {caption: "Стул для кормления"},
@@ -150,7 +183,7 @@ html(lang="ru")
             +checkbox({
               blockId: "checkbox-bottom",
               caption: "Expandable checkbox list",
-              selectList: [
+              list: [
                 {caption: "Завтрак"},
                 {caption: "Письменный стол", checked: true},
                 {caption: "Стул для кормления", checked: true},
@@ -162,36 +195,30 @@ html(lang="ru")
               ],
               expandable: true
             })(class='expanded')
-        .column
-          +input({
-            blockId: "input-list-apply",
-            mode: "dropdown",
-            label: "Dropdown",
-            classInput: "canted",
-            selectQuestion: "Сколько гостей",
-            selectList: [
-              {caption: "взрослые"},
-              {caption: "дети"},
-              {caption: "младенцы"}
-            ],
-            applyButton: true
-          })(class='expanded')
+        .column#column-3-2
           +checkbox({
             caption: "Rich checkbox buttons",
-            selectList: [
+            list: [
               {rich: "Широкий коридор", caption: "Ширина коридоров в номере<br>не менее 91 см."},
               {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
             ]
           })
+        .column
+          p.caption#bullets-caption= 'Bullet list'
+          +bullets({list: [
+              'Нельзя с питомцами',
+              'Без вечеринок и мероприятий',
+              'Время прибытия — после 13:00,<br>а выезд до 12:00'
+            ]})
       .row
-        .column#column-3-1
+        .column#column-4-1
           +advantages({
             data: [
               {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
               {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"}
             ]
           })
-        .column#column-3-2
+        .column#column-4-2
           +review({
             person: {name: "Мурад Сарафанов", img: "../img/persons/1.png"},
             text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",

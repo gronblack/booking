@@ -5,11 +5,21 @@ $(document).ready(function () {
   const DATE_FORMATTER = new Intl.DateTimeFormat('ru-RU');
   const SELECT_STRING_LIMIT = 27;
 
+  // ----------- common begin ----------------------------
   TimeAgo.addLocale(TimeAgoRu);
   const timeAgo = new TimeAgo('ru-RU');
   $('[datetime]').each(function () {
     $(this).text(timeAgo.format(new Date($(this).attr('datetime'))));
   });
+
+  var formatDigit = digit => digit.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+
+  // select block toggle
+  $('[data-expand-for]').on('click', function () {
+    $('#'+$(this).data('expandFor')).toggleClass('expanded');
+  });
+  // ----------- common end ----------------------------
+
 
   // ----------- range-slider begin -------------
   $('.range').each(function () {
@@ -49,8 +59,8 @@ $(document).ready(function () {
 
     var factStart = $(this).find('.range__fact-start');
     var factEnd = $(this).find('.range__fact-end');
-    factStart.text(Math.round(storage['start']));
-    factEnd.text(Math.round(storage['end']));
+    factStart.text(formatDigit(Math.round(storage['start'])));
+    factEnd.text(formatDigit(Math.round(storage['end'])));
 
     // pin mouse events
     [pinOne, pinTwo].forEach(elem =>
@@ -106,8 +116,8 @@ $(document).ready(function () {
     var digitTwo = (parseFloat(storage['elemPinTwo'].css('left')) + storage['elemPinTwo'].outerWidth() / 2) / storage['k'] + storage['min'];
     storage['start'] = Math.min(digitOne, digitTwo);
     storage['end'] = Math.max(digitOne, digitTwo);
-    storage['elemFactStart'].text(Math.round(storage['start']));
-    storage['elemFactEnd'].text(Math.round(storage['end']));
+    storage['elemFactStart'].text(formatDigit(Math.round(storage['start'])));
+    storage['elemFactEnd'].text(formatDigit(Math.round(storage['end'])));
     storage['elemBarFilled'].css({width: storage['k']*(storage['end'] - storage['start']), left: storage['k'] * (storage['start'] - storage['min'])});
   };
 
@@ -119,6 +129,8 @@ $(document).ready(function () {
   // ----------- range-slider end -------------
 
 
+
+  // ----------- input begin ------------------
   var cutString = function (string, limit) {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';
@@ -349,12 +361,10 @@ $(document).ready(function () {
   $('.input.recount .input__input').each(function () {
     recountSelectValue(this);
   });
+  // ----------- input end ------------------
 
-  // select block toggle
-  $('[data-expand-for]').on('click', function () {
-    $('#'+$(this).data('expandFor')).toggleClass('expanded');
-  });
 
+  // ----------- like-button begin ------------------
   $('.like-button').on('click', function () {
     const VOTED_CLASS = 'like-button_voted';
     const countElem = $(this).find('.like-button__count');
@@ -368,5 +378,6 @@ $(document).ready(function () {
       countElem.text(++count);
     }
   });
+  // ----------- like-button end ------------------
 
 });

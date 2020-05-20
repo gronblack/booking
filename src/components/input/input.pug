@@ -22,7 +22,7 @@ mixin input(options)
     var isDateRange = modeArray.includes('date-range');
     var isDropdown = modeArray.includes('dropdown');
     var isSubscribe = modeArray.includes('subscribe');
-    var isSelect = options.selectList ? !!options.selectList.length : false;
+    var isSelect = options.list ? !!options.list.length : false;
 
     var classInput = options.classInput ? (' '+options.classInput) : '';
     if ((isDate || isDateRange) && !twoFor) classInput += ' datepicker-here';
@@ -52,7 +52,7 @@ mixin input(options)
         if (isSelect)
           div(class='input__select-wrapper')
             ul(class='input__select-list')
-              each obj, ind in options.selectList
+              each obj, ind in options.list
                 li(class='input__select-elem')
                   p(class='input__select-left')
                     span(class='input__select-name') !{obj.caption}

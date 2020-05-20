@@ -1,0 +1,21 @@
+.bullets {
+  &__item {
+    padding: 5px 0 5px 21px;
+    font-size: 14px;
+    line-height: 24px;
+    color: $darkShade075;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      @include size(10px);
+      position: absolute;
+      left: 0;
+      top: 12px;
+
+      border-radius: 50%;
+      background-color: $darkShade025;
+    }
+  }
+}
