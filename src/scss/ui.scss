@@ -1,22 +1,9 @@
 @import "utils/vars";
 
-.wrapper {
-  margin: 140px auto;
-  width: 1160px;
-}
-
 .input-block {
   &_focused &__input {
     border-color: $darkShade05;
   }
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  width: 320px;
-  min-width: 320px;
-  margin-right: 127px;
 }
 
 #column1-2, #column-2-2, #column-3-2 {
@@ -29,10 +16,6 @@
 
 .column-small {
   width: 266px;
-}
-
-.row {
-  display: flex;
 }
 
 #dropdown-1 {
