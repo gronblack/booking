@@ -9,12 +9,15 @@ mixin button(options)
     var expandFor = (options && options.expandFor) ? options.expandFor : false;
     var subscribe = (options && options.subscribe) ? options.subscribe : false;
 
+    var type = false;
+    if (subscribe) type = 'submit';
+
     var hollowClass = hollow ? ' button_hollow' : '';
     var linkClass = link ? ' button_link' : '';
     var subscribeClass = subscribe ? ' button_subscribe' : '';
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass + hollowClass + linkClass + subscribeClass;
 
-  button(class='button'+addClass id=id data-expand-for=expandFor) !{text}
+  button(class='button'+addClass id=id type=type data-expand-for=expandFor) !{text}
     if (subscribe)
       +arrow-button({white: true})(class='button__arrow')

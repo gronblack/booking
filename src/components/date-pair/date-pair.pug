@@ -20,8 +20,10 @@ mixin date-pair(options)
     options_2['inputId'] = '_' + Math.random().toString(36).substr(2, 9);
     options_1['oneFor'] = options_2['inputId'];
     options_2['twoFor'] = options_1['inputId'];
+    options_1['label'] = options['label_1'] ? options['label_1'] : false;
+    options_2['label'] = options['label_2'] ? options['label_2'] : false;
 
 
   div(class='date-pair'+attrClass)
-    +input(options_1)
-    +input(options_2)
+    +input(options_1)(class='date-pair__one')
+    +input(options_2)(class='date-pair__two')

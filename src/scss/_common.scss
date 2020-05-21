@@ -19,7 +19,6 @@ body {
 .column {
   display: flex;
   flex-direction: column;
-  width: 320px;
   min-width: 320px;
   margin-right: 127px;
 }
@@ -58,4 +57,8 @@ body {
 
 .mb100 {
   margin-bottom: 100px !important;
+}
+
+.mt150 {
+  margin-top: 150px !important;
 }

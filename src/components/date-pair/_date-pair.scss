@@ -1,4 +1,7 @@
 .date-pair {
   display: flex;
-  justify-content: space-between;
+
+  &__one {
+    margin-right: 20px;
+  }
 }

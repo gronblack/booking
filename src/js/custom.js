@@ -307,10 +307,7 @@ $(document).ready(function () {
             // add apply button
             let newButton = $('<button class="button button_link datepicker--button" data-action="selectDate">Применить</button>');
             dp.nav.$buttonsContainer.append(newButton);
-            newButton.on('click', () => {
-              if(!dp.isDateRange && setDateFromInput(dp.el)) dp.hide();
-              else dp.hide();
-            });
+            newButton.on('click', () => dp.hide());
 
             // clear second input on clear-button click
             if (dp.isDatePair) {

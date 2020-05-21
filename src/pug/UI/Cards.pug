@@ -1,7 +1,14 @@
+include ../../components/room-select/room-select
+
 doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
-    title Form Elements
+    title Cards
   body
-    .wrapper
+    .container.mt150
+      .row
+        .column
+          +room-select()
+        .column
+        .column
