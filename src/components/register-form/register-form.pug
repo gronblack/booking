@@ -1,0 +1,42 @@
+include ../input/input
+include ../radio/radio
+include ../checkbox/checkbox
+
+mixin register-form(options)
+  -
+    var blockId = (options && options.blockId) ? options.blockId : false;
+    var name = (options && options.name) ? options.name : 'register-form_'+ (blockId ? blockId : Math.random().toString(36).substr(2, 9));
+    var action = (options && options.action) ? options.action : '';
+    var method = (options && options.method) ? options.method : 'post';
+    var legend = (options && options.legend) ? options.legend : 'Регистрация аккаунта';
+    var textBottom = (options && options.textBottom) ? options.textBottom : 'Уже есть аккаунт на Toxin';
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+    // button parameters
+    var buttonText = (options && options.buttonText) ? options.buttonText : 'Перейти к оплате';
+
+  form(class='register-form form' + addClass action=action, method=method, name=name)
+    legend(class='form__legend') !{legend}
+    +input({placeholder: 'Имя', name: 'name'})(class='register-form__name')
+    +input({placeholder: 'Фамилия', name: 'surname'})(class='register-form__surname')
+    +radio({
+      name: 'gender',
+      data: [
+        {value: "male", label: "Мужчина"},
+        {value: "female", label: "Женщина"}
+      ]
+    })(class='register-form__gender')
+    +input({mode: "date", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})
+    +input({label: 'Данные для входа в сервис', placeholder: 'Email', name: 'email', type: 'email', mask: ""})(class='register-form__email')
+    +input({placeholder: 'Пароль', name: 'password', type: 'password'})(class='register-form__password')
+    +checkbox({
+      toggler: true,
+      list: [
+        {caption: "Получать спецпредложения"}
+      ]
+    })(class='register-form__subscribe')
+    +button({text: buttonText, subscribe: true})(class='register-form__submit')
+    .register-form__bottom
+      p.register-form__bottom-text !{textBottom}
+      +button({text: 'Войти', hollow: true, type: 'submit'})(class='register-form__comein')

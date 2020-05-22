@@ -1,0 +1,45 @@
+.register-form {
+  &__name {
+    margin-bottom: 10px;
+  }
+
+  &__surname {
+    margin-bottom: 7px;
+  }
+
+  &__gender {
+    margin-bottom: 23px;
+  }
+
+  &__email {
+    margin-bottom: 10px;
+  }
+
+  &__password {
+    margin-bottom: 2px;
+  }
+
+  &__subscribe {
+    margin-bottom: 18px;
+  }
+
+  &__submit {
+    margin-bottom: 30px;
+  }
+
+  &__comein {
+    width: 99px;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__bottom-text {
+    font-size: 14px;
+    line-height: 18px;
+    pointer-events: none;
+  }
+}

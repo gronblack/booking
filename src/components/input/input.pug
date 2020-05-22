@@ -18,6 +18,7 @@ mixin input(options)
     var selectQuestion = options.selectQuestion ? options.selectQuestion : false;
     var selectCaption = options.selectCaption ? options.selectCaption : false;
     var value = options.value ? options.value : selectQuestion;
+    var name = options.name ? options.name : false;
 
     var isDate = modeArray.includes('date');
     var isDateRange = modeArray.includes('date-range');
@@ -44,8 +45,9 @@ mixin input(options)
       div(class='input__content')
         div(class='input__input-wrapper' data-expand-for=expButtonId)
           input(class='input__input'+classInput
-            id=inputId type=type placeholder=placeholder value=value readonly=readonly data-mask=mask data-is-date=isDate
-            data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor data-select-question=selectQuestion, data-select-caption=selectCaption)
+            id=inputId name=name type=type placeholder=placeholder value=value readonly=readonly
+            data-mask=mask data-is-date=isDate data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor
+            data-select-question=selectQuestion, data-select-caption=selectCaption)
           if (isDropdown)
             span(class='input__dropdown-button')
           else
@@ -68,4 +70,5 @@ mixin input(options)
                 if (applyButton)
                   +button({text: 'Применить', link: true, expandFor: expButtonId})(class='input__apply-button')
     else
-      input(class='input__input'+classInput id=inputId type=type placeholder=placeholder value=value data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)
+      input(class='input__input'+classInput id=inputId name=name type=type placeholder=placeholder value=value
+        data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

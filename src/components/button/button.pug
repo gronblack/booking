@@ -9,7 +9,7 @@ mixin button(options)
     var expandFor = (options && options.expandFor) ? options.expandFor : false;
     var subscribe = (options && options.subscribe) ? options.subscribe : false;
 
-    var type = false;
+    var type = (options && options.type) ? options.type : false;
     if (subscribe) type = 'submit';
 
     var hollowClass = hollow ? ' button_hollow' : '';

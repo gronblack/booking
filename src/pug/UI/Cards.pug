@@ -1,4 +1,5 @@
 include ../../components/room-select-form/room-select-form
+include ../../components/register-form/register-form
 
 doctype html
 html(lang="ru")
@@ -9,6 +10,7 @@ html(lang="ru")
     .container.mt150
       .row
         .column
-          +room-select-form()
+          +room-select-form({blockId: 'room-select-form'})
+          +register-form()
         .column
         .column
