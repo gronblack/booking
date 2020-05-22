@@ -1,11 +1,11 @@
 include ../date-pair/date-pair
 include ../button/button
 
-mixin room-select(options)
+mixin room-select-form(options)
   -
     var action = (options && options.action) ? options.action : '';
     var method = (options && options.method) ? options.method : 'post';
-    var name = (options && options.name) ? options.name : 'room-select_'+ Math.random().toString(36).substr(2, 9);
+    var name = (options && options.name) ? options.name : 'room-select-form_'+ Math.random().toString(36).substr(2, 9);
     var legend = (options && options.legend) ? options.legend : 'Найдём номера под ваши пожелания';
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass;
@@ -21,8 +21,8 @@ mixin room-select(options)
     // button parameters
     var buttonText = (options && options.buttonText) ? options.buttonText : 'Подобрать номер';
 
-  form(class='room-select'+addClass action=action, method=method, name=name)
-    legend(class='room-select__legend') !{legend}
+  form(class='room-select-form'+addClass action=action, method=method, name=name)
+    legend(class='room-select-form__legend') !{legend}
     +date-pair({
       mode: "dropdown",
       classInput: "field-small",
@@ -36,5 +36,5 @@ mixin room-select(options)
       label: "Гости",
       selectQuestion: selectQuestion,
       list: list
-    })(class='room-select__list')
+    })(class='room-select-form__list')
     +button({text: buttonText, subscribe: true})

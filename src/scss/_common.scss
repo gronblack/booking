@@ -5,22 +5,13 @@ body {
   padding: 0;
 }
 
-.wrapper {
-  margin: 140px auto;
-  width: 1160px;
-}
-
 .container {
-  display: flex;
+  width: 1160px;
   margin: 0 auto;
-  padding: 0 140px;
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
   min-width: 320px;
-  margin-right: 127px;
 }
 
 .row {
@@ -57,6 +48,10 @@ body {
 
 .mb100 {
   margin-bottom: 100px !important;
+}
+
+.mt140 {
+  margin-top: 140px !important;
 }
 
 .mt150 {

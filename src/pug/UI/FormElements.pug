@@ -18,9 +18,9 @@ html(lang="ru")
     meta(charset="UTF-8")
     title Form Elements
   body
-    .wrapper
+    .container.mt140
       .row
-        .column
+        .column#column1-1
           +input({label: "text field", placeholder: "Email"})
           +input({label: "text field", value: "This is pretty awesome"})(class="input_focused")
           +input({
@@ -111,7 +111,7 @@ html(lang="ru")
             p.caption= 'Pagination'
             +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'})
       .row
-        .column
+        .column#column-2-1
           .column-small
             +input({
               mode: "dropdown",
@@ -167,7 +167,7 @@ html(lang="ru")
             clearButton: true
           })(class='expanded')
       .row
-        .column
+        .column#column-3-1
           .column-small
             +checkbox({
               blockId: "checkbox-minimized",
