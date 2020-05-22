@@ -1,0 +1,65 @@
+include ../input/input
+
+mixin book-form(options)
+  -
+    var blockId = (options && options.blockId) ? options.blockId : false;
+    var name = (options && options.name) ? options.name : 'register-form_'+ (blockId ? blockId : Math.random().toString(36).substr(2, 9));
+    var action = (options && options.action) ? options.action : '';
+    var method = (options && options.method) ? options.method : 'post';
+    var symbol = options.symbol ? options.symbol : '';
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+    // input parameters
+    var selectQuestion = (options && options.selectQuestion) ? options.selectQuestion : 'Сколько гостей';
+    var guestList = (options && options.guestList) ? options.guestList : [
+      {caption: "взрослые"},
+      {caption: "дети"},
+      {caption: "младенцы"}
+    ];
+
+    // button parameters
+    var buttonText = (options && options.buttonText) ? options.buttonText : 'Забронировать';
+
+
+  form(class='book-form form' + addClass id=blockId action=action, method=method, name=name)
+    legend(class='book-form__legend')
+      p(class='book-form__number')
+        span(class='book-form__number-symbol')= '№'
+        span(class='book-form__number-value' data-format-number=true)= options.number
+        if (options.lux)
+          span(class='book-form__lux')= 'Люкс'
+      p(class='book-form__price')
+        span(class='book-form__price-value' data-format-number=true)= options.price
+        span(class='book-form__price-symbol')= symbol
+        span(class='book-form__price-subtext')= 'в сутки'
+    +date-pair({
+      mode: "dropdown",
+      label_1: "Прибытие",
+      label_2: "Выезд",
+      placeholder: "ДД.ММ.ГГГГ",
+      mask: "00.00.0000"
+    })
+    +input({
+      mode: "dropdown",
+      label: "Гости",
+      selectQuestion: selectQuestion,
+      selectCaption: true,
+      list: guestList,
+      applyButton: true,
+      clearButton: true
+    })(class='book-form__guests')
+    if (options.orderList && !!options.orderList.length)
+      ul(class='book-form__list')
+        each obj, ind in options.orderList
+          li(class='book-form__elem')
+            p(class='book-form__elem-left') !{obj.caption}
+            p(class='book-form__elem-right')
+              if (obj.info)
+                span(class='book-form__elem-info')= 'i'
+              span(class='book-form__elem-price')= obj.price + symbol
+    p(class='book-form__total')
+      span(class='book-form__total-left')= 'Итого'
+      span(class='book-form__total-center')
+      span(class='book-form__total-right' data-format-number=true)= options.total + symbol
+    +button({text: buttonText, subscribe: true})

@@ -1,5 +1,6 @@
 include ../../components/room-select-form/room-select-form
 include ../../components/register-form/register-form
+  include ../../components/book-form/book-form
 
 doctype html
 html(lang="ru")
@@ -9,8 +10,19 @@ html(lang="ru")
   body
     .container.mt150
       .row
-        .column
+        .column#tepm-column
           +room-select-form({blockId: 'room-select-form'})
           +register-form()
         .column
+          +book-form({number: 888,
+            lux: true,
+            price: 9990,
+            symbol: '₽',
+            orderList: [
+              {caption: '9 990₽ х 4 суток', price: '39 960'},
+              {caption: 'Сбор за услуги: скидка 2 179₽', info: 'Вы не оплачиваете сбор за услуги при заказе от 10000', price: '0'},
+              {caption: 'Сбор за дополнительные услуги', info: 'Дополнительные услуги отмечены в дополнительном соглашении', price: '300'},
+            ],
+            total: 38081
+          })
         .column

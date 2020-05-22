@@ -16,7 +16,7 @@ mixin register-form(options)
     // button parameters
     var buttonText = (options && options.buttonText) ? options.buttonText : 'Перейти к оплате';
 
-  form(class='register-form form' + addClass action=action, method=method, name=name)
+  form(class='register-form form' + addClass id=blockId action=action, method=method, name=name)
     legend(class='form__legend') !{legend}
     +input({placeholder: 'Имя', name: 'name'})(class='register-form__name')
     +input({placeholder: 'Фамилия', name: 'surname'})(class='register-form__surname')

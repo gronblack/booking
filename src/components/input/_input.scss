@@ -14,10 +14,9 @@
 
   &__input {
     font: inherit;
-    border: 1px solid $darkShade025;
+    box-shadow: inset 0 0 0 1px $darkShade025;
     border-radius: $borderRadius;
-    padding: 12px 14px;
-    //min-width: 320px;
+    padding: 13px 14px;
     width: 100%;
     color: $darkShade075;
 
@@ -33,7 +32,11 @@
   &.expanded &__input,
   &:focus &__input,
   &:hover &__input {
-    border-color: $darkShade05;
+    box-shadow: inset 0 0 0 1px $darkShade05;
+  }
+
+  &.expanded &__input {
+    border-radius: $borderRadius $borderRadius 0 0;
   }
 
   &.expanded &__select-wrapper {
@@ -98,7 +101,6 @@
   &__select-left,
   &__select-right {
     display: flex;
-    //align-items: center;
   }
   &__select-left {
     padding-top: 6px;

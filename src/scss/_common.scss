@@ -26,10 +26,6 @@ body {
   margin-bottom: 16px;
 }
 
-.field-small {
-  width: 150px !important;
-}
-
 .canted {
   border-radius: $borderRadius $borderRadius 0 0 !important;
 }
@@ -64,8 +60,9 @@ body {
   min-width: 320px;
   width: 380px;
   background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  box-shadow:
+          inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+          0 0 25px rgba(0, 0, 0, 0.2);
   border-radius: $borderRadius;
 
   &__legend {

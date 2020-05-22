@@ -1,0 +1,107 @@
+.book-form {
+  &__legend {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__number {
+    font-family: $openSansFont;
+    font-weight: 700;
+    color: $darkShade;
+  }
+
+  &__number-symbol {
+    font-size: 14px;
+    line-height: 17px;
+    margin-right: 7px;
+  }
+
+  &__number-value {
+    margin-right: 6px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  &__lux {
+    font-family: $mainFont;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $purple;
+  }
+
+  &__price {
+    padding-top: 10px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: $darkShade05;
+  }
+
+  &__price-subtext {
+    font-weight: 400;
+    font-size: 12px;
+    margin-left: 4px;
+  }
+
+  &__guests {
+    margin-bottom: 22px;
+  }
+
+  &__list {
+    font-size: 14px;
+    line-height: 19px;
+    color: $darkShade075;
+    margin-bottom: 15px;
+  }
+
+  &__elem {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 14px;
+  }
+
+  &__elem-left {
+    width: 220px;
+  }
+
+  &__elem-right {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__elem-info {
+    @include size(20px);
+    box-shadow: inset 0 0 0 1px $darkShade025;
+    color: $darkShade025;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__elem-price {
+    margin-left: auto;
+  }
+
+  &__total {
+    display: flex;
+    font-family: $openSansFont;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 24px;
+    color: $darkShade;
+    margin-bottom: 20px;
+  }
+
+  &__total-center {
+    margin: 0 5px;
+    flex-grow: 1;
+    border-bottom: 1px dotted $darkShade025;
+    transform: translateY(-5px);
+  }
+
+}

@@ -12,10 +12,17 @@ $(document).ready(function () {
     $(this).text(timeAgo.format(new Date($(this).attr('datetime'))));
   });
 
-  var formatDigit = digit => digit.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+  var formatNumber = digit => digit.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
+  $('[data-format-number]').each(function () {
+    var elem = $(this);
+    var digits = elem.text().replace(/[^\d]/g, '');
+    var letter = elem.text().replace(/[\d]/g, '');
+    elem.text(formatNumber(digits) + letter);
+  });
 
   // select block toggle
-  $('[data-expand-for]').on('click', function () {
+  $('[data-expand-for]').on('click', function (e) {
+    e.preventDefault();
     $('#'+$(this).data('expandFor')).toggleClass('expanded');
   });
   // ----------- common end ----------------------------
@@ -59,8 +66,8 @@ $(document).ready(function () {
 
     var factStart = $(this).find('.range__fact-start');
     var factEnd = $(this).find('.range__fact-end');
-    factStart.text(formatDigit(Math.round(storage['start'])));
-    factEnd.text(formatDigit(Math.round(storage['end'])));
+    factStart.text(formatNumber(Math.round(storage['start'])));
+    factEnd.text(formatNumber(Math.round(storage['end'])));
 
     // pin mouse events
     [pinOne, pinTwo].forEach(elem =>
@@ -116,8 +123,8 @@ $(document).ready(function () {
     var digitTwo = (parseFloat(storage['elemPinTwo'].css('left')) + storage['elemPinTwo'].outerWidth() / 2) / storage['k'] + storage['min'];
     storage['start'] = Math.min(digitOne, digitTwo);
     storage['end'] = Math.max(digitOne, digitTwo);
-    storage['elemFactStart'].text(formatDigit(Math.round(storage['start'])));
-    storage['elemFactEnd'].text(formatDigit(Math.round(storage['end'])));
+    storage['elemFactStart'].text(formatNumber(Math.round(storage['start'])));
+    storage['elemFactEnd'].text(formatNumber(Math.round(storage['end'])));
     storage['elemBarFilled'].css({width: storage['k']*(storage['end'] - storage['start']), left: storage['k'] * (storage['start'] - storage['min'])});
   };
 
@@ -341,7 +348,8 @@ $(document).ready(function () {
   });
 
   // show datepicker on dropdown-button click
-  $('[data-dropdown-for]').on('click', function () {
+  $('[data-dropdown-for]').on('click', function (e) {
+    e.preventDefault();
     var dp = $('#'+$(this).data('dropdownFor')).data('datepicker');
     if (dp != null && !dp.visible) dp.show();
   });
