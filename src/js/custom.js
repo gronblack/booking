@@ -389,6 +389,7 @@ $(document).ready(function () {
   $('.input.recount .input__input').each(function () {
     recountSelectValue(this);
   });
+  
   // ----------- input end ------------------
 
 

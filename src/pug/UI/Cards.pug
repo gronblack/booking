@@ -10,8 +10,8 @@ html(lang="ru")
     title Cards
   body
     .container.mt150
-      .row
-        .column#tepm-column
+      .row.row_space-between
+        .column
           +room-select-form()(class='mb40')
           +register-form()
         .column
@@ -28,4 +28,14 @@ html(lang="ru")
           })(class='mb40')
           +login-form()
         .column
+          +input({blockId: 'datepicker-show', mode: "date"})(class="mb40")
+          script.
+            window.addEventListener("load", function () {
+              let clickEvent = new Event("click");
+              let elem = document.querySelector('#datepicker-show');
+              elem.dispatchEvent(clickEvent);
 
+              document.addEventListener('click', function () {
+                elem.dispatchEvent(clickEvent);
+              });
+            });

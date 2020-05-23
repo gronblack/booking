@@ -16,6 +16,10 @@ body {
 
 .row {
   display: flex;
+
+  &_space-between {
+    justify-content: space-between;
+  }
 }
 
 .caption {
