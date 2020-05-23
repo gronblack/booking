@@ -28,7 +28,7 @@ mixin register-form(options)
       ]
     })(class='register-form__gender')
     +input({mode: "date", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})
-    +input({label: 'Данные для входа в сервис', placeholder: 'Email', name: 'email', type: 'email', mask: ""})(class='register-form__email')
+    +input({label: 'Данные для входа в сервис', placeholder: 'Email', name: 'email', type: 'email'})(class='register-form__email')
     +input({placeholder: 'Пароль', name: 'password', type: 'password'})(class='register-form__password')
     +checkbox({
       toggler: true,

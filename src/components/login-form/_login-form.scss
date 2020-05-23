@@ -1,0 +1,26 @@
+.login-form {
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &_email {
+    margin-bottom: 10px;
+  }
+
+  &__submit {
+    margin-bottom: 30px;
+  }
+
+  &__create {
+    width: 99px;
+    padding: 15px 18px;
+  }
+
+  &__bottom-text {
+    font-size: 14px;
+    line-height: 18px;
+    pointer-events: none;
+  }
+}

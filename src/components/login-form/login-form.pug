@@ -1,0 +1,25 @@
+include ../input/input
+include ../button/button
+
+mixin login-form(options)
+  -
+    var blockId = (options && options.blockId) ? options.blockId : false;
+    var name = (options && options.name) ? options.name : 'login-form_'+ (blockId ? blockId : Math.random().toString(36).substr(2, 9));
+    var action = (options && options.action) ? options.action : '';
+    var method = (options && options.method) ? options.method : 'post';
+    var legend = (options && options.legend) ? options.legend : 'Войти';
+    var textBottom = (options && options.textBottom) ? options.textBottom : 'Нет аккаунта на Toxin?';
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+    // button parameters
+    var buttonText = (options && options.buttonText) ? options.buttonText : 'Войти';
+
+  form(class='login-form form' + addClass id=blockId action=action, method=method, name=name)
+    legend(class='login-form__legend form__legend') !{legend}
+    +input({placeholder: 'Email', name: 'email', type: 'email'})(class='login-form_email')
+    +input({placeholder: 'Пароль', name: 'password', type: 'password'})
+    +button({text: buttonText, subscribe: true})(class='login-form__submit')
+    .login-form__bottom
+      p.login-form__bottom-text !{textBottom}
+      +button({text: 'Создать', hollow: true, type: 'submit'})(class='login-form__create')

@@ -1,6 +1,7 @@
 include ../../components/room-select-form/room-select-form
 include ../../components/register-form/register-form
-  include ../../components/book-form/book-form
+include ../../components/book-form/book-form
+include ../../components/login-form/login-form
 
 doctype html
 html(lang="ru")
@@ -11,7 +12,7 @@ html(lang="ru")
     .container.mt150
       .row
         .column#tepm-column
-          +room-select-form({blockId: 'room-select-form'})
+          +room-select-form()(class='mb40')
           +register-form()
         .column
           +book-form({number: 888,
@@ -24,5 +25,7 @@ html(lang="ru")
               {caption: 'Сбор за дополнительные услуги', info: 'Дополнительные услуги отмечены в дополнительном соглашении', price: '300'},
             ],
             total: 38081
-          })
+          })(class='mb40')
+          +login-form()
         .column
+
