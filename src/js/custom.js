@@ -142,7 +142,7 @@ $(document).ready(function () {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';
   };
-  var decline = function (number) {//debugger
+  var decline = function (number) {
     var lastDigit = number % 10;
     if (number !== 11 && lastDigit === 1) return 'гость';
 
@@ -167,7 +167,6 @@ $(document).ready(function () {
           $(elem).find('.input__select-minus').attr('disabled', sum === 0);
         });
 
-        //debugger
         if (result > 0) {
           inputNode.val(result + ' ' + decline(result));
         } else inputNode.val(inputNode.data('selectQuestion'));
@@ -389,7 +388,7 @@ $(document).ready(function () {
   $('.input.recount .input__input').each(function () {
     recountSelectValue(this);
   });
-  
+
   // ----------- input end ------------------
 
 

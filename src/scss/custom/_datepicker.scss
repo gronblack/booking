@@ -1,14 +1,16 @@
 .datepicker {
   box-sizing: border-box;
-  border: 1px solid $darkShade025;
-  box-shadow: 0 10px 20px $darkShade005;
+  border: none;
+  box-shadow:
+          inset 0 0 0 1px $darkShade025,
+          0 10px 20px $darkShade005;
 
   &--pointer {
     display: none;
   }
 
   &--nav {
-    padding: 20px;
+    padding: 22px 20px 20px;
     border-bottom: none;
   }
 
@@ -153,7 +155,7 @@
 
   &--buttons {
     justify-content: space-between;
-    padding: 13px 20px 10px;
+    padding: 13px 20px 11px;
     font-family: $mainFont;
     font-size: 12px;
     line-height: 15px;
