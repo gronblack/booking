@@ -1,0 +1,41 @@
+include ../rate/rate
+
+mixin product-card(options)
+  -
+    var blockId = options.blockId ? options.blockId : Math.random().toString(36).substr(2, 9);
+    var images = options.images ? options.images : ['/img/rooms/product-stub.png'];
+    var symbol = options.symbol ? options.symbol : '';
+    var rate = options.rate ? options.rate : 5;
+    var attrClass = attributes.class ? ' '+attributes.class : '';
+    var addClass = attrClass;
+
+  div(class='product-card'+addClass id=blockId)
+    div(class='product-card__top')
+      div(class='product-card__arrows')
+        div(class='product-card__arrow-left' data-way='left')
+        div(class='product-card__arrow-right' data-way='right')
+      p(class='product-card__controls')
+        - for(let i=0; i < images.length; i++)
+          input(class='product-card__input' id=`${blockId}-control-${i}` name=`${blockId}-control` type='radio' checked=(i === 0))
+          label(class='product-card__control' for=`${blockId}-control-${i}`, data-current=(i === 0 ? 1 : 0))
+      ul(class='product-card__list')
+        each val, ind in images
+          - var currentClass = (ind === 0) ? ' product-card__item_current' : '';
+          li(class='product-card__item'+currentClass id=`${blockId}-control-${ind}-item` data-control=`${blockId}-control-${ind}`)
+            img(class='product-card__img' src=val)
+    div(class='product-card__bottom')
+      p(class='form__number')
+        span(class='product-card__number-symbol form__number-symbol')= '№'
+        span(class='product-card__number-value form__number-value' data-format-number=true)= options.number
+        if (options.lux)
+          span(class='form__lux')= 'Люкс'
+      p(class='product-card__price form__price')
+        span(class='form__price-value' data-format-number=true)= options.price
+        span(class='form__price-symbol')= symbol
+        span(class='form__price-subtext')= 'в сутки'
+      p(class='product-card__stroke')
+      +rate({rate: rate})(class='product-card__rate')
+      if (options.reviews)
+        p(class='product-card__reviews')
+          b= options.reviews
+          =' Отзывов'

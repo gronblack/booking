@@ -24,15 +24,15 @@ mixin book-form(options)
 
   form(class='book-form form' + addClass id=blockId action=action, method=method, name=name)
     legend(class='book-form__legend')
-      p(class='book-form__number')
-        span(class='book-form__number-symbol')= '№'
-        span(class='book-form__number-value' data-format-number=true)= options.number
+      p(class='form__number')
+        span(class='form__number-symbol')= '№'
+        span(class='form__number-value' data-format-number=true)= options.number
         if (options.lux)
-          span(class='book-form__lux')= 'Люкс'
-      p(class='book-form__price')
-        span(class='book-form__price-value' data-format-number=true)= options.price
-        span(class='book-form__price-symbol')= symbol
-        span(class='book-form__price-subtext')= 'в сутки'
+          span(class='form__lux')= 'Люкс'
+      p(class='form__price')
+        span(class='form__price-value' data-format-number=true)= options.price
+        span(class='form__price-symbol')= symbol
+        span(class='form__price-subtext')= 'в сутки'
     +date-pair({
       mode: "dropdown",
       label_1: "Прибытие",

@@ -2,6 +2,7 @@ include ../../components/room-select-form/room-select-form
 include ../../components/register-form/register-form
 include ../../components/book-form/book-form
 include ../../components/login-form/login-form
+include ../../components/product-card/product-card
 
 doctype html
 html(lang="ru")
@@ -28,7 +29,7 @@ html(lang="ru")
           })(class='mb40')
           +login-form()
         .column
-          +input({blockId: 'datepicker-show', mode: "date"})(class="mb40")
+          +input({blockId: 'datepicker-show', mode: "date"})
           script.
             window.addEventListener("load", function () {
               let clickEvent = new Event("click");
@@ -39,3 +40,20 @@ html(lang="ru")
                 elem.dispatchEvent(clickEvent);
               });
             });
+          +product-card({
+            blockId: 'product-card-1',
+            number: 888,
+            lux: true,
+            price: 9990,
+            symbol: '₽',
+            reviews: 145,
+            images: ['/img/rooms/room-888-preview-1.jpg', '/img/rooms/room-888-preview-2.jpg', '/img/rooms/room-888-preview-3.jpg', '/img/rooms/product-stub.png']
+          })(class='product-card_focused')
+          +product-card({
+            number: 840,
+            price: 9900,
+            symbol: '₽',
+            rate: 4,
+            reviews: 65,
+            images: ['/img/rooms/room-840-preview-1.jpg', '/img/rooms/room-888-preview-2.jpg', '/img/rooms/room-888-preview-3.jpg', '/img/rooms/product-stub.png']
+          })
