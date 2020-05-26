@@ -14,9 +14,16 @@
   border: 1px solid $darkShade025;
   border-radius: 10px;
 
-  background-repeat: no-repeat;
-  background-image: url("/img/like.png");
-  background-position: 3px 5px;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    @include size(15px);
+    background-image: url("/img/like.svg");
+    background-repeat: no-repeat;
+  }
 
   &:hover, &:focus, &_voted {
     border-color: $purple;
@@ -25,7 +32,10 @@
 
   &_voted {
     color: $purple;
-    background-image: url("/img/like-voted.png");
+
+    &::before {
+      background-image: url("/img/like-voted.svg");
+    }
   }
 
   &__count {
