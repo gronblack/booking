@@ -12,6 +12,7 @@
 
   background: linear-gradient(180deg, $purple 0%, $blue 100%);
   border-radius: 22px;
+  transition: opacity .3s ease;
 
   &:hover, &:focus, &.hover {
     opacity: .5;
