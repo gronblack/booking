@@ -20,7 +20,7 @@
     position: absolute;
     left: 4px;
     top: 4px;
-    @include size(15px);
+    @include size(10px);
     background-image: url("/img/like.svg");
     background-repeat: no-repeat;
   }
