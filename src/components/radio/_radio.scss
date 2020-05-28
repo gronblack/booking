@@ -1,8 +1,18 @@
 .radio {
   margin-bottom: 20px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: left;
+  }
 
   &__content {
     display: flex;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      justify-content: left;
+    }
   }
 
   &__caption {

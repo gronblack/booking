@@ -8,6 +8,12 @@ $selectListTransitionOffset: 8px;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  text-align: center;
+  min-width: 266px;
+
+  @media (min-width: 768px) {
+    text-align: left;
+  }
 
   &__label {
     font-size: 12px;
@@ -24,14 +30,18 @@ $selectListTransitionOffset: 8px;
     padding: 12px 15px 14px;
     width: 100%;
     color: $darkShade075;
+    text-align: center;
 
     &:read-only {
       cursor: default;
     }
 
     &::placeholder {
-      //padding-left: 1px;
       color: $darkShade025;
+    }
+
+    @media (min-width: 768px) {
+      text-align: left;
     }
   }
 
@@ -141,6 +151,7 @@ $selectListTransitionOffset: 8px;
     pointer-events: none;
     user-select: none;
     word-wrap: break-word;
+    text-align: left;
   }
   &__select-sum {
     width: 32px;

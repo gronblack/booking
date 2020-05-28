@@ -6,21 +6,37 @@ body {
 }
 
 .container {
-  width: 1190px;
+  max-width: 1190px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
 .field-container {
-  width: 320px;
-}
+  width: 100%;
 
-.field-container-small {
-  width: 266px;
+  @media (min-width: 992px) {
+    max-width: 320px;
+
+    &_lg-small {
+      width: 266px;
+    }
+  }
 }
 
 .column {
-  min-width: 320px;
+  width: 100%;
+  margin-bottom: 20px;
+
+  &_md-half {
+    @media (min-width: 768px) {
+      width: 48%;
+    }
+  }
+  &_lg-third {
+    @media (min-width: 992px) {
+      width: 30%;
+    }
+  }
 }
 
 .row {
@@ -38,6 +54,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .canted {

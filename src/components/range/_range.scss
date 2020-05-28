@@ -1,6 +1,10 @@
 .range {
   margin-bottom: 20px;
 
+  @media (min-width: 426px) {
+    max-width: 320px;
+  }
+
   &__top {
     display: flex;
     justify-content: space-between;
