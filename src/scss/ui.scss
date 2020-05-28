@@ -1,6 +1,8 @@
 @import "utils/vars";
 
 .input {
+  margin-bottom: 21px;
+
   &_focused &__input {
     box-shadow: inset 0 0 0 1px $darkShade05;
   }
@@ -18,6 +20,14 @@
 
 #column1-1, #column-2-1, #column-3-1, #column-4-1 {
   margin-right: 127px;
+}
+
+#column-2-1 {
+  margin-bottom: 151px;
+}
+
+#column1-1 {
+  margin-left: 2px;
 }
 
 #column1-2, #column-2-2, #column-3-2 {
@@ -42,20 +52,21 @@
   width: 266px;
 }
 
+#input-focused {
+  margin-bottom: 20px;
+}
+
 #dropdown-1 {
   margin-bottom: 22px;
 }
 
-#date-pair-1 {
-  margin-bottom: 22px;
-}
-
-#dropdown-expanded {
-  margin-bottom: 54px;
+#dropdown-recount {
+  margin-bottom: 20px;
 }
 
 #checkbox-minimized {
-  margin-bottom: 48px;
+  margin-bottom: 49px;
+  margin-left: 2px;
 }
 
 #checkbox-bottom {
@@ -67,13 +78,17 @@
 }
 
 #checkbox-toggler {
-  margin-bottom: 39px;
+  margin-bottom: 38px;
 }
 
 #like-buttons-wrapper {
   display: flex;
   justify-content: space-between;
   width: 90px;
+}
+
+#rate-wrapper-caption {
+  margin-bottom: 18px;
 }
 
 #rate-wrapper {
@@ -100,7 +115,7 @@
 }
 
 #bullets-caption {
-  margin-bottom: 7px;
+  margin-bottom: 9px;
 }
 
 #datepicker-show {

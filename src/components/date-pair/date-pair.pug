@@ -2,6 +2,7 @@ include ../input/input
 
 mixin date-pair(options)
   -
+    var blockId = options.blockId ? options.blockId : false;
     var attrClass = attributes.class ? (' '+attributes.class) : '';
     var options_1 = JSON.parse(JSON.stringify(options));
     var options_2 = JSON.parse(JSON.stringify(options));
@@ -24,6 +25,6 @@ mixin date-pair(options)
     options_2['label'] = options['label_2'] ? options['label_2'] : false;
 
 
-  div(class='date-pair'+attrClass)
+  div(class='date-pair'+attrClass id=blockId)
     +input(options_1)(class='date-pair__one')
     +input(options_2)(class='date-pair__two')

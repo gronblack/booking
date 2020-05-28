@@ -22,7 +22,7 @@ html(lang="ru")
       .row
         .column#column1-1
           +input({label: "text field", placeholder: "Email"})
-          +input({label: "text field", value: "This is pretty awesome"})(class="input_focused")
+          +input({blockId: "input-focused", label: "text field", value: "This is pretty awesome"})(class="input_focused")
           +input({
             blockId: "dropdown-1",
             mode: "dropdown",
@@ -48,7 +48,7 @@ html(lang="ru")
             label_2: "Date dropdown",
             placeholder: "ДД.ММ.ГГГГ",
             mask: "00.00.0000"
-          })(class="mb20")
+          })(class='mb20')
 
           .column-small
             +input({
@@ -87,7 +87,7 @@ html(lang="ru")
           div(id='like-buttons-wrapper' class="mb40")
             +like-button({count: 2})
             +like-button({count: 12, voted: true})
-          p.caption= 'Rate button'
+          p.caption#rate-wrapper-caption= 'Rate button'
           div(id='rate-wrapper' class='row-between')
             +rate({blockId: "rate-block1", rate: 3.8})
             +rate({blockId: "rate-block2", rate: 5})
@@ -113,6 +113,7 @@ html(lang="ru")
         .column#column-2-1
           .column-small
             +input({
+              blockId: "dropdown-recount",
               mode: "dropdown",
               label: "Dropdown",
               classInput: "canted",
