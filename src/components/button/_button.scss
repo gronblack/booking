@@ -14,7 +14,7 @@
   border-radius: 22px;
   transition: all .3s ease;
 
-  &:hover, &:focus, &.hover {
+  &:hover, &:focus, &_hover {
     opacity: .5;
   }
 
@@ -30,7 +30,7 @@
     border-radius: 0;
     background: none;
 
-    &:hover, &:focus, &.hover {
+    &:hover, &:focus, &.button_hover {
       opacity: unset;
       color: $darkShade05;
     }

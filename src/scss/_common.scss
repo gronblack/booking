@@ -6,9 +6,9 @@ body {
 }
 
 .container {
-  width: 1200px;
+  width: 1190px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px;
 }
 
 .field-container {
@@ -30,8 +30,6 @@ body {
   &_space-between {
     justify-content: space-between;
   }
-
-
 }
 
 .caption {
@@ -72,6 +70,10 @@ body {
 
 .mr10 {
   margin-right: 10px !important;
+}
+
+.mr20 {
+  margin-right: 20px !important;
 }
 
 // mixin classes

@@ -16,7 +16,7 @@
     color: $darkShade05;
     font-size: 12px;
     line-height: 15px;
-    transition: opacity .4s ease;
+    transition: opacity .2s ease;
 
     &::before {
       content: '';
@@ -28,7 +28,7 @@
       background-image: linear-gradient(180deg, $purple025 0%, $blue025 100%);
       border-radius: 50%;
       z-index: -1;
-      transition: opacity .4s ease;
+      transition: opacity .2s ease;
       opacity: 0;
     }
 

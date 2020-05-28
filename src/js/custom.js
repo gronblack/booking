@@ -385,7 +385,7 @@ $(document).ready(function () {
   });
 
   // recount input with lists
-  $('.input.recount .input__input').each(function () {
+  $('.input_recount .input__input').each(function () {
     recountSelectValue(this);
   });
 

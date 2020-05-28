@@ -37,6 +37,7 @@ $selectListTransitionOffset: 8px;
 
   &.expanded &__input,
   &:focus &__input,
+  &_focused &__input,
   &:hover &__input {
     transition: all .3s ease;
     box-shadow: inset 0 0 0 1px $darkShade05;
