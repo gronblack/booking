@@ -8,6 +8,8 @@ mixin button(options)
     var link = (options && options.link) ? options.link : false;
     var expandFor = (options && options.expandFor) ? options.expandFor : false;
     var subscribe = (options && options.subscribe) ? options.subscribe : false;
+    var gray = (options && options.gray) ? options.gray : false;
+    var align = (options && options.align) ? options.align : false;
 
     var type = (options && options.type) ? options.type : false;
     if (subscribe) type = 'submit';
@@ -15,8 +17,10 @@ mixin button(options)
     var hollowClass = hollow ? ' button_hollow' : '';
     var linkClass = link ? ' button_link' : '';
     var subscribeClass = subscribe ? ' button_subscribe' : '';
+    var grayClass = gray ? ' button_gray' : '';
+    var alignClass = align ? ` button_align-${align}` : '';
     var attrClass = attributes.class ? ' '+attributes.class : '';
-    var addClass = attrClass + hollowClass + linkClass + subscribeClass;
+    var addClass = attrClass + hollowClass + linkClass + subscribeClass + grayClass + alignClass;
 
   button(class='button'+addClass id=id type=type data-expand-for=expandFor) !{text}
     if (subscribe)

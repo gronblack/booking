@@ -16,83 +16,86 @@ doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
     title Form Elements
   body
     .container.mt140
-      .row
+      .row.row_space-between
         .column#column1-1
-          +input({label: "text field", placeholder: "Email"})
-          +input({blockId: "input-focused", label: "text field", value: "This is pretty awesome"})(class="input_focused")
-          +input({
-            blockId: "dropdown-1",
-            mode: "dropdown",
-            label: "Dropdown",
-            selectQuestion: "Сколько гостей",
-            list: [
-              {caption: "взрослые"},
-              {caption: "дети"},
-              {caption: "младенцы"}
-            ]
-          })
-          +input({
-            mode: "date",
-            inputId: "ui-single-date",
-            label: "Masked text field",
-            placeholder: "ДД.ММ.ГГГГ",
-            mask: "00.00.0000"
-          })(class="mb40")
-          +date-pair({
-            blockId: "date-pair-1",
-            mode: "dropdown",
-            label_1: "Date dropdown",
-            label_2: "Date dropdown",
-            placeholder: "ДД.ММ.ГГГГ",
-            mask: "00.00.0000"
-          })(class='mb20')
-
-          .column-small
+          .field-container
+            +input({label: "text field", placeholder: "Email"})
+            +input({blockId: "input-focused", label: "text field", value: "This is pretty awesome"})(class="input_focused")
             +input({
-              blockId: "",
-              mode: "date-range|dropdown",
-              classInput: "datepicker-small",
-              label: "Filter date dropdown"
+              blockId: "dropdown-1",
+              mode: "dropdown",
+              label: "Dropdown",
+              selectQuestion: "Сколько гостей",
+              list: [
+                {caption: "взрослые"},
+                {caption: "дети"},
+                {caption: "младенцы"}
+              ]
+            })
+            +input({
+              mode: "date",
+              inputId: "ui-single-date",
+              label: "Masked text field",
+              placeholder: "ДД.ММ.ГГГГ",
+              mask: "00.00.0000"
             })(class="mb40")
-            +input({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
+            +date-pair({
+              blockId: "date-pair-1",
+              mode: "dropdown",
+              label_1: "Date dropdown",
+              label_2: "Date dropdown",
+              placeholder: "ДД.ММ.ГГГГ",
+              mask: "00.00.0000"
+            })(class='mb20')
+
+            .field-container-small
+              +input({
+                blockId: "",
+                mode: "date-range|dropdown",
+                classInput: "datepicker-small",
+                label: "Filter date dropdown"
+              })(class="mb40")
+              +input({mode: "subscribe", label: "Subscription text field", placeholder: "Email"})(class="mb100")
         .column#column1-2
-          +checkbox({
-            blockId: "checkbox-top",
-            caption: "Checkbox buttons",
-            list: [
-              {caption: "Можно курить"},
-              {caption: "Можно с питомцами", checked: true},
-              {caption: "Можно пригласить гостей<br>(до 10 человек)", checked: true}]
-          })
-          +radio({
-            caption: "Radio buttons",
-            data: [
-              {value: "male", label: "Мужчина"},
-              {value: "female", label: "Женщина"}
-            ]
-          })(class="mb40")
-          +checkbox({
-            blockId: "checkbox-toggler",
-            toggler: true,
-            caption: "Toggle",
-            list: [
-              {caption: "Получать спецпредложения", checked: true},
-              {caption: "Получать спецпредложения"}
-            ]
-          })
-          p.caption= 'Like button'
-          div(id='like-buttons-wrapper' class="mb40")
-            +like-button({count: 2})
-            +like-button({count: 12, voted: true})
-          p.caption#rate-wrapper-caption= 'Rate button'
-          div(id='rate-wrapper' class='row-between')
-            +rate({blockId: "rate-block1", rate: 3.8})
-            +rate({blockId: "rate-block2", rate: 5})
+          .field-container
+            +checkbox({
+              blockId: "checkbox-top",
+              caption: "Checkbox buttons",
+              list: [
+                {caption: "Можно курить"},
+                {caption: "Можно с питомцами", checked: true},
+                {caption: "Можно пригласить гостей<br>(до 10 человек)", checked: true}]
+            })
+            +radio({
+              caption: "Radio buttons",
+              data: [
+                {value: "male", label: "Мужчина"},
+                {value: "female", label: "Женщина"}
+              ]
+            })(class="mb40")
+            +checkbox({
+              blockId: "checkbox-toggler",
+              toggler: true,
+              caption: "Toggle",
+              list: [
+                {caption: "Получать спецпредложения", checked: true},
+                {caption: "Получать спецпредложения"}
+              ]
+            })
+            p.caption= 'Like button'
+            .row.mb40
+              +like-button({count: 2})(class="mr10")
+              +like-button({count: 12, voted: true})
+            p.caption#rate-wrapper-caption= 'Rate button'
+            div(id='rate-wrapper' class='row-between')
+              +rate({blockId: "rate-block1", rate: 3.8})
+              +rate({blockId: "rate-block2", rate: 5})
         .column
-          .column-small#column-1-3-1
+          .field-container-small#column-1-3-1
             +range({caption: "Range slider", min: 0, max: 16000, start: 5000, end: 10000, symbol: "₽"})
           .column
             p.caption= 'Buttons'
@@ -109,9 +112,9 @@ html(lang="ru")
               +button({text: 'Перейти к оплате', subscribe: true})
             p.caption= 'Pagination'
             +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'})
-      .row
+      .row.row_space-between
         .column#column-2-1
-          .column-small
+          .field-container-small
             +input({
               blockId: "dropdown-recount",
               mode: "dropdown",
@@ -137,38 +140,40 @@ html(lang="ru")
               ]
             })(class='expanded recount')
         .column#column-2-2
-          +input({
-            blockId: "input-list-apply",
-            mode: "dropdown",
-            label: "Dropdown",
-            classInput: "canted",
-            selectQuestion: "Сколько гостей",
-            list: [
-              {caption: "взрослые"},
-              {caption: "дети"},
-              {caption: "младенцы"}
-            ],
-            applyButton: true
-          })(class='expanded')
+          .field-container
+            +input({
+              blockId: "input-list-apply",
+              mode: "dropdown",
+              label: "Dropdown",
+              classInput: "canted",
+              selectQuestion: "Сколько гостей",
+              list: [
+                {caption: "взрослые"},
+                {caption: "дети"},
+                {caption: "младенцы"}
+              ],
+              applyButton: true
+            })(class='expanded')
         .column
-          +input({
-            blockId: "input-list-apply-clear",
-            mode: "dropdown",
-            label: "Dropdown",
-            classInput: "canted",
-            selectQuestion: "Сколько гостей",
-            selectCaption: true,
-            list: [
-              {caption: "взрослые"},
-              {caption: "дети"},
-              {caption: "младенцы"}
-            ],
-            applyButton: true,
-            clearButton: true
-          })(class='expanded')
-      .row
+          .field-container
+            +input({
+              blockId: "input-list-apply-clear",
+              mode: "dropdown",
+              label: "Dropdown",
+              classInput: "canted",
+              selectQuestion: "Сколько гостей",
+              selectCaption: true,
+              list: [
+                {caption: "взрослые"},
+                {caption: "дети"},
+                {caption: "младенцы"}
+              ],
+              applyButton: true,
+              clearButton: true
+            })(class='expanded')
+      .row.row_space-between
         .column#column-3-1
-          .column-small
+          .field-container-small
             +checkbox({
               blockId: "checkbox-minimized",
               caption: "Expandable checkbox list",
@@ -198,28 +203,31 @@ html(lang="ru")
               expandable: true
             })(class='expanded')
         .column#column-3-2
-          +checkbox({
-            caption: "Rich checkbox buttons",
-            list: [
-              {rich: "Широкий коридор", caption: "Ширина коридоров в номере<br>не менее 91 см."},
-              {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
-            ]
-          })
+          .field-container
+            +checkbox({
+              caption: "Rich checkbox buttons",
+              list: [
+                {rich: "Широкий коридор", caption: "Ширина коридоров в номере<br>не менее 91 см."},
+                {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
+              ]
+            })
         .column
-          p.caption#bullets-caption= 'Bullet list'
-          +bullets({list: [
-              'Нельзя с питомцами',
-              'Без вечеринок и мероприятий',
-              'Время прибытия — после 13:00,<br>а выезд до 12:00'
-            ]})
+          .field-container
+            p.caption#bullets-caption= 'Bullet list'
+            +bullets({list: [
+                'Нельзя с питомцами',
+                'Без вечеринок и мероприятий',
+                'Время прибытия — после 13:00,<br>а выезд до 12:00'
+              ]})
       .row
         .column#column-4-1
-          +advantages({
-            data: [
-              {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
-              {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"}
-            ]
-          })
+          .field-container
+            +advantages({
+              data: [
+                {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
+                {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"}
+              ]
+            })
         .column#column-4-2
           +review({
             person: {name: "Мурад Сарафанов", img: "../img/persons/1.png"},

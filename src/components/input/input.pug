@@ -28,6 +28,7 @@ mixin input(options)
 
     var classInput = options.classInput ? (' '+options.classInput) : '';
     if ((isDate || isDateRange) && !twoFor) classInput += ' datepicker-here';
+    if (isSubscribe) classInput += ' input_subscribe';
     var readonly = isDateRange || (isDropdown && !isDate);
 
     var dataDropdownFor = false;
@@ -51,7 +52,7 @@ mixin input(options)
           if (isDropdown)
             span(class='input__dropdown-button')
           else
-            +arrow-button()(class='input__subscribe-button')
+            +arrow-button()
         if (isSelect)
           div(class='input__select-wrapper')
             ul(class='input__select-list')
@@ -66,9 +67,10 @@ mixin input(options)
             if (applyButton || clearButton)
               p(class='input__buttons')
                 if (clearButton)
-                  button(class='input__clear-button')= 'Очистить'
+                  //button(class='input__clear-button')= 'Очистить'
+                  +button({text: 'Очистить', link: true, gray: true, align: 'left'})(class='input__clear-button')
                 if (applyButton)
-                  +button({text: 'Применить', link: true, expandFor: expButtonId})(class='input__apply-button')
+                  +button({text: 'Применить', link: true, align: 'right', expandFor: expButtonId})(class='input__apply-button')
     else
       input(class='input__input'+classInput id=inputId name=name type=type placeholder=placeholder value=value
         data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

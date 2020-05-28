@@ -11,16 +11,27 @@ body {
   padding: 0 20px;
 }
 
+.field-container {
+  width: 320px;
+}
+
+.field-container-small {
+  width: 266px;
+}
+
 .column {
   min-width: 320px;
 }
 
 .row {
   display: flex;
+  flex-wrap: wrap;
 
   &_space-between {
     justify-content: space-between;
   }
+
+
 }
 
 .caption {
@@ -57,6 +68,10 @@ body {
 
 .mt150 {
   margin-top: 150px !important;
+}
+
+.mr10 {
+  margin-right: 10px !important;
 }
 
 // mixin classes

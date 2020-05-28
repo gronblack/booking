@@ -57,6 +57,10 @@ $selectListTransitionOffset: 8px;
     z-index: 10;
   }
 
+  &_subscribe {
+    padding-right: 40px;
+  }
+
   //dropdown
   &[data-dropdown-for] &__input-wrapper * {
     cursor: pointer;
@@ -126,12 +130,16 @@ $selectListTransitionOffset: 8px;
   &__select-right {
     display: flex;
   }
+  &__select-right {
+    margin-left: 10px;
+  }
   &__select-left {
     padding-top: 6px;
   }
   &__select-name {
     pointer-events: none;
     user-select: none;
+    word-wrap: break-word;
   }
   &__select-sum {
     width: 32px;
@@ -166,32 +174,8 @@ $selectListTransitionOffset: 8px;
     padding: 4px 7px 4px 14px;
   }
 
-  &__clear-button
-  {
-    padding: 8px 0;
-    font-family: $mainFont;
-    font-size: 12px;
-    line-height: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    user-select: none;
-    border: none;
-    background: #ffffff;
-
-    &:hover, &:focus {
-      background: #f0f0f0;
-    }
-  }
-  &__clear-button {
-    color: $darkShade05;
-    margin-right: auto;
-  }
-
-  &__apply-button {
-    margin-left: auto;
+  &__apply-button, &__clear-button {
     padding-top: 10px !important;
     padding-bottom: 8px !important;
   }
-
 }

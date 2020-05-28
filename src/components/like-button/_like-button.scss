@@ -1,9 +1,8 @@
 .like-button {
   display: block;
-  @include size(40px, 20px);
+  height: 20px;
   min-width: 40px;
-  padding-left: 17px;
-  padding-top: 3px;
+  padding: 3px 6px 0 16px;
 
   cursor: pointer;
   color: $darkShade025;
@@ -40,7 +39,7 @@
 
   &__count {
     display: block;
-    width: 15px;
+    //width: 15px;
     text-align: center;
     user-select: none;
   }
