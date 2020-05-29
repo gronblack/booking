@@ -1,4 +1,8 @@
 .advantages {
+  @media (min-width: 992px) {
+    max-width: 320px;
+  }
+
   &__elem {
     display: flex;
     position: relative;

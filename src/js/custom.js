@@ -142,12 +142,31 @@ $(document).ready(function () {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';
   };
-  var decline = function (number) {
+  var declineGuests = function (number) {
     var lastDigit = number % 10;
     if (number !== 11 && lastDigit === 1) return 'гость';
 
     if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return 'гостя';
     else return 'гостей';
+  };
+  var calcMaxString = function (string, resultObject, limitPX, limitLetters = 100, tempElem = null) {
+    if (tempElem === null) {
+      tempElem = $('<span></span>');
+      tempElem.css({
+        "display": "none",
+        "position": "absolute",
+        "left": -10000
+      });
+      $('body').append(tempElem);
+    }
+    tempElem.text(string);
+
+    if (tempElem.width() <= limitPX) {
+      tempElem.detach();
+      resultObject['result'] = tempElem.text();
+    } else {
+      calcMaxString(cutString(tempElem.text(), string.length - 1), limitPX, resultObject, string.length - 1, tempElem);
+    }
   };
 
   //recount list selected elements and write summary in input
@@ -168,7 +187,7 @@ $(document).ready(function () {
         });
 
         if (result > 0) {
-          inputNode.val(result + ' ' + decline(result));
+          inputNode.val(result + ' ' + declineGuests(result));
         } else inputNode.val(inputNode.data('selectQuestion'));
         return true;
       }
@@ -182,7 +201,14 @@ $(document).ready(function () {
       });
       if (result.length) {
         result = result.slice(0, -2) + '...';
-        inputNode.val(cutString(result, SELECT_STRING_LIMIT));
+        let stringLengthPX = inputNode.width();
+        let dropdownButton = inputNode.siblings('.input__dropdown-button');
+        if (dropdownButton.length) stringLengthPX -= dropdownButton.width();
+
+        let calcObj = { result: '' };
+        calcMaxString(result, calcObj, stringLengthPX, result.length);
+
+        inputNode.val(calcObj.result);
       } else inputNode.val(inputNode.data('selectQuestion'));
       return true;
     }

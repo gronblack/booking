@@ -8,7 +8,7 @@ body {
 .container {
   max-width: 1190px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 25px 15px 0;
 }
 
 .field-container {
@@ -46,6 +46,11 @@ body {
   &_space-between {
     justify-content: space-between;
   }
+  @media (max-width: 767px) {
+    &_sm-justify-center {
+      justify-content: center;
+    }
+  }
 }
 
 .caption {
@@ -72,18 +77,21 @@ body {
 .mb40 {
   margin-bottom: 40px !important;
 }
-
+/*
 .mb100 {
   margin-bottom: 100px !important;
 }
-
+ */
+/*
 .mt140 {
   margin-top: 140px !important;
 }
-
+ */
+/*
 .mt150 {
   margin-top: 150px !important;
 }
+ */
 
 .mr10 {
   margin-right: 10px !important;

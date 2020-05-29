@@ -14,6 +14,9 @@ $selectListTransitionOffset: 8px;
   @media (min-width: 768px) {
     text-align: left;
   }
+  @media (min-width: 992px) {
+    max-width: 320px;
+  }
 
   &__label {
     font-size: 12px;
