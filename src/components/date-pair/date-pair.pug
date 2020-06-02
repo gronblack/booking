@@ -2,7 +2,6 @@ include ../input/input
 
 mixin date-pair(options)
   -
-    var blockId = options.blockId ? options.blockId : false;
     var attrClass = attributes.class ? (' '+attributes.class) : '';
     var options_1 = JSON.parse(JSON.stringify(options));
     var options_2 = JSON.parse(JSON.stringify(options));
@@ -17,6 +16,15 @@ mixin date-pair(options)
         options_2['mode'] = 'date';
     }
 
+    if (options.blockId) {
+      var blockId = options.blockId;
+      options_1['blockId'] = blockId + '-1';
+      options_2['blockId'] = blockId + '-2';
+    } else {
+      var blockId = false;
+      options_1['blockId'] = false;
+      options_2['blockId'] = false;
+    }
     options_1['inputId'] = '_' + Math.random().toString(36).substr(2, 9);
     options_2['inputId'] = '_' + Math.random().toString(36).substr(2, 9);
     options_1['oneFor'] = options_2['inputId'];

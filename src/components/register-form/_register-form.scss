@@ -34,12 +34,17 @@
   &__bottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   &__bottom-text {
     font-size: 14px;
     line-height: 18px;
     pointer-events: none;
+    padding-right: 10px;
+
+    @media (min-width: 420px) {
+      padding-right: 35px;
+    }
   }
 }

@@ -21,7 +21,7 @@ html(lang="ru")
   body
     .container
       .row.row_space-between
-        div(class="column column_md-half column_lg-third" id="column1-1")
+        div(class="col col_md-half col_lg-third" id="col1-1")
           +input({label: "text field", placeholder: "Email"})
           +input({blockId: "input-focused", label: "text field", value: "This is pretty awesome"}).input_focused
           +input({
@@ -43,24 +43,21 @@ html(lang="ru")
             mask: "00.00.0000"
           }).mb40
           +date-pair({
-            blockId: "date-pair-1",
             mode: "dropdown",
             label_1: "Date dropdown",
             label_2: "Date dropdown",
             placeholder: "ДД.ММ.ГГГГ",
             mask: "00.00.0000"
           }).mb20
+          +input({
+            blockId: "input-small-1",
+            mode: "date-range|dropdown",
+            classInput: "datepicker-small",
+            label: "Filter date dropdown"
+          }).mb40
+          +input({blockId: "input-small-2", mode: "subscribe", label: "Subscription text field", placeholder: "Email"}).mb30
 
-          .field-container.field-container_lg-small
-            +input({
-              blockId: "",
-              mode: "date-range|dropdown",
-              classInput: "datepicker-small",
-              label: "Filter date dropdown"
-            }).mb40
-            +input({mode: "subscribe", label: "Subscription text field", placeholder: "Email"}).mb30
-
-        div(class="column column_md-half column_lg-third" id="column1-2")
+        div(class="col col_md-half col_lg-third" id="col1-2")
           +checkbox({
             blockId: "checkbox-top",
             caption: "Checkbox buttons",
@@ -86,32 +83,33 @@ html(lang="ru")
             ]
           })
           p.caption= 'Like button'
-          div(class="row row_sm-justify-center mb40")
+          div(class="row row_sm-justify-center row_lg-justify-left mb40")
             +like-button({count: 2}).mr10
             +like-button({count: 12, voted: true})
           p.caption#rate-wrapper-caption= 'Rate button'
-          div(class="row row_sm-justify-center mb40" id="rate-wrapper")
+          div(class="row row_sm-justify-center row_lg-justify-left mb40" id="rate-wrapper")
             +rate({blockId: "rate-block1", rate: 3.8}).mr20
             +rate({blockId: "rate-block2", rate: 5})
-        div(class="column column_lg-third")
-            div(class="row row_sm-justify-center")
-              +range({caption: "Range slider", min: 0, max: 16000, start: 5000, end: 10000, symbol: "₽"}).mb30
+        div(class="col col_lg-third" id="col1-3")
+            div(class="row row_sm-justify-center row_lg-justify-left" id="row-1-3-2-1")
+              +range({caption: "Range slider", min: 0, max: 16000, start: 5000, end: 10000, symbol: "₽"})
             p.caption= 'Buttons'
-            div(class="row row_sm-justify-center mb30")
+            div(class="row row_sm-justify-center row_lg-justify-left mb30")
               +button({id: 'button-1', text: 'Click me'})
               +button({text: 'Click me'}).button_hover
-            div(class="row row_sm-justify-center mb30" id="row-1-3-2-2")
+            div(class="row row_sm-justify-center row_lg-justify-left mb30" id="row-1-3-2-3")
               +button({id: 'button-2', text: 'Click me', hollow: true})
               +button({text: 'Click me', hollow: true}).button_hover
-            div(class="row row_sm-justify-center mb30")
+            div(class="row row_sm-justify-center row_lg-justify-left mb30")
               +button({id: 'button-3', text: 'Click me', link: true})
               +button({text: 'Click me', link: true}).button_hover
-            div(class="row row_sm-justify-center")
+            div(class="row row_sm-justify-center row_lg-justify-left")
               +button({text: 'Перейти к оплате', subscribe: true}).mb40
             p.caption= 'Pagination'
-            +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'})
+            div(class="row row_sm-justify-center row_lg-justify-left")
+              +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'})
       .row.row_space-between
-        div(class="column column_md-half" id="column-2-1")
+        div(class="col col_md-half col_lg-third" id="col-2-1")
             +input({
               blockId: "dropdown-recount",
               mode: "dropdown",
@@ -136,7 +134,7 @@ html(lang="ru")
                 {caption: "ванные комнаты"}
               ]
             }).input_recount.expanded
-        div(class="column column_md-half" id="column-2-2")
+        div(class="col col_md-half col_lg-third" id="col-2-2")
           +input({
             blockId: "input-list-apply",
             mode: "dropdown",
@@ -150,7 +148,7 @@ html(lang="ru")
             ],
             applyButton: true
           }).expanded
-        div(class="column" id="column-2-3")
+        div(class="col col_md-half col_lg-third col_margin-center" id="col-2-3")
           +input({
             blockId: "input-list-apply-clear",
             mode: "dropdown",
@@ -167,37 +165,36 @@ html(lang="ru")
             clearButton: true
           }).expanded
       .row.row_space-between
-        div(class="column column_md-half" id="column-3-1")
-          .field-container.field-container_lg-small
-            +checkbox({
-              blockId: "checkbox-minimized",
-              caption: "Expandable checkbox list",
-              list: [
-                {caption: "Завтрак"},
-                {caption: "Письменный стол"},
-                {caption: "Стул для кормления"},
-                {caption: "Кроватка"},
-                {caption: "Телевизор"},
-                {caption: "Шампунь"}
-              ],
-              expandable: true
-            })
-            +checkbox({
-              blockId: "checkbox-bottom",
-              caption: "Expandable checkbox list",
-              list: [
-                {caption: "Завтрак"},
-                {caption: "Письменный стол", checked: true},
-                {caption: "Стул для кормления", checked: true},
-                {caption: "Кроватка", checked: true},
-                {caption: "Телевизор"},
-                {caption: "Шампунь"},
-                {caption: "Телевизор"},
-                {caption: "Шампунь"},
-              ],
-              expandable: true
-            }).expanded
-        div(class="column column_md-half" id="column-3-2")
+        div(class="col col_md-half col_lg-third" id="col-3-1")
+          +checkbox({
+            blockId: "checkbox-minimized",
+            caption: "Expandable checkbox list",
+            list: [
+              {caption: "Завтрак"},
+              {caption: "Письменный стол"},
+              {caption: "Стул для кормления"},
+              {caption: "Кроватка"},
+              {caption: "Телевизор"},
+              {caption: "Шампунь"}
+            ],
+            expandable: true
+          })
+          +checkbox({
+            blockId: "checkbox-bottom",
+            caption: "Expandable checkbox list",
+            list: [
+              {caption: "Завтрак"},
+              {caption: "Письменный стол", checked: true},
+              {caption: "Стул для кормления", checked: true},
+              {caption: "Кроватка", checked: true},
+              {caption: "Телевизор"},
+              {caption: "Шампунь"},
+              {caption: "Телевизор"},
+              {caption: "Шампунь"},
+            ],
+            expandable: true
+          }).expanded
+        div(class="col col_md-half col_lg-third" id="col-3-2")
           +checkbox({
             caption: "Rich checkbox buttons",
             list: [
@@ -205,7 +202,7 @@ html(lang="ru")
               {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
             ]
           })
-        div(class="column column_sm-align-center")
+        div(class="col col_md-half col_lg-third col_md-only-margin-center" id="col-3-3")
           p.caption#bullets-caption= 'Bullet list'
           +bullets({list: [
               'Нельзя с питомцами',
@@ -213,14 +210,14 @@ html(lang="ru")
               'Время прибытия — после 13:00,<br>а выезд до 12:00'
             ]})
       .row
-        .column#column-4-1
+        div(class="col col_md-half col_md-only-margin-center" id="col-4-1")
           +advantages({
             data: [
               {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
               {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"}
             ]
           })
-        .column#column-4-2
+        .col#col-4-2
           +review({
             person: {name: "Мурад Сарафанов", img: "../img/persons/1.png"},
             text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",

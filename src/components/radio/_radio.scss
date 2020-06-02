@@ -8,11 +8,6 @@
 
   &__content {
     display: flex;
-    justify-content: center;
-
-    @media (min-width: 768px) {
-      justify-content: left;
-    }
   }
 
   &__caption {

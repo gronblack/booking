@@ -9,6 +9,10 @@ body {
   max-width: 1190px;
   margin: 0 auto;
   padding: 25px 15px 0;
+
+  @media (min-width: 1200px) {
+    max-width: unset;
+  }
 }
 
 .field-container {
@@ -23,7 +27,9 @@ body {
   }
 }
 
-.column {
+.col {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 20px;
 
@@ -34,7 +40,26 @@ body {
   }
   &_lg-third {
     @media (min-width: 992px) {
-      width: 30%;
+      width: 31%;
+    }
+  }
+  &_sm-align-center {
+    align-items: center;
+  }
+  &_md-align-center {
+    @media (min-width: 768px) {
+      align-items: center;
+    }
+  }
+  &_xlg-align-center {
+    @media (min-width: 1200px) {
+      align-items: center;
+    }
+  }
+  &_md-only-margin-center {
+    @media (min-width: 768px) and (max-width: 991px) {
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
@@ -46,8 +71,19 @@ body {
   &_space-between {
     justify-content: space-between;
   }
-  @media (max-width: 767px) {
-    &_sm-justify-center {
+
+  &_sm-justify-center {
+    justify-content: center;
+  }
+
+  &_lg-justify-left {
+    @media (min-width: 992px) {
+      justify-content: flex-start;
+    }
+  }
+
+  &_xlg-justify-center {
+    @media (min-width: 1200px) {
       justify-content: center;
     }
   }
@@ -60,6 +96,15 @@ body {
   text-transform: uppercase;
   margin-bottom: 16px;
   text-align: center;
+
+  @media (min-width: 992px) {
+    text-align: left;
+  }
+  &_xlg-align-center {
+    @media (min-width: 1200px) {
+      text-align: center;
+    }
+  }
 }
 
 .canted {
@@ -103,15 +148,22 @@ body {
 
 // mixin classes
 .form {
+  display: flex;
+  flex-direction: column;
   padding: 40px 30px 30px;
-  min-width: 320px;
-  width: 380px;
+  //min-width: 320px;
+  width: 100%;
+  //max-width: 380px;
   background: #FFFFFF;
   box-shadow:
           inset 0 0 0 1px rgba(0, 0, 0, 0.12),
           0 0 25px rgba(0, 0, 0, 0.2);
   border-radius: $borderRadius;
-
+  /*
+  @media (min-width: 420px) {
+    width: 380px;
+  }
+*/
   &__legend {
     font-family: $openSansFont;
     font-weight: 700;
@@ -161,5 +213,9 @@ body {
     font-weight: 400;
     font-size: 12px;
     margin-left: 4px;
+  }
+
+  &__submit {
+    margin: 0 auto;
   }
 }

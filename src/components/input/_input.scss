@@ -9,13 +9,11 @@ $selectListTransitionOffset: 8px;
   flex-direction: column;
   margin-bottom: 20px;
   text-align: center;
-  min-width: 266px;
+  flex-grow: 1;
+  width: 100%;
 
   @media (min-width: 768px) {
     text-align: left;
-  }
-  @media (min-width: 992px) {
-    max-width: 320px;
   }
 
   &__label {

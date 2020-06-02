@@ -23,7 +23,12 @@
   }
 
   &__elem-left {
-    width: 220px;
+    //width: 220px;
+    width: 62%;
+
+    @media (min-width: 420px) {
+      //width: 220px;
+    }
   }
 
   &__elem-right {

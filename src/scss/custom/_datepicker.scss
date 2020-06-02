@@ -89,7 +89,8 @@
 
   &--day-name,
   &--cell {
-    height: rem(40, 16);
+    padding: 7.14% 0;
+
     font-family: $mainFont;
     font-size: 12px;
     line-height: 15px;

@@ -2,7 +2,7 @@
   &__bottom {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 
   &_email {
@@ -22,5 +22,10 @@
     font-size: 14px;
     line-height: 18px;
     pointer-events: none;
+    padding-right: 10px;
+
+    @media (min-width: 420px) {
+      padding-right: 35px;
+    }
   }
 }

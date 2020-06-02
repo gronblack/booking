@@ -36,7 +36,7 @@ mixin register-form(options)
         {caption: "Получать спецпредложения"}
       ]
     })(class='register-form__subscribe')
-    +button({text: buttonText, subscribe: true})(class='register-form__submit')
+    +button({text: buttonText, subscribe: true})(class='register-form__submit form__submit')
     .register-form__bottom
       p.register-form__bottom-text !{textBottom}
       +button({text: 'Войти', hollow: true, type: 'submit'})(class='register-form__comein')

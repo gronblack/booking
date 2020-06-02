@@ -8,14 +8,15 @@ doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
     title Cards
   body
     .container.mt150
       .row.row_space-between
-        .column
+        div(class="col col_md-half col_lg-third col_sm-align-center")
           +room-select-form()(class='mb40')
           +register-form()
-        .column
+        div(class="col col_md-half col_lg-third col_sm-align-center")
           +book-form({number: 888,
             lux: true,
             price: 9990,
@@ -28,7 +29,7 @@ html(lang="ru")
             total: 38081
           })(class='mb40')
           +login-form()
-        .column
+        div(class="col col_md-half col_lg-third col_sm-align-center")
           +input({blockId: 'datepicker-show', mode: "date"})
           script.
             window.addEventListener("load", function () {

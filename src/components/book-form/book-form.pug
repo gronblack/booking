@@ -62,4 +62,4 @@ mixin book-form(options)
       span(class='book-form__total-left')= 'Итого'
       span(class='book-form__total-center')
       span(class='book-form__total-right' data-format-number=true)= options.total + symbol
-    +button({text: buttonText, subscribe: true})
+    +button({text: buttonText, subscribe: true}).form__submit

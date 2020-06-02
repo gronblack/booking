@@ -356,7 +356,6 @@ $(document).ready(function () {
       onSelect: function (fd, date, dp) {
         // set value into pair inputs
         if (dp.id === window['notOnSelectDP']) return false;
-
         if (dp.isDatePair) {
           $(dp.el.closest('.date-pair')).find('[data-is-date]').each(function (i, el) {
             if (date[i]) $(this).val(DATE_FORMATTER.format(date[i]));
