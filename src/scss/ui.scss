@@ -154,8 +154,39 @@
   transform: translateY(-50px);
   visibility: hidden;
   margin-bottom: 115%;
+
+  @media (min-width: 1200px) {
+    margin-bottom: 366px;
+    flex-grow: 0;
+  }
+}
+
+#product-card-1, #product-card-2 {
+  @media (min-width: 992px) {
+    max-width: 270px;
+  }
 }
 
 #product-card-1 {
   margin-bottom: 42px;
+}
+
+#room-select-1 {
+  @media (min-width: 992px) and (max-width: 1190px) {
+    .room-select-form__date-pair {
+      flex-direction: column;
+    }
+  }
+}
+
+#cards-col1, #cards-col2 {
+  @media (min-width: 1200px) {
+    width: 380px;
+  }
+}
+
+#cards-col3 {
+  @media (min-width: 1200px) {
+    width: 320px;
+  }
 }

@@ -23,11 +23,11 @@
   }
 
   &__elem-left {
-    //width: 220px;
     width: 62%;
+    padding-right: 5px;
 
-    @media (min-width: 420px) {
-      //width: 220px;
+    @media (min-width: 1200px) {
+      width: 220px;
     }
   }
 

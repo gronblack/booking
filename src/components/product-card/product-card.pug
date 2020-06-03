@@ -22,7 +22,7 @@ mixin product-card(options)
         each val, ind in images
           - var currentClass = (ind === 0) ? ' product-card__item_current' : '';
           li(class='product-card__item'+currentClass id=`${blockId}-control-${ind}-item` data-control=`${blockId}-control-${ind}`)
-            img(class='product-card__img' src=val)
+            img(class="product-card__img" src=val)
     div(class='product-card__bottom')
       p(class='form__number')
         span(class='product-card__number-symbol form__number-symbol')= '№'

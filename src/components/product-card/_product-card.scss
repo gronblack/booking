@@ -2,14 +2,12 @@ $card-width: 270px;
 $card-height: 151px;
 
 .product-card {
-  //width: $card-width;
+  width: 100%;
   background: #FFFFFF;
   box-shadow: 0 10px 20px $darkShade005;
   border-radius: $borderRadius;
 
   &__top {
-    //height: $card-height;
-    //padding-top: 100%;
     position: relative;
     overflow: hidden;
     border-radius: 4px 4px 0 0;
@@ -61,12 +59,12 @@ $card-height: 151px;
   }
 
   &__list {
-    padding-top: 100%;
+    padding-top: $card-height / $card-width * 100%;
     position: relative;
   }
 
   &__item {
-    width: 100%;
+    @include size(100%);
     position: absolute;
     top: 0;
     left: 0;
@@ -75,7 +73,8 @@ $card-height: 151px;
   }
 
   &__img {
-    width: 100%;
+    @include size(100%);
+    object-fit: cover;
   }
 
   &__item_current {

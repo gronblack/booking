@@ -5,8 +5,12 @@
     justify-content: flex-end;
   }
 
-  &_email {
-    margin-bottom: 10px;
+  &__email {
+    margin-bottom: 10px !important;
+  }
+
+  &__password {
+    margin-bottom: 20px !important;
   }
 
   &__submit {
@@ -26,6 +30,9 @@
 
     @media (min-width: 420px) {
       padding-right: 35px;
+    }
+    @media (min-width: 992px) {
+      margin-right: auto;
     }
   }
 }

@@ -27,7 +27,7 @@ mixin register-form(options)
         {value: "female", label: "Женщина"}
       ]
     })(class='register-form__gender')
-    +input({mode: "date", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})
+    +input({mode: "date", label: "Дата рождения", placeholder: "ДД.ММ.ГГГГ", mask: "00.00.0000"})(class='register-form__birthday')
     +input({label: 'Данные для входа в сервис', placeholder: 'Email', name: 'email', type: 'email'})(class='register-form__email')
     +input({placeholder: 'Пароль', name: 'password', type: 'password'})(class='register-form__password')
     +checkbox({
