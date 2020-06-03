@@ -19,10 +19,14 @@ mixin product-card(options)
           input(class='product-card__input' id=`${blockId}-control-${i}` name=`${blockId}-control` type='radio' checked=(i === 0))
           label(class='product-card__control' for=`${blockId}-control-${i}`, data-current=(i === 0 ? 1 : 0))
       ul(class='product-card__list')
-        each val, ind in images
+        each obj, ind in images
           - var currentClass = (ind === 0) ? ' product-card__item_current' : '';
+          - var alt = `Номер ${options.number}, ${options.price} рублей в сутки`;
           li(class='product-card__item'+currentClass id=`${blockId}-control-${ind}-item` data-control=`${blockId}-control-${ind}`)
-            img(class="product-card__img" src=val)
+            if (typeof obj === "object")
+              img(class="product-card__img" src=obj.src alt=obj.alt ? obj.alt : alt)
+            else
+              img(class="product-card__img" src=obj alt=alt)
     div(class='product-card__bottom')
       p(class='form__number')
         span(class='product-card__number-symbol form__number-symbol')= '№'
