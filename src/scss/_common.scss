@@ -5,6 +5,10 @@ body {
   padding: 0;
 }
 
+a:not([href]) {
+  pointer-events: none;
+}
+
 .container {
   max-width: 1190px;
   margin: 0 auto;
@@ -137,11 +141,10 @@ body {
   margin-top: 140px !important;
 }
  */
-/*
+
 .mt150 {
   margin-top: 150px !important;
 }
- */
 
 .mr10 {
   margin-right: 10px !important;

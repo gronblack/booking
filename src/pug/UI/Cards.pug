@@ -11,13 +11,14 @@ html(lang="ru")
     meta(name="viewport" content="width=device-width,initial-scale=1")
     title Cards
   body
-    .container.mt150
+    .container
       .row.row_space-between
         div(class="col col_md-half col_lg-third col_sm-align-center" id="cards-col1")
           +room-select-form({blockId: "room-select-1"})(class='mb40')
           +register-form()
         div(class="col col_md-half col_lg-third col_sm-align-center" id="cards-col2")
-          +book-form({number: 888,
+          +book-form({
+            number: 888,
             lux: true,
             price: 9990,
             symbol: '₽',

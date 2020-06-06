@@ -1,0 +1,51 @@
+include ../button/button
+
+mixin header(options)
+  -
+    var blockId = (options && options.blockId) ? options.blockId : false;
+    var user = (options && options.user) ? options.user : false;
+    var logo = (options && options.logo) ? options.logo : '/img/logo.svg';
+    var logoHref = (options && options.logoHref) ? options.logoHref : false;
+
+    /*
+    list: [
+      {
+        isCurrent: bool,
+        caption: string,
+        href: string,
+        list: [
+          caption: string,
+          href: string
+        ]
+      }, ...
+    ]
+     */
+    var attrClass = attributes.class ? ' ' + attributes.class : '';
+    var addClass = attrClass;
+
+  header(class='header'+addClass id=blockId)
+    nav(class='header__nav header__nav_closed')
+      div(class='header__nav-wrapper')
+        a(class='header__nav-logo' href=logoHref)
+          img(src=logo)
+
+        if (!!options.list)
+          ul(class='header__nav-menu')
+            each link, ind in options.list
+              -
+                var currentClass = link.isCurrent ? ' header__nav-link_current' : '';
+                var listClass = link.submenu ? ' header__nav-link_dropdown' : '';
+                var addClass = currentClass + listClass;
+              li(class='header__nav-item')
+                a(class='header__nav-link'+addClass href=link.href)= link.caption
+                if (link.submenu)
+                  ul(class='header__nav-submenu')
+                    each sublink, ind in link.submenu
+                      li
+                        a(class='header__nav-link' href=sublink.href)= sublink.caption
+        div(class='header__nav-user')
+          if (user)
+            a(class='header__nav-profile' href=user.link) !{user.name}
+          else
+            +button({text: 'Login', hollow: true}).header__nav-button
+            +button({text: 'Register'}).header__nav-button

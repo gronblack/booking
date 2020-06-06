@@ -1,0 +1,116 @@
+.header {
+  background: #FFFFFF;
+  box-shadow: 0 10px 20px $darkShade005;
+
+  &__nav-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 0 auto;
+
+    @media (min-width: 1200px) {
+      width: 1190px;
+    }
+  }
+
+  &__nav-logo {
+    //cursor: pointer;
+  }
+
+  &__nav-menu {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__nav-item {
+    display: block;
+    position: relative;
+  }
+
+  &__nav-link, &__nav-profile {
+    display: block;
+    font-size: 14px;
+    line-height: 17px;
+    color: $darkShade05;
+  }
+
+  &__nav-link {
+    padding: 5px 15px;
+  }
+
+  &__nav-link:hover ~ &__nav-submenu, &__nav-submenu_visible {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 1 !important;
+
+    a {
+      transform: translateY(0) !important;
+    }
+  }
+
+  &__nav-link_current {
+    font-weight: 700;
+    color: $darkShade075;
+  }
+
+  &__nav-link_dropdown {
+    padding-right: 23px;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: block;
+      @include size(8px);
+      position: absolute;
+      top: 8px;
+      right: 8px;
+
+      border: 2px solid $darkShade05;
+      border-top: none;
+      border-right: none;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__nav-submenu {
+    padding: 15px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: -1;
+    transition: opacity .3s ease-in-out;
+    background-color: #ffffff;
+    box-shadow: 0 10px 20px $darkShade005;
+
+    & a {
+      padding: 10px 15px;
+      white-space: nowrap;
+      transition: transform .3s ease-in-out;
+      transform: translateY(10px);
+    }
+  }
+
+  &__nav-user {
+    padding-left: 13px;
+  }
+
+  &__nav-button {
+    padding: 10px 20px;
+
+    &:first-child {
+      margin-right: 20px;
+    }
+  }
+
+  &__nav-profile {
+    padding-left: 30px;
+    margin-left: 5px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid $darkShade01;
+  }
+}

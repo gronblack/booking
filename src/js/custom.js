@@ -466,4 +466,13 @@ $(document).ready(function () {
   });
   // ----------- product-card end ------------------
 
+  // ----------- header start ----------------------
+  $('.header__nav-item')
+      .on('mouseenter', function () {
+        $(this).find('.header__nav-submenu').addClass('header__nav-submenu_visible');
+      })
+      .on('mouseleave', function () {
+        $(this).find('.header__nav-submenu').removeClass('header__nav-submenu_visible');
+      });
+  // ----------- header end ----------------------
 });
