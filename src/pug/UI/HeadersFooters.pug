@@ -7,85 +7,86 @@ html(lang="ru")
     meta(name="viewport" content="width=device-width,initial-scale=1")
     title HeadersFooters
   body
-    .mt150
-      +header({
-        logo: '/img/logo.svg',
-        list: [
-          {
-            caption: 'Home',
-            isCurrent: true
-          },
-          {
-            caption: 'About Us',
-            href: '/about',
-          },
-          {
-            caption: 'Services',
-            href: '/services',
-            submenu: [
-              {
-                caption: 'Service 1',
-                href: '/services/services-1',
-              },
-              {
-                caption: 'Service 2',
-                href: '/services/services-2',
-              }
-            ]
-          },
-          {
-            caption: 'Careers',
-            href: '/careers',
-          },
-          {
-            caption: 'News',
-            href: '/news',
-          },
-          {
-            caption: 'Documentation',
-            href: '/documentation',
-          }
-        ]
-      }).mb40
-      +header({
-        logo: '/img/logo.svg',
-        logoHref: '/',
-        user: { id: '0001', link: '/users/0001', name: 'Cosmin Negoita'},
-        list: [
-          {
-            caption: 'Home',
-            isCurrent: true,
-            href: '/',
-          },
-          {
-            caption: 'About Us',
-            href: '/about',
-          },
-          {
-            caption: 'Services',
-            href: '/services',
-            submenu: [
-              {
-                caption: 'Service 1',
-                href: '/services/services-1',
-              },
-              {
-                caption: 'Service 2',
-                href: '/services/services-2',
-              }
-            ]
-          },
-          {
-            caption: 'Careers',
-            href: '/careers',
-          },
-          {
-            caption: 'News',
-            href: '/news',
-          },
-          {
-            caption: 'Documentation',
-            href: '/documentation',
-          }
-        ]
-      })
+    +header({
+      UI: true,
+      logo: '/img/logo.svg',
+      list: [
+        {
+          caption: 'Home',
+          isCurrent: true
+        },
+        {
+          caption: 'About Us',
+          href: '/about',
+        },
+        {
+          caption: 'Services',
+          href: '/services',
+          submenu: [
+            {
+              caption: 'Service 1',
+              href: '/services/services-1',
+            },
+            {
+              caption: 'Service 2',
+              href: '/services/services-2',
+            }
+          ]
+        },
+        {
+          caption: 'Careers',
+          href: '/careers',
+        },
+        {
+          caption: 'News',
+          href: '/news',
+        },
+        {
+          caption: 'Documentation',
+          href: '/documentation',
+        }
+      ]
+    }).mt150.mb40
+    +header({
+      UI: true,
+      logo: '/img/logo.svg',
+      logoHref: '/',
+      user: { id: '0001', link: '/users/0001', name: 'Cosmin Negoita'},
+      list: [
+        {
+          caption: 'Home',
+          isCurrent: true,
+          href: '/',
+        },
+        {
+          caption: 'About Us',
+          href: '/about',
+        },
+        {
+          caption: 'Services',
+          href: '/services',
+          submenu: [
+            {
+              caption: 'Service 1',
+              href: '/services/services-1',
+            },
+            {
+              caption: 'Service 2',
+              href: '/services/services-2',
+            }
+          ]
+        },
+        {
+          caption: 'Careers',
+          href: '/careers',
+        },
+        {
+          caption: 'News',
+          href: '/news',
+        },
+        {
+          caption: 'Documentation',
+          href: '/documentation',
+        }
+      ]
+    })

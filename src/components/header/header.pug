@@ -6,6 +6,8 @@ mixin header(options)
     var user = (options && options.user) ? options.user : false;
     var logo = (options && options.logo) ? options.logo : '/img/logo.svg';
     var logoHref = (options && options.logoHref) ? options.logoHref : false;
+    var buttonLoginText = (options && options.buttonLoginText) ? options.buttonLoginText : 'Login';
+    var buttonRegisterText = (options && options.buttonRegisterText) ? options.buttonRegisterText : 'Register';
 
     /*
     list: [
@@ -20,32 +22,46 @@ mixin header(options)
       }, ...
     ]
      */
+    var UIClass = (options && options.UI) ? ' header_UI' : '';
     var attrClass = attributes.class ? ' ' + attributes.class : '';
-    var addClass = attrClass;
+    var addClass = attrClass + UIClass;
+    var WrapperUIClass = (options && options.UI) ? ' header__wrapper_UI' : '';
 
   header(class='header'+addClass id=blockId)
-    nav(class='header__nav header__nav_closed')
-      div(class='header__nav-wrapper')
+    div(class='header__wrapper'+WrapperUIClass)
+      nav(class='header__nav header__nav_closed')
         a(class='header__nav-logo' href=logoHref)
           img(src=logo)
-
+        button(class='header__nav-toggle')
+          span
         if (!!options.list)
-          ul(class='header__nav-menu')
-            each link, ind in options.list
-              -
-                var currentClass = link.isCurrent ? ' header__nav-link_current' : '';
-                var listClass = link.submenu ? ' header__nav-link_dropdown' : '';
-                var addClass = currentClass + listClass;
-              li(class='header__nav-item')
-                a(class='header__nav-link'+addClass href=link.href)= link.caption
-                if (link.submenu)
-                  ul(class='header__nav-submenu')
-                    each sublink, ind in link.submenu
-                      li
-                        a(class='header__nav-link' href=sublink.href)= sublink.caption
-        div(class='header__nav-user')
-          if (user)
-            a(class='header__nav-profile' href=user.link) !{user.name}
-          else
-            +button({text: 'Login', hollow: true}).header__nav-button
-            +button({text: 'Register'}).header__nav-button
+          div(class='header__nav-menu-wrapper')
+            ul(class='header__nav-menu')
+              each link, ind in options.list
+                -
+                  var currentClass = link.isCurrent ? ' header__nav-link_current' : '';
+                  var listClass = link.submenu ? ' header__nav-link_dropdown' : '';
+                  var addClass = currentClass + listClass;
+                li(class='header__nav-item')
+                  a(class='header__nav-link'+addClass href=link.href)= link.caption
+                  if (link.submenu)
+                    ul(class='header__nav-submenu')
+                      each sublink, ind in link.submenu
+                        li
+                          a(class='header__nav-link' href=sublink.href)= sublink.caption
+                if (ind === options.list.length - 1)
+                  if (user)
+                    li(class='header__nav-item header__nav-item_mobile')
+                      a(class='header__nav-link header__button_profile' href=user.link)= user.name
+                  else
+                    li(class='header__nav-item header__nav-item_mobile')
+                      a(class='header__nav-link header__button_login')= buttonLoginText
+                    li(class='header__nav-item header__nav-item_mobile')
+                      a(class='header__nav-link header__button_register')= buttonRegisterText
+
+      div(class='header__user'+(user ? ' header__user_authorized' : ''))
+        if (user)
+          a(class='header__profile header__button_profile' href=user.link)= user.name
+        else
+          +button({text: buttonLoginText, hollow: true}).header__button.header__button_login
+          +button({text: buttonRegisterText}).header__button.header__button_register
