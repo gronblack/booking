@@ -1,4 +1,5 @@
 include ../../components/header/header
+include ../../components/footer/footer
 
 doctype html
 html(lang="ru")
@@ -88,5 +89,94 @@ html(lang="ru")
           caption: 'Documentation',
           href: '/documentation',
         }
+      ]
+    }).mb40
+    +footer({
+      UI: true,
+      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.',
+      logoHref: '/',
+      list: [
+        {
+          caption: 'Navigation',
+          menu: [
+            {
+              caption: 'About Us',
+              href: '/about'
+            },
+            {
+              caption: 'News',
+              href: '/news'
+            },
+            {
+              caption: 'Support',
+              href: '/support'
+            },
+            {
+              caption: 'Products',
+              href: '/products'
+            }
+          ]
+        },
+        {
+          caption: 'About Us',
+          menu: [
+            {
+              caption: 'Who we are',
+              href: '/who-we-are'
+            },
+            {
+              caption: 'Our team',
+              href: '/team'
+            },
+            {
+              caption: 'Careers',
+              href: '/careers'
+            },
+            {
+              caption: 'Investors',
+              href: '/investors'
+            }
+          ]
+        },
+        {
+          caption: 'Support',
+          menu: [
+            {
+              caption: 'Documentation',
+              href: '/documentation'
+            },
+            {
+              caption: 'Community',
+              href: '/community'
+            },
+            {
+              caption: 'Get in touch',
+              href: '/contacts'
+            }
+          ]
+        }
+      ],
+      subscribe: {
+        caption: 'Subscribe to our newsletter',
+        description: 'Receive our latest news and promotions in your inbox!',
+        placeholder: 'Your email address'
+      },
+      copyright: 'Copyright © 2018 Toxin UI Kit. All rights reserved.',
+      social: [
+        {
+          href: 'https://twitter.com/',
+          title: 'Twitter',
+          icon: '/img/social/twitter.png'
+        },
+        {
+          href: 'https://facebook.com/',
+          title: 'Facebook',
+          icon: '/img/social/facebook.png'
+        },
+        {
+          href: 'https://instagram.com/',
+          title: 'Instagram',
+          icon: '/img/social/instagram.png'
+        },
       ]
     })

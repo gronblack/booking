@@ -1,0 +1,117 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0 10px 20px $darkShade01;
+
+  &_UI {
+    position: unset;
+  }
+
+  &__top {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 15px 79px;
+  }
+
+  &_UI &__top, &_UI &__bottom-wrapper {
+    @media (min-width: 1200px) {
+      width: 1190px;
+    }
+  }
+
+  &__logo {
+    margin-right: 20px;
+    width: 260px;
+  }
+
+  &__logo, &__subscribe {
+    min-width: 260px;
+  }
+
+  &__description {
+    font-size: 14px;
+    line-height: 24px;
+    color: $darkShade075;
+    padding-top: 18px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: 20px;
+    margin-right: 64px;
+  }
+
+  &__nav-column {
+    padding-top: 4px;
+    padding-right: 120px;
+    white-space: nowrap;
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  &__caption {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    color: $darkShade;
+    padding-bottom: 22px;
+  }
+
+  &__nav-link {
+    display: block;
+    padding-bottom: 21px;
+    font-size: 14px;
+    line-height: 17px;
+    color: $darkShade05;
+  }
+
+  &__subscribe {
+    padding-top: 4px;
+    margin-left: 20px;
+  }
+
+  &__subscribe &__caption {
+    padding: 0;
+  }
+
+  &__subscribe &__description {
+    padding-bottom: 24px;
+  }
+
+  &__bottom {
+    border-top: 1px solid #E0E0E2;
+  }
+
+  &__bottom-wrapper {
+    display: flex;
+    padding: 24px 15px;
+    margin: 0 auto;
+  }
+
+  &__copyright {
+    padding-top: 3px;
+    margin-right: auto;
+    font-size: 14px;
+    line-height: 17px;
+    color: $darkShade075;
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  &__social-link {
+    padding-left: 22px;
+  }
+}

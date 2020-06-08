@@ -25,10 +25,9 @@ mixin header(options)
     var UIClass = (options && options.UI) ? ' header_UI' : '';
     var attrClass = attributes.class ? ' ' + attributes.class : '';
     var addClass = attrClass + UIClass;
-    var WrapperUIClass = (options && options.UI) ? ' header__wrapper_UI' : '';
 
   header(class='header'+addClass id=blockId)
-    div(class='header__wrapper'+WrapperUIClass)
+    div(class='header__wrapper')
       nav(class='header__nav header__nav_closed')
         a(class='header__nav-logo' href=logoHref)
           img(src=logo)
@@ -43,12 +42,12 @@ mixin header(options)
                   var listClass = link.submenu ? ' header__nav-link_dropdown' : '';
                   var addClass = currentClass + listClass;
                 li(class='header__nav-item')
-                  a(class='header__nav-link'+addClass href=link.href)= link.caption
+                  a(class='header__nav-link'+addClass href=link.href title=(link.title ? link.title : link.caption))= link.caption
                   if (link.submenu)
                     ul(class='header__nav-submenu')
                       each sublink, ind in link.submenu
                         li
-                          a(class='header__nav-link' href=sublink.href)= sublink.caption
+                          a(class='header__nav-link' href=sublink.href title=(sublink.title ? sublink.title : sublink.caption))= sublink.caption
                 if (ind === options.list.length - 1)
                   if (user)
                     li(class='header__nav-item header__nav-item_mobile')
