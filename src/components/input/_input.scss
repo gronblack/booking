@@ -12,7 +12,7 @@ $selectListTransitionOffset: 8px;
   flex-grow: 1;
   width: 100%;
 
-  @media (min-width: 768px) {
+  @media (min-width: $tablet) {
     text-align: left;
   }
 
@@ -41,7 +41,7 @@ $selectListTransitionOffset: 8px;
       color: $darkShade025;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: $tablet) {
       text-align: left;
     }
   }

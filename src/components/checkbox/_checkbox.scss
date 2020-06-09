@@ -10,10 +10,10 @@
     position: relative;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: $tablet) {
     align-items: flex-start;
   }
-  @media (min-width: 992px) {
+  @media (min-width: $smDesktop) {
     max-width: 320px;
   }
 
@@ -35,7 +35,7 @@
     text-transform: uppercase;
     text-align: center;
 
-    @media (min-width: 768px) {
+    @media (min-width: $tablet) {
       text-align: left;
     }
   }

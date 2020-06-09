@@ -1,6 +1,6 @@
 body {
   font: $mainFontWeight #{$mainFontSize}/#{$mainLineHeight} $mainFont;
-  min-width: $smPhoneWidth;
+  min-width: 320px;
   margin: 0;
   padding: 0;
 }
@@ -14,7 +14,7 @@ a:not([href]) {
   margin: 0 auto;
   padding: 25px 15px 0;
 
-  @media (min-width: 1200px) {
+  @media (min-width: $desktop) {
     max-width: unset;
   }
 }
@@ -22,7 +22,7 @@ a:not([href]) {
 .field-container {
   width: 100%;
 
-  @media (min-width: 992px) {
+  @media (min-width: $smDesktop) {
     max-width: 320px;
 
     &_lg-small {
@@ -38,12 +38,12 @@ a:not([href]) {
   margin-bottom: 20px;
 
   &_md-half {
-    @media (min-width: 768px) {
+    @media (min-width: $tablet) {
       width: 48%;
     }
   }
   &_lg-third {
-    @media (min-width: 992px) {
+    @media (min-width: $smDesktop) {
       width: 31%;
     }
   }
@@ -51,22 +51,22 @@ a:not([href]) {
     align-items: center;
   }
   &_md-align-center {
-    @media (min-width: 768px) {
+    @media (min-width: $tablet) {
       align-items: center;
     }
   }
   &_md-align-left {
-    @media (min-width: 768px) {
+    @media (min-width: $tablet) {
       align-items: flex-start;
     }
   }
   &_xlg-align-center {
-    @media (min-width: 1200px) {
+    @media (min-width: $desktop) {
       align-items: center;
     }
   }
   &_md-only-margin-center {
-    @media (min-width: 768px) and (max-width: 991px) {
+    @media (min-width: $tablet) and (max-width: 991px) {
       margin-left: auto;
       margin-right: auto;
     }
@@ -86,13 +86,13 @@ a:not([href]) {
   }
 
   &_lg-justify-left {
-    @media (min-width: 992px) {
+    @media (min-width: $smDesktop) {
       justify-content: flex-start;
     }
   }
 
   &_xlg-justify-center {
-    @media (min-width: 1200px) {
+    @media (min-width: $desktop) {
       justify-content: center;
     }
   }
@@ -106,11 +106,11 @@ a:not([href]) {
   margin-bottom: 16px;
   text-align: center;
 
-  @media (min-width: 992px) {
+  @media (min-width: $smDesktop) {
     text-align: left;
   }
   &_xlg-align-center {
-    @media (min-width: 1200px) {
+    @media (min-width: $desktop) {
       text-align: center;
     }
   }

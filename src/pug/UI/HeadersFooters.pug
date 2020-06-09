@@ -9,7 +9,6 @@ html(lang="ru")
     title HeadersFooters
   body
     +header({
-      UI: true,
       logo: '/img/logo.svg',
       list: [
         {
@@ -47,9 +46,8 @@ html(lang="ru")
           href: '/documentation',
         }
       ]
-    }).mt150.mb40
+    }).header_UI.mt150.mb40
     +header({
-      UI: true,
       logo: '/img/logo.svg',
       logoHref: '/',
       user: { id: '0001', link: '/users/0001', name: 'Cosmin Negoita'},
@@ -90,9 +88,8 @@ html(lang="ru")
           href: '/documentation',
         }
       ]
-    }).mb40
+    }).header_UI.mb40
     +footer({
-      UI: true,
       description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.',
       logoHref: '/',
       list: [
@@ -179,4 +176,92 @@ html(lang="ru")
           icon: '/img/social/instagram.png'
         },
       ]
-    })
+    }).footer_UI.mb40
+    +footer({
+      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam<br>pellentesque aliquam curabitur cociis.',
+      logoHref: '/',
+      list: [
+        {
+          caption: 'Navigation',
+          menu: [
+            {
+              caption: 'About Us',
+              href: '/about'
+            },
+            {
+              caption: 'News',
+              href: '/news'
+            },
+            {
+              caption: 'Support',
+              href: '/support'
+            },
+            {
+              caption: 'Products',
+              href: '/products'
+            }
+          ]
+        },
+        {
+          caption: 'About Us',
+          menu: [
+            {
+              caption: 'Who we are',
+              href: '/who-we-are'
+            },
+            {
+              caption: 'Our team',
+              href: '/team'
+            },
+            {
+              caption: 'Careers',
+              href: '/careers'
+            },
+            {
+              caption: 'Investors',
+              href: '/investors'
+            }
+          ]
+        },
+        {
+          caption: 'Support',
+          menu: [
+            {
+              caption: 'Documentation',
+              href: '/documentation'
+            },
+            {
+              caption: 'Community',
+              href: '/community'
+            },
+            {
+              caption: 'Get in touch',
+              href: '/contacts'
+            }
+          ]
+        }
+      ],
+      subscribe: {
+        caption: 'Subscribe to our newsletter',
+        description: 'Receive our latest news and promotions in your inbox!',
+        placeholder: 'Your email address'
+      },
+      copyright: 'Copyright © 2018 Toxin UI Kit. All rights reserved.',
+      social: [
+        {
+          href: 'https://twitter.com/',
+          title: 'Twitter',
+          icon: '/img/social/twitter.png'
+        },
+        {
+          href: 'https://facebook.com/',
+          title: 'Facebook',
+          icon: '/img/social/facebook.png'
+        },
+        {
+          href: 'https://instagram.com/',
+          title: 'Instagram',
+          icon: '/img/social/instagram.png'
+        },
+      ]
+    }).footer_UI.footer_mobile

@@ -9,9 +9,8 @@ mixin footer(options)
 
     //var copyright = (options && options.copyright) ? options.copyright : false;
 
-    var UIClass = (options && options.UI) ? ' footer_UI' : '';
     var attrClass = attributes.class ? ' ' + attributes.class : '';
-    var addClass = UIClass + attrClass;
+    var addClass = attrClass;
 
   footer(class='footer'+addClass id=blockId)
     div(class='footer__top')
@@ -43,6 +42,7 @@ mixin footer(options)
         if (!!options.social)
           ul(class='footer__social')
             each link, ind in options.social
+              - var paddingClass = ind > 0 ? ' footer__social-link_padding' : '';
               li
-                a(class='footer__social-link' href=link.href title=(link.title ? link.title : false))
+                a(class='footer__social-link'+paddingClass href=link.href title=(link.title ? link.title : false))
                   img(src=link.icon)

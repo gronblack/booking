@@ -11,21 +11,53 @@
   }
 
   &__top {
+    padding: 100px 15px 4px;
     margin: 0 auto;
+  }
+  &:not(.footer_mobile) &__top {
+    @media (min-width: $desktop) {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 79px;
+    }
+  }
+
+  &__bottom {
+    padding-bottom: 87px;
+  }
+
+  &:not(.footer_mobile) &__bottom {
+    @media (min-width: $smDesktop) {
+      padding-bottom: 0;
+      border-top: 1px solid #E0E0E2;
+    }
+  }
+
+  &__bottom-wrapper {
     display: flex;
-    justify-content: space-between;
-    padding: 100px 15px 79px;
+    padding: 24px 15px;
+    margin: 0 auto;
   }
 
   &_UI &__top, &_UI &__bottom-wrapper {
-    @media (min-width: 1200px) {
+    @media (min-width: $desktop) {
       width: 1190px;
     }
   }
 
   &__logo {
-    margin-right: 20px;
-    width: 260px;
+    text-align: center;
+  }
+  &:not(.footer_mobile) &__logo {
+    @media (min-width: $smDesktop) {
+      padding-bottom: 25px;
+    }
+
+    @media (min-width: $desktop) {
+      text-align: left;
+      margin-right: 20px;
+      width: 260px;
+    }
   }
 
   &__logo, &__subscribe {
@@ -40,11 +72,16 @@
   }
 
   &__nav {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-left: 20px;
-    margin-right: 64px;
+    display: none;
+  }
+  &:not(.footer_mobile) &__nav {
+    @media (min-width: $smDesktop) {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-left: 20px;
+      margin-right: 64px;
+    }
   }
 
   &__nav-column {
@@ -75,8 +112,22 @@
   }
 
   &__subscribe {
-    padding-top: 4px;
-    margin-left: 20px;
+    display: none;
+  }
+  &:not(.footer_mobile) &__subscribe {
+    @media (min-width: $smDesktop) {
+      display: block;
+      text-align: center;
+      padding-top: 20px;
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    @media (min-width: $desktop) {
+      text-align: left;
+      padding-top: 4px;
+      margin: 0 0 0 20px;
+    }
   }
 
   &__subscribe &__caption {
@@ -87,31 +138,33 @@
     padding-bottom: 24px;
   }
 
-  &__bottom {
-    border-top: 1px solid #E0E0E2;
-  }
-
-  &__bottom-wrapper {
-    display: flex;
-    padding: 24px 15px;
-    margin: 0 auto;
-  }
-
   &__copyright {
-    padding-top: 3px;
-    margin-right: auto;
-    font-size: 14px;
-    line-height: 17px;
-    color: $darkShade075;
+    display: none;
+  }
+  &:not(.footer_mobile) &__copyright {
+    @media (min-width: $smDesktop) {
+      display: block;
+      padding-top: 3px;
+      margin-right: auto;
+      font-size: 14px;
+      line-height: 17px;
+      color: $darkShade075;
+    }
   }
 
   &__social {
     display: flex;
     align-items: center;
-    margin-left: auto;
+    margin: 0 auto;
+  }
+  &:not(.footer_mobile) &__social {
+    @media (min-width: $smDesktop) {
+      margin-left: auto;
+      margin-right: unset;
+    }
   }
 
-  &__social-link {
+  &__social-link_padding {
     padding-left: 22px;
   }
 }

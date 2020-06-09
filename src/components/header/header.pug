@@ -22,9 +22,8 @@ mixin header(options)
       }, ...
     ]
      */
-    var UIClass = (options && options.UI) ? ' header_UI' : '';
     var attrClass = attributes.class ? ' ' + attributes.class : '';
-    var addClass = attrClass + UIClass;
+    var addClass = attrClass;
 
   header(class='header'+addClass id=blockId)
     div(class='header__wrapper')
