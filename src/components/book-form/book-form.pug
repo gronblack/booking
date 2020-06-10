@@ -2,11 +2,8 @@ include ../input/input
 
 mixin book-form(options)
   -
-    var blockId = (options && options.blockId) ? options.blockId : false;
     var name = (options && options.name) ? options.name : 'register-form_'+ (blockId ? blockId : Math.random().toString(36).substr(2, 9));
-    var action = (options && options.action) ? options.action : '';
     var method = (options && options.method) ? options.method : 'post';
-    var symbol = options.symbol ? options.symbol : '';
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass;
 
@@ -22,7 +19,7 @@ mixin book-form(options)
     var buttonText = (options && options.buttonText) ? options.buttonText : 'Забронировать';
 
 
-  form(class='book-form form' + addClass id=blockId action=action, method=method, name=name)
+  form(class='book-form form' + addClass id=options.blockId action=options.action, method=method, name=name)
     legend(class='book-form__legend')
       p(class='form__number')
         span(class='form__number-symbol')= '№'
@@ -31,7 +28,7 @@ mixin book-form(options)
           span(class='form__lux')= 'Люкс'
       p(class='form__price')
         span(class='form__price-value' data-format-number=true)= options.price
-        span(class='form__price-symbol')= symbol
+        span(class='form__price-symbol')= options.symbol
         span(class='form__price-subtext')= 'в сутки'
     +date-pair({
       mode: "dropdown",
@@ -57,9 +54,9 @@ mixin book-form(options)
             p(class='book-form__elem-right')
               if (obj.info)
                 span(class='book-form__elem-info')= 'i'
-              span(class='book-form__elem-price')= obj.price + symbol
+              span(class='book-form__elem-price')= obj.price + options.symbol
     p(class='book-form__total')
       span(class='book-form__total-left')= 'Итого'
       span(class='book-form__total-center')
-      span(class='book-form__total-right' data-format-number=true)= options.total + symbol
+      span(class='book-form__total-right' data-format-number=true)= options.total + options.symbol
     +button({text: buttonText, subscribe: true}).form__submit

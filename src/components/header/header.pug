@@ -2,10 +2,7 @@ include ../button/button
 
 mixin header(options)
   -
-    var blockId = (options && options.blockId) ? options.blockId : false;
-    var user = (options && options.user) ? options.user : false;
     var logo = (options && options.logo) ? options.logo : '/img/logo.svg';
-    var logoHref = (options && options.logoHref) ? options.logoHref : false;
     var buttonLoginText = (options && options.buttonLoginText) ? options.buttonLoginText : 'Login';
     var buttonRegisterText = (options && options.buttonRegisterText) ? options.buttonRegisterText : 'Register';
 
@@ -25,10 +22,10 @@ mixin header(options)
     var attrClass = attributes.class ? ' ' + attributes.class : '';
     var addClass = attrClass;
 
-  header(class='header'+addClass id=blockId)
+  header(class='header'+addClass id=options.blockId)
     div(class='header__wrapper')
       nav(class='header__nav')
-        a(class='header__nav-logo' href=logoHref)
+        a(class='header__nav-logo' href=options.logoHref)
           img(src=logo)
         button(class='header__nav-toggle')
           span
@@ -48,18 +45,18 @@ mixin header(options)
                         li
                           a(class='header__nav-link' href=sublink.href title=(sublink.title ? sublink.title : sublink.caption))= sublink.caption
                 if (ind === options.list.length - 1)
-                  if (user)
+                  if (!!options.user)
                     li(class='header__nav-item header__nav-item_mobile')
-                      a(class='header__nav-link header__button_profile' href=user.link)= user.name
+                      a(class='header__nav-link header__button_profile' href=options.user.link)= options.user.name
                   else
                     li(class='header__nav-item header__nav-item_mobile')
                       a(class='header__nav-link header__button_login')= buttonLoginText
                     li(class='header__nav-item header__nav-item_mobile')
                       a(class='header__nav-link header__button_register')= buttonRegisterText
 
-      div(class='header__user'+(user ? ' header__user_authorized' : ''))
-        if (user)
-          a(class='header__profile header__button_profile' href=user.link)= user.name
+      div(class='header__user'+(!!options.user ? ' header__user_authorized' : ''))
+        if (!!options.user)
+          a(class='header__profile header__button_profile' href=options.user.link)= options.user.name
         else
           +button({text: buttonLoginText, hollow: true}).header__button.header__button_login
           +button({text: buttonRegisterText}).header__button.header__button_register

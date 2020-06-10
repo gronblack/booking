@@ -1,17 +1,16 @@
 mixin radio(options)
   -
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
-    var caption = options.caption ? options.caption : false;
     var name = options.name ? options.name : '_' + Math.random().toString(36).substr(2, 9);
-    var data = options.data;
+
     var attrClass = attributes.class ? ' '+attributes.class : '';
 
   div(class='radio'+attrClass)
-    if (caption)
-      p(class='radio__caption')= caption
-    if (!!data.length)
+    if (!!options.caption)
+      p(class='radio__caption')= options.caption
+    if (!!options.data.length)
       p(class='radio__content')
-        each obj, ind in data
+        each obj, ind in options.data
           - var locId = blockId+'-'+ind
           - var checked = ind===0 ? true : obj.checked
           input(class='radio__input' id=locId name=name value=obj.value checked=checked type='radio')

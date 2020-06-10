@@ -2,7 +2,7 @@ include ../arrow-button/arrow-button
 
 mixin button(options)
   -
-    var id = (options && options.id) ? options.id : false;
+    var blockId = (options && options.id) ? options.id : false;
     var text = (options && options.text) ? options.text : 'Button';
     var hollow = (options && options.hollow) ? options.hollow : false;
     var link = (options && options.link) ? options.link : false;
@@ -22,6 +22,6 @@ mixin button(options)
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass + hollowClass + linkClass + subscribeClass + grayClass + alignClass;
 
-  button(class='button'+addClass id=id type=type data-expand-for=expandFor) !{text}
+  button(class='button'+addClass id=blockId type=type data-expand-for=expandFor) !{text}
     if (subscribe)
       +arrow-button({white: true})(class='button__arrow')

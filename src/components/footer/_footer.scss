@@ -53,13 +53,8 @@
 
     @media (min-width: $desktop) {
       text-align: left;
-      margin-right: 20px;
-      width: 260px;
+      max-width: 22%;
     }
-  }
-
-  &__logo, &__subscribe {
-    min-width: 260px;
   }
 
   &__description {
@@ -77,12 +72,18 @@
 
     @media (min-width: $smDesktop) {
       display: flex;
-      width: 100%;
+      flex-grow: 1;
       margin-left: 20px;
-      margin-right: 64px;
     }
     @media (min-width: $desktop) {
       justify-content: space-between;
+      margin-left: 0;
+    }
+  }
+
+  &:not(.footer_mobile) &__nav-content {
+    @media (min-width: $desktop) {
+      margin-left: -20px;
     }
   }
 
@@ -97,6 +98,9 @@
   }
   &:not(.footer_mobile) &__nav-column {
     @media (min-width: $desktop) {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
       padding-right: 0;
     }
   }
@@ -135,6 +139,7 @@
       text-align: left;
       padding-top: 4px;
       margin: 0 0 0 20px;
+      max-width: 22.5%;
     }
   }
 

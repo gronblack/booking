@@ -6,9 +6,7 @@ mixin input(options)
     var inputId = options.inputId ? options.inputId : '_' + Math.random().toString(36).substr(2, 9);
     var modeArray = (options.mode ? options.mode : 'text').split('|');
     var type = options.type ? options.type : 'text';
-    var label = options.label ? options.label : false;
-    var placeholder = options.placeholder ? options.placeholder : false;
-    var mask = options.mask ? options.mask : false;
+
     var oneFor = options.oneFor ? options.oneFor : false;
     var twoFor = options.twoFor ? options.twoFor : false;
 
@@ -16,7 +14,6 @@ mixin input(options)
     var addClass = attrClass;
 
     var selectQuestion = options.selectQuestion ? options.selectQuestion : false;
-    var selectCaption = options.selectCaption ? options.selectCaption : false;
     var value = options.value ? options.value : selectQuestion;
     var name = options.name ? options.name : false;
 
@@ -40,15 +37,15 @@ mixin input(options)
     var clearButton = options.clearButton ? options.clearButton : false;
 
   div(id=blockId class='input'+addClass data-dropdown-for=dataDropdownFor)
-    if (label)
-      label(class='input__label' for=inputId)= label
+    if (!!options.label)
+      label(class='input__label' for=inputId)= options.label
     if (isDropdown || isSubscribe)
       div(class='input__content')
         div(class='input__input-wrapper' data-expand-for=expButtonId)
           input(class='input__input'+classInput
-            id=inputId name=name type=type placeholder=placeholder value=value readonly=readonly
-            data-mask=mask data-is-date=isDate data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor
-            data-select-question=selectQuestion, data-select-caption=selectCaption)
+            id=inputId name=name type=type placeholder=options.placeholder value=value readonly=readonly
+            data-mask=options.mask data-is-date=isDate data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor
+            data-select-question=selectQuestion, data-select-caption=options.selectCaption)
           if (isDropdown)
             span(class='input__dropdown-button')
           else
@@ -72,5 +69,5 @@ mixin input(options)
                 if (applyButton)
                   +button({text: 'Применить', link: true, align: 'right', expandFor: expButtonId})(class='input__apply-button')
     else
-      input(class='input__input'+classInput id=inputId name=name type=type placeholder=placeholder value=value
-        data-mask=mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)
+      input(class='input__input'+classInput id=inputId name=name type=type placeholder=options.placeholder value=value
+        data-mask=options.mask data-is-date=isDate data-one-for=oneFor data-two-for=twoFor)

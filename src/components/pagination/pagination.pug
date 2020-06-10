@@ -6,7 +6,6 @@ mixin pagination(options)
     var dots = (options.max > count) ? (count - 1) : false;   // dots-button position
     var min = options.min ? options.min : 1;                  // min in displayed links
     var current = options.current ? options.current : 1;      // current active link
-    var caption = options.caption ? options.caption : false;
 
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass;
@@ -25,5 +24,5 @@ mixin pagination(options)
       li
         a(class='pagination__link pagination__link_next')
           +arrow-button({white: true})
-    if (caption)
-      p(class='pagination__caption') !{caption}
+    if (!!options.caption)
+      p(class='pagination__caption') !{options.caption}

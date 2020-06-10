@@ -13,6 +13,7 @@
     @include size(40px);
     border-radius: 50%;
     cursor: pointer;
+    pointer-events: all !important;
 
     color: $darkShade05;
     font-size: 12px;

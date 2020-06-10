@@ -1,23 +1,19 @@
 mixin checkbox(options)
   -
     var blockId = options.blockId ? options.blockId : '_' + Math.random().toString(36).substr(2, 9);
-    var caption = options.caption ? options.caption : false;
-    var rich = options.rich ? options.rich : false;
 
-    var isExpandable = options.expandable ? options.expandable : false;
-    var expButtonId = isExpandable ? blockId : false;
-    var expClass = isExpandable ? ' checkbox_expandable' : '';
+    var expButtonId = !!options.expandable ? blockId : false;
+    var expClass = !!options.expandable ? ' checkbox_expandable' : '';
 
-    var isToggler = options.toggler ? options.toggler : false;
-    var togglerClass = isToggler ? ' checkbox_toggler' : '';
+    var togglerClass = !!options.toggler ? ' checkbox_toggler' : '';
 
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = expClass + togglerClass + attrClass;
 
   div(id=blockId class='checkbox'+addClass)
-    if (caption)
-      p(class="checkbox__caption" data-expand-for=expButtonId)= caption
-        if (isExpandable)
+    if (!!options.caption)
+      p(class="checkbox__caption" data-expand-for=expButtonId)= options.caption
+        if (!!options.expandable)
           span.checkbox__dropdown-button
     if (!!options.list.length)
       ul.checkbox__list
