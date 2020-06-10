@@ -1,7 +1,4 @@
 .footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
   background: #FFFFFF;
   box-shadow: 0 10px 20px $darkShade01;
@@ -11,13 +8,14 @@
   }
 
   &__top {
-    padding: 100px 15px 4px;
+    padding: 50px 15px 4px;
     margin: 0 auto;
   }
   &:not(.footer_mobile) &__top {
     @media (min-width: $desktop) {
       display: flex;
       justify-content: space-between;
+      padding-top: 100px;
       padding-bottom: 79px;
     }
   }
@@ -75,12 +73,16 @@
     display: none;
   }
   &:not(.footer_mobile) &__nav {
+    justify-content: center;
+
     @media (min-width: $smDesktop) {
       display: flex;
-      justify-content: center;
       width: 100%;
       margin-left: 20px;
       margin-right: 64px;
+    }
+    @media (min-width: $desktop) {
+      justify-content: space-between;
     }
   }
 
@@ -93,8 +95,14 @@
       padding-right: 0;
     }
   }
+  &:not(.footer_mobile) &__nav-column {
+    @media (min-width: $desktop) {
+      padding-right: 0;
+    }
+  }
 
   &__caption {
+    font-family: $mainFont;
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;

@@ -477,6 +477,7 @@ $(document).ready(function () {
 
   $('.header__nav-toggle').on('click', function () {
     $(this).closest('.header__nav').toggleClass('header__nav_expand');
+    $('body').toggleClass('lock');
   });
   // ----------- header end ----------------------
 });

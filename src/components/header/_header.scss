@@ -5,9 +5,10 @@
   width: 100%;
   background: #FFFFFF;
   box-shadow: 0 10px 20px $darkShade005;
+  z-index: 1;
 
   &_UI {
-    position: unset;
+    position: unset; // временно
   }
 
   &__wrapper {
@@ -28,7 +29,7 @@
     justify-content: space-between;
     width: 100%;
     position: relative;
-    padding: 15px 10px 15px 0;
+    padding: 15px 15px 15px 0;
     align-items: center;
     flex-grow: 1;
 
@@ -160,6 +161,11 @@
 
     @media (min-width: $tablet) {
       transform: unset;
+      padding: 8px 12px;
+    }
+  }
+  &_UI &__nav-link {
+    @media (min-width: $tablet) {
       padding: 8px 15px;
     }
   }
@@ -175,7 +181,7 @@
 
   &__nav-link_dropdown {
     @media (min-width: $tablet) {
-      padding-right: 23px;
+      padding-right: 26px !important;
       position: relative;
 
       &::before {
@@ -184,7 +190,7 @@
         @include size(8px);
         position: absolute;
         top: 50%;
-        right: 0;
+        right: 7px;
 
         border: 2px solid $darkShade05;
         border-top: none;
@@ -226,7 +232,6 @@
   &__user {
     display: none;
       @media (min-width: $tablet) {
-        width: 200px;
         margin-left: auto;
         display: flex;
         justify-content: space-between;
@@ -242,6 +247,9 @@
 
   &__button {
     padding: 10px 20px;
+    &:first-child {
+      margin-right: 20px;
+    }
   }
 
   &__profile {

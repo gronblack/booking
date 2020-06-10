@@ -1,7 +1,22 @@
 doctype html
 html(lang="ru")
-    head
-        meta(charset="UTF-8")
-        title Пример основной страницы
-    body
-        h1 Index page text
+  head
+    meta(charset="UTF-8")
+    title Оглавление
+  body.container
+    h1 Оглавление
+    ul
+      li
+        h2= 'UI kit'
+        ul
+          li
+            a(href='/UI/FormElements.html').ml20= 'Form Elements'
+          li
+            a(href='/UI/Cards.html').ml20= 'Cards'
+          li
+            a(href='/UI/HeadersFooters.html').ml20= 'Headers & Footers'
+      li
+        h2= 'Website pages'
+        ul
+          li
+            a(href='/landing-page.html').ml20= 'landing page'

@@ -1,0 +1,153 @@
+include ../components/header/header
+include ../components/footer/footer
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    title
+      block title
+  body
+    block header
+      +header({
+        logo: '/img/logo.svg',
+        logoHref: '/',
+        list: [
+          {
+            caption: 'О нас',
+            href: '/about',
+          },
+          {
+            caption: 'Услуги',
+            href: '/services',
+            submenu: [
+              {
+                caption: 'Service 1',
+                href: '/services/services-1',
+              },
+              {
+                caption: 'Service 2',
+                href: '/services/services-2',
+              }
+            ]
+          },
+          {
+            caption: 'Вакансии',
+            href: '/careers',
+          },
+          {
+            caption: 'Новости',
+            href: '/news',
+          },
+          {
+            caption: 'Соглашения',
+            href: '/documentation',
+            submenu: [
+              {
+                caption: 'Documentation 1',
+                href: '/documentation/documentation-1',
+              },
+              {
+                caption: 'Documentation 2',
+                href: '/documentation/documentation-2',
+              }
+            ]
+          }
+        ],
+        buttonLoginText: 'Войти',
+        buttonRegisterText: 'Зарегистрироваться'
+      })
+
+    main
+      block main
+
+    block footer
+      +footer({
+        description: 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
+        logoHref: '/',
+        list: [
+          {
+            caption: 'Навигация',
+            menu: [
+              {
+                caption: 'О нас',
+                href: '/about'
+              },
+              {
+                caption: 'Новости',
+                href: '/news'
+              },
+              {
+                caption: 'Служба поддержки',
+                href: '/support'
+              },
+              {
+                caption: 'Услуги',
+                href: '/services'
+              }
+            ]
+          },
+          {
+            caption: 'О нас',
+            menu: [
+              {
+                caption: 'О сервисе',
+                href: '/about-service'
+              },
+              {
+                caption: 'Наша команда',
+                href: '/team'
+              },
+              {
+                caption: 'Вакансии',
+                href: '/careers'
+              },
+              {
+                caption: 'Инвесторы',
+                href: '/investors'
+              }
+            ]
+          },
+          {
+            caption: 'Служба поддержки',
+            menu: [
+              {
+                caption: 'Соглашения',
+                href: '/documentation'
+              },
+              {
+                caption: 'Сообщества',
+                href: '/community'
+              },
+              {
+                caption: 'Связь с нами',
+                href: '/contacts'
+              }
+            ]
+          }
+        ],
+        subscribe: {
+          caption: 'Подписка',
+          description: 'Получайте специальные предложения и новости сервиса',
+          placeholder: 'Email'
+        },
+        copyright: 'Copyright © 2018 Toxin отель. Все права зачищены.',
+        social: [
+          {
+            href: 'https://twitter.com/',
+            title: 'Twitter',
+            icon: '/img/social/twitter.png'
+          },
+          {
+            href: 'https://facebook.com/',
+            title: 'Facebook',
+            icon: '/img/social/facebook.png'
+          },
+          {
+            href: 'https://instagram.com/',
+            title: 'Instagram',
+            icon: '/img/social/instagram.png'
+          },
+        ]
+      })

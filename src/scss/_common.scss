@@ -1,12 +1,44 @@
 body {
   font: $mainFontWeight #{$mainFontSize}/#{$mainLineHeight} $mainFont;
+  color: $darkShade075;
   min-width: 320px;
   margin: 0;
   padding: 0;
+
+  &.lock {
+    overflow: hidden;
+  }
 }
 
-a:not([href]) {
-  pointer-events: none;
+a {
+  color: $darkShade075;
+  &:not([href]) {
+    pointer-events: none;
+  }
+}
+
+h1, h2, h3 {
+  font-family: $openSansFont;
+  font-weight: 700;
+  color: $darkShade;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 19px;
+  line-height: 24px;
+}
+
+h3 {
+  font-family: $mainFontWeight !important;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
 }
 
 .container {
@@ -154,6 +186,10 @@ a:not([href]) {
   margin-right: 20px !important;
 }
 
+.ml20 {
+  margin-left: 20px !important;
+}
+
 // mixin classes
 .form {
   display: flex;
@@ -219,5 +255,82 @@ a:not([href]) {
 
   &__submit {
     margin: 0 auto;
+  }
+}
+
+.landing {
+  position: relative;
+
+  &__container {
+    //max-width: 1440px;
+    //margin: 0 auto;
+    position: relative;
+    padding: 70px 0 20px;
+
+
+    @media (min-width: $tablet) {
+      height: 570px;
+      padding-top: 150px;
+      padding-left: 50px;
+      padding-bottom: 80px;
+    }
+
+    @media (min-width: $smDesktop) {
+      height: 600px;
+      padding-left: 100px;
+      padding-top: 140px;
+    }
+
+    @media (min-width: $desktop) {
+      height: 900px;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+      height: inherit;
+    }
+  }
+
+  &__picture img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+
+    @media (min-width: $tablet) {
+      height: 100%;
+    }
+  }
+
+  &__form {
+    margin: 0 auto 20px;
+
+    @media (min-width: $tablet) {
+      max-width: 380px;
+      margin: 0;
+    }
+  }
+
+  &__promo {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 24px;
+
+    @media (min-width: $tablet) {
+      position: absolute;
+      bottom: 21px;
+      right: 50px;
+      text-align: right;
+    }
+    @media (min-width: $smDesktop) {
+      right: 134px;
+    }
   }
 }
