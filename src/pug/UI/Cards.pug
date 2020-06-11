@@ -31,11 +31,13 @@ html(lang="ru")
           })(class='mb40')
           +login-form()
         div(class="col col_md-half col_lg-third col_sm-align-center col_md-align-left" id="cards-col3")
-          +input({blockId: 'datepicker-show', mode: "date"})
+          +date-pair({
+            blockId: 'datepicker-show'
+          })
           script.
             window.addEventListener("load", function () {
               let clickEvent = new Event("click");
-              let elem = document.querySelector('#datepicker-show');
+              let elem = document.querySelector('#datepicker-show .date-pair__one');
               elem.dispatchEvent(clickEvent);
 
               document.addEventListener('click', function () {

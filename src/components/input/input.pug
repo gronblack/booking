@@ -64,7 +64,6 @@ mixin input(options)
             if (applyButton || clearButton)
               p(class='input__buttons')
                 if (clearButton)
-                  //button(class='input__clear-button')= 'Очистить'
                   +button({text: 'Очистить', link: true, gray: true, align: 'left'})(class='input__clear-button')
                 if (applyButton)
                   +button({text: 'Применить', link: true, align: 'right', expandFor: expButtonId})(class='input__apply-button')
