@@ -11,17 +11,18 @@ mixin checkbox(options)
     var addClass = expClass + togglerClass + attrClass;
 
   div(id=blockId class='checkbox'+addClass)
-    if (!!options.caption)
-      p(class="checkbox__caption" data-expand-for=expButtonId)= options.caption
-        if (!!options.expandable)
-          span.checkbox__dropdown-button
-    if (!!options.list.length)
-      ul.checkbox__list
-        each obj, ind in options.list
-          - var locId = blockId+'-'+ind
-          - var rich = obj.rich ? '<p class="checkbox__rich-text">'+obj.rich+'</p>' : '';
-          - var elemRich = obj.rich ? ' checkbox__elem_rich' : '';
-          - var labelRich = obj.rich ? ' checkbox__label_rich' : '';
-          li(class='checkbox__elem'+elemRich)
-            input(class="checkbox__input" id=locId type="checkbox" value=obj.caption checked=obj.checked)
-            label(class="checkbox__label"+labelRich for=locId) !{rich}!{obj.caption}
+    .checkbox__wrapper
+      if (!!options.caption)
+        p(class="checkbox__caption" data-expand-for=expButtonId)= options.caption
+          if (!!options.expandable)
+            span.checkbox__dropdown-button
+      if (!!options.list.length)
+        ul.checkbox__list
+          each obj, ind in options.list
+            - var locId = blockId+'-'+ind
+            - var rich = obj.rich ? '<p class="checkbox__rich-text">'+obj.rich+'</p>' : '';
+            - var elemRich = obj.rich ? ' checkbox__elem_rich' : '';
+            - var labelRich = obj.rich ? ' checkbox__label_rich' : '';
+            li(class='checkbox__elem'+elemRich)
+              input(class="checkbox__input" id=locId type="checkbox" value=obj.caption checked=obj.checked)
+              label(class="checkbox__label"+labelRich for=locId) !{rich}!{obj.caption}

@@ -8,7 +8,6 @@ $selectListTransitionOffset: 8px;
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  text-align: center;
   flex-grow: 1;
   width: 100%;
 
@@ -31,7 +30,6 @@ $selectListTransitionOffset: 8px;
     padding: 12px 15px 14px;
     width: 100%;
     color: $darkShade075;
-    text-align: center;
 
     &:read-only {
       cursor: default;
@@ -39,10 +37,6 @@ $selectListTransitionOffset: 8px;
 
     &::placeholder {
       color: $darkShade025;
-    }
-
-    @media (min-width: $tablet) {
-      text-align: left;
     }
   }
 
@@ -98,7 +92,7 @@ $selectListTransitionOffset: 8px;
     top: 16px;
     right: 18px;
     @include size(9px);
-    border: 2px solid $darkShade05;
+    border: 2px solid $darkShade075;
     border-right: none;
     border-top: none;
     transform: rotate(-45deg);

@@ -15,13 +15,13 @@ mixin footer(options)
         p(class='footer__description') !{options.description}
       if (!!options.list)
         nav(class='footer__nav')
-          each column, ind in options.list
+          each column in options.list
             div(class='footer__nav-column')
               div(class='footer__nav-content')
                 h2(class='footer__caption')= column.caption
                 if (column.menu)
                   ul(class='footer__nav-menu')
-                  each link, ind in column.menu
+                  each link in column.menu
                     li(class='footer__nav-item')
                       a(class='footer__nav-link' href=link.href title=(link.title ? link.title : link.caption))= link.caption
       if (!!options.subscribe)

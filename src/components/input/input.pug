@@ -45,7 +45,7 @@ mixin input(options)
           input(class='input__input'+classInput
             id=inputId name=name type=type placeholder=options.placeholder value=value readonly=readonly
             data-mask=options.mask data-is-date=isDate data-is-date-range=isDateRange data-one-for=oneFor data-two-for=twoFor
-            data-select-question=selectQuestion, data-select-caption=options.selectCaption)
+            data-select-question=selectQuestion, data-guests-count=options.guestsCount)
           if (isDropdown)
             span(class='input__dropdown-button')
           else
@@ -53,8 +53,8 @@ mixin input(options)
         if (isSelect)
           div(class='input__select-wrapper')
             ul(class='input__select-list')
-              each obj, ind in options.list
-                li(class='input__select-elem')
+              each obj in options.list
+                li(class='input__select-elem' data-guests=obj.guests data-babys=obj.babys)
                   p(class='input__select-left')
                     span(class='input__select-name') !{obj.caption}
                   p(class='input__select-right')

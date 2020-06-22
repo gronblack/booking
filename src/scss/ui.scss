@@ -1,15 +1,15 @@
 @import "utils/vars";
 
-body {
-  background: #F4F4F6;
-}
-
 .container {
   max-width: 1190px !important;
 
   @media (min-width: $desktop) {
     margin-top: 115px;
   }
+}
+
+.background-gray {
+  background: #F4F4F6;
 }
 
 .input {

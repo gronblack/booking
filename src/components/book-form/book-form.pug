@@ -10,9 +10,9 @@ mixin book-form(options)
     // input parameters
     var selectQuestion = (options && options.selectQuestion) ? options.selectQuestion : 'Сколько гостей';
     var guestList = (options && options.guestList) ? options.guestList : [
-      {caption: "взрослые"},
-      {caption: "дети"},
-      {caption: "младенцы"}
+      {caption: "взрослые", guests: true},
+      {caption: "дети", guests: true},
+      {caption: "младенцы", guests: true, babys: true}
     ];
 
     // button parameters
@@ -41,14 +41,14 @@ mixin book-form(options)
       mode: "dropdown",
       label: "Гости",
       selectQuestion: selectQuestion,
-      selectCaption: true,
+      guestsCount: true,
       list: guestList,
       applyButton: true,
       clearButton: true
     })(class='book-form__guests')
     if (options.orderList && !!options.orderList.length)
       ul(class='book-form__list')
-        each obj, ind in options.orderList
+        each obj in options.orderList
           li(class='book-form__elem')
             p(class='book-form__elem-left') !{obj.caption}
             p(class='book-form__elem-right')

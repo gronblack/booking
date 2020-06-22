@@ -18,7 +18,7 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width,initial-scale=1")
     title Form Elements
-  body
+  body.background-gray
     .container
       .row.row_space-between
         div(class="col col_md-half col_lg-third" id="col1-1")
@@ -155,11 +155,11 @@ html(lang="ru")
             label: "Dropdown",
             classInput: "canted",
             selectQuestion: "Сколько гостей",
-            selectCaption: true,
+            guestsCount: true,
             list: [
-              {caption: "взрослые"},
-              {caption: "дети"},
-              {caption: "младенцы"}
+              {caption: "взрослые", guests: true},
+              {caption: "дети", guests: true},
+              {caption: "младенцы", guests: true, babys: true}
             ],
             applyButton: true,
             clearButton: true

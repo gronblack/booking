@@ -142,12 +142,12 @@ $(document).ready(function () {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';
   };
-  var declineGuests = function (number) {
+  var decline = function (number, one, two, many) {
     var lastDigit = number % 10;
-    if (number !== 11 && lastDigit === 1) return 'гость';
+    if (number !== 11 && lastDigit === 1) return one;
 
-    if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return 'гостя';
-    else return 'гостей';
+    if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return two;
+    else return many;
   };
   var calcMaxString = function (string, resultObject, limitPX, limitLetters = 100, tempElem = null) {
     if (tempElem === null) {
@@ -177,40 +177,45 @@ $(document).ready(function () {
     var selectElems = inputNode.closest('.input__content').find('.input__select-elem');
     if (selectElems.length) {
 
-      if (inputNode.data('selectCaption') !== undefined) {
-        var result = 0;
+      var resultArray = [];
+
+      if (inputNode.data('guestsCount') !== undefined) {  // guests counting
+        var guests = 0;
+        var babys = 0;
         selectElems.each(function (i, elem) {
           let sum = parseInt($(elem).find('.input__select-sum').text());
-          if (sum) result += sum;
+          if (sum && $(elem).data('guests') !== undefined) guests += sum;
+          if (sum && $(elem).data('babys') !== undefined) babys += sum;
 
           $(elem).find('.input__select-minus').attr('disabled', sum === 0);
         });
 
-        if (result > 0) {
-          inputNode.val(result + ' ' + declineGuests(result));
-        } else inputNode.val(inputNode.data('selectQuestion'));
-        return true;
+        if (guests > 0) resultArray.push(guests + ' ' + decline(guests, 'гость', 'гостя', 'гостей'));
+        if (babys > 0) resultArray.push(babys + ' ' + decline(babys, 'младенец', 'младенца', 'младенцев'));
+
+      } else {  // general case
+        selectElems.each(function (i, elem) {
+          let sum = parseInt($(elem).find('.input__select-sum').text());
+          if (sum) resultArray.push(sum + ' ' + $(elem).find('.input__select-name').text());
+
+          $(elem).find('.input__select-minus').attr('disabled', sum === 0);
+        });
       }
 
-      var result = '';
-      selectElems.each(function (i, elem) {
-        let sum = parseInt($(elem).find('.input__select-sum').text());
-        if (sum) result += sum + ' '+$(elem).find('.input__select-name').text()+', ';
-
-        $(elem).find('.input__select-minus').attr('disabled', sum === 0);
-      });
-      if (result.length) {
-        result = result.slice(0, -2) + '...';
+      // cut string
+      if (resultArray.length) {
+        var resultString = resultArray.join(', ');
         let stringLengthPX = inputNode.width();
         let dropdownButton = inputNode.siblings('.input__dropdown-button');
         if (dropdownButton.length) stringLengthPX -= dropdownButton.width();
 
         let calcObj = { result: '' };
-        calcMaxString(result, calcObj, stringLengthPX, result.length);
+        calcMaxString(resultString, calcObj, stringLengthPX, resultString.length);
 
         inputNode.val(calcObj.result);
       } else inputNode.val(inputNode.data('selectQuestion'));
       return true;
+
     }
     return false;
   };

@@ -1,0 +1,236 @@
+extends base
+include ../components/range/range
+include ../components/checkbox/checkbox
+include ../components/product-card/product-card
+include ../components/pagination/pagination
+
+block title
+  ='Search room'
+block main
+  -
+    var catalogList = [
+      {
+        number: 888,
+        lux: true,
+        price: 9990,
+        symbol: '₽',
+        reviews: 145,
+        images: [
+          {src: '/img/rooms/room-888-1.jpg', alt: 'Полулюкс с отличным видом из окон'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 840,
+        price: 9900,
+        symbol: '₽',
+        rate: 4,
+        reviews: 65,
+        images: [
+          {src: '/img/rooms/room-840-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 980,
+        price: 8500,
+        symbol: '₽',
+        rate: 3,
+        reviews: 35,
+        images: [
+          {src: '/img/rooms/room-980-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 856,
+        price: 7300,
+        symbol: '₽',
+        rate: 5,
+        reviews: 19,
+        images: [
+          {src: '/img/rooms/room-856-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 740,
+        price: 6000,
+        symbol: '₽',
+        rate: 4,
+        reviews: 44,
+        images: [
+          {src: '/img/rooms/room-740-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 982,
+        price: 5800,
+        symbol: '₽',
+        rate: 3,
+        reviews: 56,
+        images: [
+          {src: '/img/rooms/room-982-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 678,
+        price: 5500,
+        symbol: '₽',
+        rate: 5,
+        reviews: 45,
+        images: [
+          {src: '/img/rooms/room-678-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 450,
+        price: 5300,
+        symbol: '₽',
+        rate: 4,
+        reviews: 39,
+        images: [
+          {src: '/img/rooms/room-450-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 350,
+        price: 5000,
+        symbol: '₽',
+        rate: 3,
+        reviews: 77,
+        images: [
+          {src: '/img/rooms/room-350-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 666,
+        price: 5000,
+        symbol: '₽',
+        rate: 5,
+        reviews: 25,
+        images: [
+          {src: '/img/rooms/room-666-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 444,
+        price: 5000,
+        symbol: '₽',
+        rate: 3,
+        reviews: 15,
+        images: [
+          {src: '/img/rooms/room-444-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      },
+      {
+        number: 352,
+        price: 5000,
+        symbol: '₽',
+        rate: 3,
+        reviews: 55,
+        images: [
+          {src: '/img/rooms/room-352-preview-1.jpg'},
+          '/img/rooms/room-888-2.jpg',
+          '/img/rooms/room-888-3.jpg',
+          '/img/rooms/product-stub.png']
+      }
+    ];
+
+  section.search-room
+    +button({text: 'Фильтр', hollow: true, expandFor: 'filter'}).search-room__button
+    section(id='filter' class='search-room__filter mb20')
+      +input({
+        mode: "date-range|dropdown",
+        label: "Даты пребывания в отеле"
+      }).mb20
+      +input({
+        mode: "dropdown",
+        label: "Гости",
+        selectQuestion: "Сколько гостей",
+        guestsCount: true,
+        list: [
+          {caption: "взрослые", guests: true},
+          {caption: "дети", guests: true},
+          {caption: "младенцы", guests: true, babys: true}
+        ],
+        applyButton: true,
+        clearButton: true
+      }).mb20
+      +range({
+        caption: "Диапазон цены",
+        min: 0,
+        max: 16000,
+        start: 5000,
+        end: 10000,
+        symbol: "₽",
+        text: "Стоимость за сутки пребывания в номере"
+      }).mb30
+      +checkbox({
+        caption: "Checkbox buttons",
+        list: [
+          {caption: "Можно курить"},
+          {caption: "Можно с питомцами", checked: true},
+          {
+            caption: "Можно пригласить гостей<br class='search-room__checkbox-br'><span class='search-room__checkbox-whitespace'> </span>(до 10 человек)",
+            checked: true
+          }]
+      }).search-room__checkbox.mb20
+      +checkbox({
+        caption: "Доступность",
+        list: [
+          {
+            rich: "Широкий коридор",
+            caption: "Ширина коридоров в номере<br class='search-room__checkbox-br'><span class='search-room__checkbox-whitespace'> </span>не менее 91 см."
+          },
+          {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
+        ]
+      }).mb20
+      +input({
+        mode: "dropdown",
+        label: "Удобства номера",
+        classInput: "canted",
+        selectQuestion: "Какие удобства",
+        list: [
+          {caption: "спальни"},
+          {caption: "кровати"},
+          {caption: "ванные комнаты"}
+        ]
+      }).mb20
+      +checkbox({
+        caption: "Дополнительные удобства",
+        list: [
+          {caption: "Завтрак"},
+          {caption: "Письменный стол"},
+          {caption: "Стул для кормления"},
+          {caption: "Кроватка"},
+          {caption: "Телевизор"},
+          {caption: "Шампунь"}
+        ],
+        expandable: true
+      })
+    section.search-room__catalog
+      h1.search-room__caption= 'Номера, которые мы для вас подобрали'
+      ul.search-room__catalog-list
+        each obj in catalogList
+          li.search-room__catalog-item.mb20
+            +product-card(obj)
+      +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'})

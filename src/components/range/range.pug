@@ -25,3 +25,5 @@ mixin range(options)
         div(class='range__bar-filled')
         div(class='range__bar-pin-one')
         div(class='range__bar-pin-two')
+      if (!!options.text)
+        p(class='range__text') !{options.text}

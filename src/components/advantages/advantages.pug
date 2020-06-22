@@ -6,7 +6,7 @@ mixin advantages(options)
 
   if !!data.length
     ul(class='advantages'+attrClass)
-      each obj, ind in data
+      each obj in data
         li.advantages__elem
           .advantages__left
             img(class='advantages__img' src=obj.img)

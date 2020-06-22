@@ -15,9 +15,9 @@ mixin room-select-form(options)
     // input parameters
     var selectQuestion = (options && options.selectQuestion) ? options.selectQuestion : 'Сколько гостей';
     var list = (options && options.list) ? options.list : [
-      {caption: "взрослые"},
-      {caption: "дети"},
-      {caption: "младенцы"}
+      {caption: "взрослые", guests: true},
+      {caption: "дети", guests: true},
+      {caption: "младенцы", guests: true, babys: true}
     ];
 
     // button parameters
@@ -35,7 +35,7 @@ mixin room-select-form(options)
     +input({
       mode: "dropdown",
       label: "Гости",
-      selectCaption: true,
+      guestsCount: true,
       selectQuestion: selectQuestion,
       list: list,
       applyButton: true,

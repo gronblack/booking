@@ -5,5 +5,5 @@ mixin bullets(options)
 
   if (!!options.list.length)
     ul(class='bullets'+addClass)
-      each item, ind in options.list
+      each item in options.list
         li(class='bullets__item') !{item}

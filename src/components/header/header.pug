@@ -41,7 +41,7 @@ mixin header(options)
                   a(class='header__nav-link'+addClass href=link.href title=(link.title ? link.title : link.caption))= link.caption
                   if (link.submenu)
                     ul(class='header__nav-submenu')
-                      each sublink, ind in link.submenu
+                      each sublink in link.submenu
                         li
                           a(class='header__nav-link' href=sublink.href title=(sublink.title ? sublink.title : sublink.caption))= sublink.caption
                 if (ind === options.list.length - 1)
