@@ -56,13 +56,6 @@ $selectListTransitionOffset: 8px;
     position: relative;
   }
 
-  &.expanded &__select-wrapper {
-    opacity: 1;
-    transform: translate(0);
-    transition: opacity $selectListTransitionSpeed $selectListTransitionEase, transform $selectListTransitionSpeed $selectListTransitionEase;
-    z-index: 10;
-  }
-
   &_subscribe {
     padding-right: 40px;
   }
@@ -99,9 +92,6 @@ $selectListTransitionOffset: 8px;
   }
 
   &__select-wrapper {
-    position: absolute;
-    left: 0;
-    top: 44px;
     width: 100%;
 
     background-color: #ffffff;
@@ -112,7 +102,25 @@ $selectListTransitionOffset: 8px;
 
     opacity: 0;
     transform: translateY($selectListTransitionOffset);
+  }
+
+  &:not(.inline) &__select-wrapper {
+    position: absolute;
+    left: 0;
+    top: 44px;
+  }
+
+  &.inline &__select-wrapper {
+    height: 0;
+    overflow: hidden;
+  }
+
+  &.expanded &__select-wrapper {
+    height: auto !important;
+    opacity: 1;
+    transform: translate(0);
     transition: opacity $selectListTransitionSpeed $selectListTransitionEase, transform $selectListTransitionSpeed $selectListTransitionEase;
+    z-index: 10;
   }
 
   &__select-list {

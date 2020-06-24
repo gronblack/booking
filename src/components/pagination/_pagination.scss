@@ -68,9 +68,5 @@
     line-height: 24px;
     color: $darkShade075;
     text-align: center;
-
-    @media (min-width: $tablet) {
-      text-align: left;
-    }
   }
 }

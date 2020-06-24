@@ -16,7 +16,7 @@ block main
         symbol: '₽',
         reviews: 145,
         images: [
-          {src: '/img/rooms/room-888-1.jpg', alt: 'Полулюкс с отличным видом из окон'},
+          {src: '/img/rooms/room-888-preview-1.jpg', alt: 'Полулюкс с отличным видом из окон'},
           '/img/rooms/room-888-2.jpg',
           '/img/rooms/room-888-3.jpg',
           '/img/rooms/product-stub.png']
@@ -35,6 +35,7 @@ block main
       },
       {
         number: 980,
+        lux: true,
         price: 8500,
         symbol: '₽',
         rate: 3,
@@ -174,7 +175,7 @@ block main
         ],
         applyButton: true,
         clearButton: true
-      }).mb20
+      }).inline.mb30
       +range({
         caption: "Диапазон цены",
         min: 0,
@@ -183,7 +184,7 @@ block main
         end: 10000,
         symbol: "₽",
         text: "Стоимость за сутки пребывания в номере"
-      }).mb30
+      })(class='search-room__range mb30')
       +checkbox({
         caption: "Checkbox buttons",
         list: [
@@ -193,7 +194,7 @@ block main
             caption: "Можно пригласить гостей<br class='search-room__checkbox-br'><span class='search-room__checkbox-whitespace'> </span>(до 10 человек)",
             checked: true
           }]
-      }).search-room__checkbox.mb20
+      }).search-room__checkbox.mb25
       +checkbox({
         caption: "Доступность",
         list: [
@@ -203,7 +204,7 @@ block main
           },
           {rich: "Помощник для инвалидов", caption: "На 1 этаже вас встретит специалист  и проводит до номера."}
         ]
-      }).mb20
+      }).mb25
       +input({
         mode: "dropdown",
         label: "Удобства номера",
@@ -214,7 +215,7 @@ block main
           {caption: "кровати"},
           {caption: "ванные комнаты"}
         ]
-      }).mb20
+      }).inline.mb30
       +checkbox({
         caption: "Дополнительные удобства",
         list: [
@@ -231,6 +232,6 @@ block main
       h1.search-room__caption= 'Номера, которые мы для вас подобрали'
       ul.search-room__catalog-list
         each obj in catalogList
-          li.search-room__catalog-item.mb20
+          li.search-room__catalog-item
             +product-card(obj)
-      +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'})
+      +pagination({max: 15, caption: '1 – 12 из 100+ вариантов аренды'}).search-room__pagination
