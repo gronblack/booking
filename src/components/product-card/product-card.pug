@@ -9,6 +9,10 @@ mixin product-card(options)
     var attrClass = attributes.class ? ' '+attributes.class : '';
     var addClass = attrClass;
 
+    const tabletMedia = '(min-width: 768px)';
+    const smDesktopMedia = '(min-width: 992px)';
+    const desktopMedia = '(min-width: 1200px)';
+
   div(class='product-card'+addClass id=blockId)
     div(class='product-card__top')
       div(class='product-card__arrows')
@@ -24,7 +28,14 @@ mixin product-card(options)
           - var alt = `Номер ${options.number}, ${options.price} рублей в сутки`;
           li(class='product-card__item'+currentClass id=`${blockId}-control-${ind}-item` data-control=`${blockId}-control-${ind}`)
             if (typeof obj === "object")
-              img(class="product-card__img" src=obj.src alt=obj.alt ? obj.alt : alt)
+              picture
+                if (!!obj.desktop)
+                  source(srcset=obj.desktop media=desktopMedia)
+                if (!!obj.smDesktop)
+                  source(srcset=obj.smDesktop media=smDesktopMedia)
+                if (!!obj.tablet)
+                  source(srcset=obj.tablet media=tabletMedia)
+                img(class="product-card__img" src=obj.src alt=obj.alt ? obj.alt : alt)
             else
               img(class="product-card__img" src=obj alt=alt)
     div(class='product-card__bottom')
