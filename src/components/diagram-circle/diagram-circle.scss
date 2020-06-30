@@ -1,0 +1,27 @@
+.diagram-circle {
+  display: flex;
+
+  &__content {
+    width: 120px;
+  }
+
+  &__legend {
+    margin-left: 30px;
+    align-self: center;
+  }
+
+  &__text {
+    text-anchor: middle;
+  }
+
+  &__legend-bullet {
+    display: inline-block;
+    @include size(10px);
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+
+  &__legend-text {
+    display: inline-block;
+  }
+}
