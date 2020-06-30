@@ -1,0 +1,114 @@
+extends base
+
+include ../components/advantages/advantages
+include ../components/diagram-circle/diagram-circle
+
+block title
+  ='Room details'
+block main
+  -
+    const tabletMedia = '(min-width: 768px)';
+    const smDesktopMedia = '(min-width: 992px)';
+    const desktopMedia = '(min-width: 1200px)';
+
+    var imgList = [
+      {
+        src: '/img/rooms/room-888-preview-1.jpg',
+        tablet: '/img/rooms/room-888-1.jpg',
+        desktop: '/img/rooms/room-888-big-1.jpg',
+        alt: 'Полулюкс с отличным видом из окон'
+      },
+      {src: '/img/rooms/room-888-preview-2.jpg', alt: 'Фиолетовая кровать'},
+      {src: '/img/rooms/room-888-preview-3.jpg', alt: 'Удобная комната для работы и отдыха'},
+    ];
+    var lg1 = Math.random().toString(36).substr(2, 9);
+    var lg2 = Math.random().toString(36).substr(2, 9);
+    var lg3 = Math.random().toString(36).substr(2, 9);
+
+  section.room-details
+    section.room-details__photo
+      ul.room-details__list
+        each item in imgList
+          li.room-details__item
+            picture
+              if (!!item.desktop)
+                source(srcset=item.desktop media=desktopMedia)
+              if (!!item.smDesktop)
+                source(srcset=item.smDesktop media=smDesktopMedia)
+              if (!!item.tablet)
+                source(srcset=item.tablet media=tabletMedia)
+              img(class="room-details__img" src=item.src alt=item.alt)
+    section.room-details__content
+      .room-details__advantages
+        h2.room-details__caption.mb20 !{'Сведения о номере'}
+        +advantages({
+          data: [
+            {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
+            {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"},
+            {caption: "Уют", img: "../img/advantages-whatshot.png", text: "Номер оснащён камином"}
+          ]
+        })
+      .room-details__impress
+        h2.room-details__caption.mb20 !{'Впечатления от номера'}
+        +diagram-circle({
+          data: [
+            {
+              value: 130,
+              linearGradient: {
+                id: lg1,
+                x1: 0, y1: 0, x2: 0, y2: '100%',
+                stops:
+                    [
+                      { offset: '0%', stopColor: '#FFE39C' },
+                      { offset: '100%', stopColor: '#FFBA9C' }
+                    ]
+              }
+            },
+            {
+              value: 65,
+              linearGradient: {
+                id: lg2,
+                x1: 0, y1: 0, x2: 0, y2: '100%',
+                stops:
+                    [
+                      {offset: '0%', stopColor: '#BC9CFF'},
+                      {offset: '100%', stopColor: '#8BA4F9'}
+                    ]
+              }
+            },
+            {
+              value: 65,
+              linearGradient: {
+                id: lg3,
+                x1: 0, y1: 0, x2: 0, y2: '100%',
+                stops:
+                    [
+                      {offset: '0%', stopColor: '#6FCF97'},
+                      {offset: '100%', stopColor: '#66D2EA'}
+                    ]
+              }
+            }
+          ],
+          splitters: true,
+          text: '<tspan class="diagram-circle__number">260</tspan>' +
+                '<tspan class="diagram-circle__label" x="50%" dy="1em">голосов</tspan>',
+          legend: [
+            {
+              bulletBackground: 'linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%)',
+              caption: 'Великолепно'
+            },
+            {
+              bulletBackground: 'linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%)',
+              caption: 'Хорошо'
+            },
+            {
+              bulletBackground: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
+              caption: 'Удовлетворительно'
+            },
+            {
+              bulletBackground: 'linear-gradient(180deg, #919191 0%, #3D4975 100%)',
+              caption: 'Разочарован'
+            }
+          ]
+        }).mb20
+        h2.room-details__caption.mb20 !{'Отзывы посетителей номера'}

@@ -45,7 +45,7 @@
     color: #ffffff;
     font-weight: 700;
     background: linear-gradient(180deg, $purple 0%, $blue 100%);
-    pointer-events: none;
+    pointer-events: none !important;
   }
 
   &__link_next {
