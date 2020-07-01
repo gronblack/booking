@@ -14,6 +14,7 @@ block main
     const smDesktopMedia = '(min-width: 992px)';
     const desktopMedia = '(min-width: 1200px)';
 
+    // photo
     var imgList = [
       {
         src: '/img/rooms/room-888-preview-1.jpg',
@@ -21,13 +22,24 @@ block main
         desktop: '/img/rooms/room-888-big-1.jpg',
         alt: 'Полулюкс с отличным видом из окон'
       },
-      {src: '/img/rooms/room-888-preview-2.jpg', alt: 'Фиолетовая кровать'},
-      {src: '/img/rooms/room-888-preview-3.jpg', alt: 'Удобная комната для работы и отдыха'},
+      {
+        src: '/img/rooms/room-888-preview-2.jpg',
+        tablet: '/img/rooms/room-888-2.jpg',
+        alt: 'Фиолетовая кровать'
+      },
+      {
+        src: '/img/rooms/room-888-preview-3.jpg',
+        tablet: '/img/rooms/room-888-3.jpg',
+        alt: 'Удобная комната для работы и отдыха'
+      },
     ];
+
+    // impress
     var lg1 = Math.random().toString(36).substr(2, 9);
     var lg2 = Math.random().toString(36).substr(2, 9);
     var lg3 = Math.random().toString(36).substr(2, 9);
 
+    // reviews
     var reviews = [
       {
         person: {name: "Мурад Сарафанов", img: "../img/persons/1.png"},
@@ -140,7 +152,7 @@ block main
           list: [
             'Нельзя с питомцами',
             'Без вечеринок и мероприятий',
-            'Время прибытия — после 13:00,<br>а выезд до 12:00'
+            'Время прибытия — после 13:00, а&nbsp;выезд до&nbsp;12:00'
           ]
         })
       .room-details__cancel.mb30
@@ -165,4 +177,4 @@ block main
           },
         ],
         total: 38081
-      })(class='mb40')
+      }).room-details__book-form

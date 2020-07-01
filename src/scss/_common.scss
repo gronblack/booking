@@ -463,6 +463,12 @@ h3 {
 
   &__content {
     padding: 15px;
+
+    @media (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(280px, 45%));
+      justify-content: space-between;
+    }
   }
 
   &__caption {
@@ -472,6 +478,20 @@ h3 {
     line-height: 24px;
     color: $darkShade;
     //margin-bottom: 20px;
+  }
+
+  &__reviews {
+    @media (min-width: $tablet) {
+      grid-column: span 2;
+    }
+  }
+
+  &__book-form {
+    @media (min-width: $tablet) {
+      justify-self: center;
+      grid-column: span 2;
+      max-width: 500px;
+    }
   }
 }
 
