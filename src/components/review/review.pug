@@ -1,3 +1,5 @@
+include ../like-button/like-button
+
 mixin review(options)
   -
     var text = options.text ? options.text : '';
@@ -18,5 +20,5 @@ mixin review(options)
           a(href=href)= options.person.name
         time(datetime=date)= dateFormat
     div(class='review__bottom')
-      +like-button({count: likes, voted: true})(class='review__likes')
+      +like-button({count: likes, voted: options.voted})(class='review__likes')
       p(class='review__text') !{text}

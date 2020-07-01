@@ -9,7 +9,7 @@
     "build": "webpack --config ./build/webpack.build.conf.js --display-error-details"
   },
   "dependencies": {
-    "javascript-time-ago": "^2.0.7",
+    "javascript-time-ago": "^2.0.8",
     "jquery": "^3.4.1",
     "jquery-mask-plugin": "^1.14.16"
   },

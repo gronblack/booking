@@ -2,6 +2,9 @@ extends base
 
 include ../components/advantages/advantages
 include ../components/diagram-circle/diagram-circle
+include ../components/review/review
+include ../components/bullets/bullets
+include ../components/book-form/book-form
 
 block title
   ='Room details'
@@ -25,6 +28,21 @@ block main
     var lg2 = Math.random().toString(36).substr(2, 9);
     var lg3 = Math.random().toString(36).substr(2, 9);
 
+    var reviews = [
+      {
+        person: {name: "Мурад Сарафанов", img: "../img/persons/1.png"},
+        text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
+        likes: 12,
+        date: Date.now() - 4.5 * 24 * 3600 * 1000
+      },
+      {
+        person: {name: "Патрисия Стёклышкова", img: "../img/persons/2.png"},
+        text: "Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент",
+        likes: 2,
+        date: Date.now() - 6.5 * 24 * 3600 * 1000
+      }
+    ];
+
   section.room-details
     section.room-details__photo
       ul.room-details__list
@@ -39,7 +57,7 @@ block main
                 source(srcset=item.tablet media=tabletMedia)
               img(class="room-details__img" src=item.src alt=item.alt)
     section.room-details__content
-      .room-details__advantages
+      .room-details__advantages.mb20
         h2.room-details__caption.mb20 !{'Сведения о номере'}
         +advantages({
           data: [
@@ -48,8 +66,8 @@ block main
             {caption: "Уют", img: "../img/advantages-whatshot.png", text: "Номер оснащён камином"}
           ]
         })
-      .room-details__impress
-        h2.room-details__caption.mb20 !{'Впечатления от номера'}
+      .room-details__impress.mb20
+        h2.room-details__caption !{'Впечатления от номера'}
         +diagram-circle({
           data: [
             {
@@ -111,4 +129,40 @@ block main
             }
           ]
         }).mb20
+      .room-details__reviews.mb20
         h2.room-details__caption.mb20 !{'Отзывы посетителей номера'}
+        ul.room-details__reviews
+          each item in reviews
+            +review(item)
+      .room-details__rules.mb20
+        h2.room-details__caption.mb20 !{'Правила'}
+        +bullets({
+          list: [
+            'Нельзя с питомцами',
+            'Без вечеринок и мероприятий',
+            'Время прибытия — после 13:00,<br>а выезд до 12:00'
+          ]
+        })
+      .room-details__cancel.mb30
+        h2.room-details__caption.mb20 !{'Отмена'}
+        p !{'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.'}
+      +book-form({
+        number: 888,
+        lux: true,
+        price: 9990,
+        symbol: '₽',
+        orderList: [
+          {caption: '9 990₽ х 4 суток', price: '39 960'},
+          {
+            caption: 'Сбор за услуги: скидка 2 179₽',
+            info: 'Вы не оплачиваете сбор за услуги при заказе от 10000',
+            price: '0'
+          },
+          {
+            caption: 'Сбор за дополнительные услуги',
+            info: 'Дополнительные услуги отмечены в дополнительном соглашении',
+            price: '300'
+          },
+        ],
+        total: 38081
+      })(class='mb40')
