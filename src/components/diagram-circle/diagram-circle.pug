@@ -2,7 +2,6 @@ mixin diagram-circle(options)
   -
     const RADIUS = 19
     const SHIFT = -0.25; // 18:00 clock
-    const STROKE_WIDTH = 1;
     const VIEW_BOX_WIDTH = 42;
     const VIEW_BOX_HEIGTH = 42;
     const SPLITTERS_COLOR = '#fff';
@@ -11,6 +10,7 @@ mixin diagram-circle(options)
     var cY = VIEW_BOX_HEIGTH / 2;
     var diameter = 2 * Math.PI * RADIUS;
     var dashoffsetFirst = diameter * SHIFT;
+    var strokeWidth = options.strokeWidth ? options.strokeWidth : 1;
 
     var toRadians = (angle) => angle * Math.PI / 180;
 
@@ -40,7 +40,7 @@ mixin diagram-circle(options)
             -
               var valuePart = diameter * obj.value / valueSum;
               var dashoffset = ind === 0 ? dashoffsetFirst : (diameter - segmentAccum + dashoffsetFirst);
-            circle(cx=cX cy=cY r=RADIUS fill='transparent' stroke=color stroke-width=STROKE_WIDTH stroke-dasharray=`${valuePart} ${diameter - valuePart}` stroke-dashoffset=dashoffset)
+            circle(cx=cX cy=cY r=RADIUS fill='transparent' stroke=color stroke-width=strokeWidth stroke-dasharray=`${valuePart} ${diameter - valuePart}` stroke-dashoffset=dashoffset)
             if (!!options.splitters && ind > 0)
               -var angle = toRadians(360 * (SHIFT - segmentAccum / diameter))
               line(x1=cX y1=cY x2=(cX + (RADIUS*2) * Math.cos(angle)) y2=(cY - (RADIUS*2) * Math.sin(angle)) stroke=SPLITTERS_COLOR)

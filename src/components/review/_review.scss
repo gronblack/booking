@@ -4,13 +4,14 @@
   }
 
   &__bottom {
-    padding: 10px 0 10px 4px;
+    padding: 8px 0 10px 6px;
   }
 
   &__caption {
     font-size: 14px;
     line-height: 24px;
     color: $darkShade075;
+    padding-top: 2px;
 
     a {
       display: block;
@@ -21,7 +22,7 @@
   }
 
   &__img {
-    margin-right: 10px;
+    margin-right: 7px;
     border: 2px solid #FFFFFF;
     border-radius: 50%;
     box-shadow: 0 10px 20px $darkShade01;
@@ -29,7 +30,7 @@
 
   &__likes {
     margin-top: 2px;
-    margin-right: 14px;
+    margin-right: 13px;
   }
 
   &__text {

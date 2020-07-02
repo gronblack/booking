@@ -1,10 +1,12 @@
 @import "utils/vars";
 
-.container {
+.container-ui {
   max-width: 1190px !important;
+  margin: 0 auto;
+  padding: 25px 15px 0;
 
   @media (min-width: $desktop) {
-    margin-top: 115px;
+    margin-top: 45px;
   }
 }
 
@@ -84,13 +86,13 @@
 
 #col-4-1 {
   @media (min-width: $desktop) {
-    margin-right: 193px;
+    margin-right: 191px;
     width: auto;
   }
 }
 
 #col-4-2 {
-  padding-top: 30px;
+  padding-top: 8px;
   @media (min-width: $desktop) {
     max-width: calc(100% - 320px - 128px);
   }

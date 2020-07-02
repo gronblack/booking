@@ -3,7 +3,7 @@ body {
   color: $darkShade075;
   min-width: 320px;
   margin: 0;
-  padding: 0;
+  padding-top: 70px;
 
   &.lock {
     overflow: hidden;
@@ -44,10 +44,10 @@ h3 {
 .container {
   max-width: 1190px;
   margin: 0 auto;
-  padding: 25px 15px 0;
+  // padding: 25px 15px 0; temp comment!!!
 
   @media (min-width: $desktop) {
-    max-width: unset;
+    //max-width: unset;
   }
 }
 
@@ -271,7 +271,7 @@ h3 {
     //max-width: 1440px;
     //margin: 0 auto;
     position: relative;
-    padding: 70px 0 20px;
+    padding-bottom: 20px;
 
     @media (min-width: $tablet) {
       height: 570px;
@@ -343,18 +343,14 @@ h3 {
 }
 
 .search-room {
-  padding: 65px 15px;
+  padding: 0 15px 65px 15px;
   border-bottom: 1px solid $darkShade025;
-
-  @media (min-width: $tablet) {
-    padding-top: 90px;
-  }
 
   @media (min-width: $smDesktop) {
     display: grid;
     grid-template-columns: 266px auto;
     grid-column-gap: 60px;
-    padding: 100px 15px 70px 15px;
+    padding: 30px 15px 70px 15px;
   }
 
   &__button {
@@ -457,17 +453,79 @@ h3 {
 }
 
 .room-details {
+  border-bottom: 1px solid $darkShade025;
+  padding-bottom: 32px;
+
+  &__list {
+    @media (min-width: $smDesktop) {
+      display: grid;
+      grid-template-columns: 2.13fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+
+  &__item:first-child {
+    @media (min-width: $smDesktop) {
+      grid-row: span 2;
+    }
+  }
+
   &__img {
     width: 100%;
+    @media (min-width: $smDesktop) {
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   &__content {
+    @media (min-width: $smDesktop) {
+      display: flex;
+      align-items: flex-start;
+      padding: 70px 15px 15px;
+    }
+  }
+
+  &__content-wrapper {
     padding: 15px;
 
     @media (min-width: $tablet) {
       display: grid;
       grid-template-columns: repeat(2,minmax(280px, 45%));
       justify-content: space-between;
+    }
+
+    @media (min-width: $smDesktop) {
+      padding: 0;
+      justify-content: start;
+    }
+
+    @media (min-width: $desktop) {
+      grid-column-gap: 11px;
+      justify-content: flex-start;
+    }
+  }
+
+  &__advantages {
+    margin-bottom: 13px;
+
+    @media (min-width: $smDesktop) {
+      max-width: 280px;
+    }
+  }
+
+  &__impress {
+    @media (min-width: $smDesktop) {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    @media (min-width: $desktop) {
+      justify-content: flex-start;
+    }
+
+    h2 {
+      margin-bottom: 15px;
     }
   }
 
@@ -477,37 +535,71 @@ h3 {
     font-size: 19px;
     line-height: 24px;
     color: $darkShade;
-    //margin-bottom: 20px;
   }
 
   &__reviews {
     @media (min-width: $tablet) {
       grid-column: span 2;
     }
+    margin-bottom: 12px;
+  }
+
+  &__reviews-list {
+    @media (min-width: $desktop) {
+      margin-left: -2px;
+      margin-top: -3px;
+    }
+  }
+
+  &__review {
+    margin-bottom: 11px;
+  }
+
+  &__rules {
+    @media (min-width: $smDesktop) {
+      padding-right: 20px;
+      max-width: 320px;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__cancel {
+    h2 {
+      margin-bottom: 17px;
+    }
+
+    p {
+      line-height: 24px;
+    }
   }
 
   &__book-form {
     @media (min-width: $tablet) {
-      justify-self: center;
-      grid-column: span 2;
       max-width: 500px;
+      margin: 0 auto;
     }
-  }
-}
 
-.diagram-circle {
-  &__number, &__label {
-    font-weight: 700;
-    fill: $purple;
-  }
+    @media (min-width: $desktop) {
+      width: 380px;
+    }
 
-  &__number {
-    font-family: $openSansFont;
-    font-size: 14px;
-  }
+    @media (min-width: $smDesktop) {
+      width: 320px;
+      max-width: unset;
+      flex-shrink: 0;
+      margin: 0;
+    }
 
-  &__label {
-    font-family: $mainFont;
-    font-size: 7px;
+    .date-pair {
+      @media (min-width: $smDesktop) {
+        flex-direction: column;
+      }
+      @media (min-width: $desktop) {
+        flex-direction: row;
+      }
+    }
   }
 }

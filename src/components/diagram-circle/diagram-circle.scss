@@ -2,16 +2,22 @@
   display: flex;
 
   &__content {
-    width: 120px;
+    width: 130px;
+    flex-shrink: 0;
+    transform: translateX(-7px);
   }
 
   &__legend {
-    margin-left: 30px;
-    align-self: center;
+    transform: translate(19px, 31px);
   }
 
   &__text {
     text-anchor: middle;
+  }
+
+  &__legend-item {
+    white-space: nowrap;
+    padding: 3px 0;
   }
 
   &__legend-bullet {
@@ -23,5 +29,20 @@
 
   &__legend-text {
     display: inline-block;
+  }
+
+  &__number, &__label {
+    font-weight: 700;
+    fill: $purple;
+  }
+
+  &__number {
+    font-family: $openSansFont;
+    font-size: 8px;
+  }
+
+  &__label {
+    font-family: $mainFont;
+    font-size: 5px;
   }
 }

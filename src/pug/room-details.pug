@@ -68,96 +68,99 @@ block main
               if (!!item.tablet)
                 source(srcset=item.tablet media=tabletMedia)
               img(class="room-details__img" src=item.src alt=item.alt)
-    section.room-details__content
-      .room-details__advantages.mb20
-        h2.room-details__caption.mb20 !{'Сведения о номере'}
-        +advantages({
-          data: [
-            {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
-            {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"},
-            {caption: "Уют", img: "../img/advantages-whatshot.png", text: "Номер оснащён камином"}
-          ]
-        })
-      .room-details__impress.mb20
-        h2.room-details__caption !{'Впечатления от номера'}
-        +diagram-circle({
-          data: [
-            {
-              value: 130,
-              linearGradient: {
-                id: lg1,
-                x1: 0, y1: 0, x2: 0, y2: '100%',
-                stops:
-                    [
-                      { offset: '0%', stopColor: '#FFE39C' },
-                      { offset: '100%', stopColor: '#FFBA9C' }
-                    ]
-              }
-            },
-            {
-              value: 65,
-              linearGradient: {
-                id: lg2,
-                x1: 0, y1: 0, x2: 0, y2: '100%',
-                stops:
-                    [
-                      {offset: '0%', stopColor: '#BC9CFF'},
-                      {offset: '100%', stopColor: '#8BA4F9'}
-                    ]
-              }
-            },
-            {
-              value: 65,
-              linearGradient: {
-                id: lg3,
-                x1: 0, y1: 0, x2: 0, y2: '100%',
-                stops:
-                    [
-                      {offset: '0%', stopColor: '#6FCF97'},
-                      {offset: '100%', stopColor: '#66D2EA'}
-                    ]
-              }
-            }
-          ],
-          splitters: true,
-          text: '<tspan class="diagram-circle__number">260</tspan>' +
-                '<tspan class="diagram-circle__label" x="50%" dy="1em">голосов</tspan>',
-          legend: [
-            {
-              bulletBackground: 'linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%)',
-              caption: 'Великолепно'
-            },
-            {
-              bulletBackground: 'linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%)',
-              caption: 'Хорошо'
-            },
-            {
-              bulletBackground: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
-              caption: 'Удовлетворительно'
-            },
-            {
-              bulletBackground: 'linear-gradient(180deg, #919191 0%, #3D4975 100%)',
-              caption: 'Разочарован'
-            }
-          ]
-        }).mb20
-      .room-details__reviews.mb20
-        h2.room-details__caption.mb20 !{'Отзывы посетителей номера'}
-        ul.room-details__reviews
-          each item in reviews
-            +review(item)
-      .room-details__rules.mb20
-        h2.room-details__caption.mb20 !{'Правила'}
-        +bullets({
-          list: [
-            'Нельзя с питомцами',
-            'Без вечеринок и мероприятий',
-            'Время прибытия — после 13:00, а&nbsp;выезд до&nbsp;12:00'
-          ]
-        })
-      .room-details__cancel.mb30
-        h2.room-details__caption.mb20 !{'Отмена'}
-        p !{'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.'}
+    section.room-details__content.container
+      .room-details__content-wrapper
+        .room-details__advantages
+          h2.room-details__caption.mb20 !{'Сведения о номере'}
+          +advantages({
+            data: [
+              {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
+              {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"},
+              {caption: "Уют", img: "../img/advantages-whatshot.png", text: "Номер оснащён камином"}
+            ]
+          })
+        .room-details__impress.mb20
+          .room-details__impress-wrapper
+            h2.room-details__caption !{'Впечатления от номера'}
+            +diagram-circle({
+              data: [
+                {
+                  value: 130,
+                  linearGradient: {
+                    id: lg1,
+                    x1: 0, y1: 0, x2: 0, y2: '100%',
+                    stops:
+                        [
+                          { offset: '0%', stopColor: '#FFE39C' },
+                          { offset: '100%', stopColor: '#FFBA9C' }
+                        ]
+                  }
+                },
+                {
+                  value: 65,
+                  linearGradient: {
+                    id: lg2,
+                    x1: 0, y1: 0, x2: 0, y2: '100%',
+                    stops:
+                        [
+                          {offset: '0%', stopColor: '#BC9CFF'},
+                          {offset: '100%', stopColor: '#8BA4F9'}
+                        ]
+                  }
+                },
+                {
+                  value: 65,
+                  linearGradient: {
+                    id: lg3,
+                    x1: 0, y1: 0, x2: 0, y2: '100%',
+                    stops:
+                        [
+                          {offset: '0%', stopColor: '#6FCF97'},
+                          {offset: '100%', stopColor: '#66D2EA'}
+                        ]
+                  }
+                }
+              ],
+              splitters: true,
+              text: '<tspan class="diagram-circle__number">260</tspan>' +
+                    '<tspan class="diagram-circle__label" x="50%" dy="1em">голосов</tspan>',
+              strokeWidth: 1.3,
+              legend: [
+                {
+                  bulletBackground: 'linear-gradient(180deg, #FFE39C 0%, #FFBA9C 100%)',
+                  caption: 'Великолепно'
+                },
+                {
+                  bulletBackground: 'linear-gradient(180deg, #6FCF97 0%, #66D2EA 100%)',
+                  caption: 'Хорошо'
+                },
+                {
+                  bulletBackground: 'linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',
+                  caption: 'Удовлетворительно'
+                },
+                {
+                  bulletBackground: 'linear-gradient(180deg, #919191 0%, #3D4975 100%)',
+                  caption: 'Разочарован'
+                }
+              ]
+            }).room-details__diagram.mb20
+        .room-details__reviews
+          h2.room-details__caption.mb20 !{'Отзывы посетителей номера'}
+          ul.room-details__reviews-list
+            each item in reviews
+              +review(item).room-details__review
+        .room-details__rules.mb20
+          h2.room-details__caption.ml20 !{'Правила'}
+          +bullets({
+            list: [
+              'Нельзя с питомцами',
+              'Без вечеринок и мероприятий',
+              'Время прибытия — после 13:00, а&nbsp;выезд до&nbsp;12:00'
+            ]
+          })
+        .room-details__cancel.mb30
+          h2.room-details__caption !{'Отмена'}
+          p !{'Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.'}
       +book-form({
         number: 888,
         lux: true,
@@ -177,4 +180,4 @@ block main
           },
         ],
         total: 38081
-      }).room-details__book-form
+      }).room-details__book-form.mb20
