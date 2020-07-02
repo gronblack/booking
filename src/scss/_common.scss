@@ -430,7 +430,7 @@ h3 {
   }
 
   &__catalog-list {
-    @media (min-width: $smDesktop) {
+    @media (min-width: $tablet) {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px,1fr));
       grid-column-gap: 12px;
