@@ -43,11 +43,6 @@ h3 {
 .container {
   max-width: 1190px;
   margin: 0 auto;
-  // padding: 25px 15px 0; temp comment!!!
-
-  @media (min-width: $desktop) {
-    //max-width: unset;
-  }
 }
 
 .field-container {
@@ -166,16 +161,6 @@ h3 {
 .mb40 {
   margin-bottom: 40px !important;
 }
-/*
-.mb100 {
-  margin-bottom: 100px !important;
-}
- */
-/*
-.mt140 {
-  margin-top: 140px !important;
-}
- */
 
 .mt150 {
   margin-top: 150px !important;
@@ -193,7 +178,7 @@ h3 {
   margin-left: 20px !important;
 }
 
-// mixin classes
+// mixin classes begin
 .form {
   display: flex;
   flex-direction: column;
@@ -265,23 +250,9 @@ h3 {
   }
 }
 
-.landing {
+.one-form {
   &__container {
     position: relative;
-    padding-bottom: 20px;
-
-    @media (min-width: $tablet) {
-      padding: 120px 0 80px 50px;
-    }
-
-    @media (min-width: $smDesktop) {
-      padding-left: 140px;
-      padding-top: 140px;
-    }
-
-    @media (min-width: $desktop) {
-      height: 900px;
-    }
   }
 
   &__picture {
@@ -299,7 +270,7 @@ h3 {
 
   &__picture img {
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     object-fit: cover;
 
     @media (min-width: $tablet) {
@@ -313,28 +284,12 @@ h3 {
 
     @media (min-width: $tablet) {
       max-width: 380px;
-      margin: 0;
+      margin: 0 auto;
       padding-top: 40px;
     }
   }
-
-  &__promo {
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-    line-height: 24px;
-
-    @media (min-width: $tablet) {
-      position: absolute;
-      bottom: 21px;
-      right: 50px;
-      text-align: right;
-    }
-    @media (min-width: $smDesktop) {
-      right: 134px;
-    }
-  }
 }
+// mixin classes end
 
 .search-room {
   padding: 70px 15px 65px 15px;
@@ -603,46 +558,91 @@ h3 {
   }
 }
 
+.landing {
+  &__container {
+    padding-bottom: 20px;
+
+    @media (min-width: $tablet) {
+      padding: 120px 0 80px 50px;
+    }
+
+    @media (min-width: $smDesktop) {
+      padding-left: 140px;
+      padding-top: 140px;
+    }
+
+    @media (min-width: $desktop) {
+      height: 900px;
+    }
+  }
+
+  &__form {
+    margin: 0 !important;
+  }
+
+  &__promo {
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 24px;
+
+    @media (min-width: $tablet) {
+      position: absolute;
+      bottom: 21px;
+      right: 50px;
+      text-align: right;
+    }
+    @media (min-width: $smDesktop) {
+      right: 134px;
+    }
+  }
+}
+
 .registration {
   &__container {
-    position: relative;
-
     @media (min-width: $tablet) {
       padding: 90px 0 20px;
     }
   }
 
   &__picture {
-    width: 100%;
+    @media (min-width: $smDesktop) {
+      top: 18px;
+    }
+  }
+}
 
+.sign-in {
+  &__container {
     @media (min-width: $tablet) {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      z-index: -1;
-      height: inherit;
+      padding: 90px 0 20px;
+    }
+
+    @media (min-width: $desktop) {
+      position: relative;
+      padding: 2px 0 0;
+    }
+  }
+
+  &__picture {
+    @media (min-width: $desktop) {
+      position: static;
     }
   }
 
   &__picture img {
-    width: 100%;
-    height: 50vh;
-    object-fit: cover;
-
-    @media (min-width: $tablet) {
-      height: 100%;
+    @media (min-width: $desktop) {
+      height: auto;
+      max-height: 768px;
     }
   }
 
   &__form {
-    margin: 0 auto 20px;
-    padding-top: 25px;
-
-    @media (min-width: $tablet) {
-      max-width: 380px;
-      margin: 0 auto;
-      padding-top: 40px;
+    @media (min-width: $desktop) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
     }
   }
 }
