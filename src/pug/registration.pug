@@ -1,0 +1,12 @@
+extends base
+include ../components/register-form/register-form
+
+block title
+  ='Registration'
+block main
+  section.registration
+    .registration__container
+      picture.registration__picture
+        source(media='(min-width: 768px)' srcset='/img/registration.jpg')
+        img(src='/img/registration_mobile.jpg')
+      +register-form().registration__form

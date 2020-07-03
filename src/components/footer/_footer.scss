@@ -8,9 +8,16 @@
   }
 
   &__top {
-    padding: 50px 15px 4px;
+    padding: 100px 15px 4px;
     margin: 0 auto;
   }
+
+  &_mobile {
+    .footer__top {
+      padding-top: 100px;
+    }
+  }
+
   &:not(.footer_mobile) &__top {
     @media (min-width: $desktop) {
       display: flex;

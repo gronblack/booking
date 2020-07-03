@@ -3,7 +3,6 @@ body {
   color: $darkShade075;
   min-width: 320px;
   margin: 0;
-  padding-top: 70px;
 
   &.lock {
     overflow: hidden;
@@ -268,21 +267,15 @@ h3 {
 
 .landing {
   &__container {
-    //max-width: 1440px;
-    //margin: 0 auto;
     position: relative;
     padding-bottom: 20px;
 
     @media (min-width: $tablet) {
-      height: 570px;
-      padding-top: 150px;
-      padding-left: 50px;
-      padding-bottom: 80px;
+      padding: 120px 0 80px 50px;
     }
 
     @media (min-width: $smDesktop) {
-      height: 600px;
-      padding-left: 100px;
+      padding-left: 140px;
       padding-top: 140px;
     }
 
@@ -298,6 +291,7 @@ h3 {
       position: absolute;
       left: 0;
       top: 0;
+      bottom: 0;
       z-index: -1;
       height: inherit;
     }
@@ -305,7 +299,7 @@ h3 {
 
   &__picture img {
     width: 100%;
-    height: 200px;
+    height: 50vh;
     object-fit: cover;
 
     @media (min-width: $tablet) {
@@ -343,14 +337,14 @@ h3 {
 }
 
 .search-room {
-  padding: 0 15px 65px 15px;
+  padding: 70px 15px 65px 15px;
   border-bottom: 1px solid $darkShade025;
 
   @media (min-width: $smDesktop) {
     display: grid;
     grid-template-columns: 266px auto;
     grid-column-gap: 60px;
-    padding: 30px 15px 70px 15px;
+    padding: 100px 15px 70px 15px;
   }
 
   &__button {
@@ -455,6 +449,7 @@ h3 {
 .room-details {
   border-bottom: 1px solid $darkShade025;
   padding-bottom: 32px;
+  padding-top: 70px;
 
   &__list {
     @media (min-width: $smDesktop) {
@@ -563,6 +558,10 @@ h3 {
 
     h2 {
       margin-bottom: 12px;
+
+      @media (min-width: $tablet) {
+        margin-left: 20px;
+      }
     }
   }
 
@@ -600,6 +599,50 @@ h3 {
       @media (min-width: $desktop) {
         flex-direction: row;
       }
+    }
+  }
+}
+
+.registration {
+  &__container {
+    position: relative;
+
+    @media (min-width: $tablet) {
+      padding: 90px 0 20px;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+
+    @media (min-width: $tablet) {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      z-index: -1;
+      height: inherit;
+    }
+  }
+
+  &__picture img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+
+    @media (min-width: $tablet) {
+      height: 100%;
+    }
+  }
+
+  &__form {
+    margin: 0 auto 20px;
+    padding-top: 25px;
+
+    @media (min-width: $tablet) {
+      max-width: 380px;
+      margin: 0 auto;
+      padding-top: 40px;
     }
   }
 }
