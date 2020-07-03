@@ -10,6 +10,8 @@ block title
   ='Room details'
 block main
   -
+    const REVIEWS_COUNT = 2;
+
     const tabletMedia = '(min-width: 768px)';
     const smDesktopMedia = '(min-width: 992px)';
     const desktopMedia = '(min-width: 1200px)';
@@ -145,7 +147,9 @@ block main
               ]
             }).room-details__diagram.mb20
         .room-details__reviews
-          h2.room-details__caption.mb20 !{'Отзывы посетителей номера'}
+          .room-details__caption.mb20
+            h2 !{'Отзывы посетителей номера'}
+            span(data-decline-nubmer=REVIEWS_COUNT, data-decline-one='отзыв', data-decline-two='отзыва', data-decline-many='отзывов')
           ul.room-details__reviews-list
             each item in reviews
               +review(item).room-details__review

@@ -25,6 +25,24 @@ $(document).ready(function () {
     e.preventDefault();
     $('#'+$(this).data('expandFor')).toggleClass('expanded');
   });
+
+  // decline word based on the number
+  var decline = function (number, one, two, many) {
+    var lastDigit = number % 10;
+    if (number !== 11 && lastDigit === 1) return one;
+
+    if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return two;
+    else return many;
+  };
+
+  $('[data-decline-nubmer]').each(function () {
+    var node = $(this);
+    node.text(
+        $.parseHTML(
+            `${node.data('declineNubmer')}&nbsp;${decline(node.data('declineNubmer'), node.data('declineOne'), node.data('declineTwo'), node.data('declineMany'))}`
+        )[0].data
+    );
+  });
   // ----------- common end ----------------------------
 
 
@@ -141,13 +159,6 @@ $(document).ready(function () {
   var cutString = function (string, limit) {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';
-  };
-  var decline = function (number, one, two, many) {
-    var lastDigit = number % 10;
-    if (number !== 11 && lastDigit === 1) return one;
-
-    if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return two;
-    else return many;
   };
   var calcMaxString = function (string, resultObject, limitPX, limitLetters = 100, tempElem = null) {
     if (tempElem === null) {

@@ -480,11 +480,22 @@ h3 {
   }
 
   &__caption {
-    font-family: $openSansFont;
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 24px;
-    color: $darkShade;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    h2 {
+      font-family: $openSansFont;
+      font-weight: 700;
+      font-size: 19px;
+      line-height: 24px;
+      color: $darkShade;
+    }
+
+    span {
+      line-height: 24px;
+    }
   }
 
   &__reviews {
