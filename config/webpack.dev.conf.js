@@ -1,6 +1,6 @@
-const webpack = require("webpack");
-const merge = require("webpack-merge");
-const baseWebpackConfig = require("./webpack.base.conf");
+const webpack = require('webpack');
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PAGES_LOC = baseWebpackConfig.externals.pages;
@@ -24,8 +24,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: page.replace(/\.pug/, ".html")
     })),
     ...PAGES_LOC.PAGES_UI.map(page => new HtmlWebpackPlugin({
-      template: `${PAGES_LOC.PAGES_DIR}/UI/${page}`,
-      filename: 'UI/' + page.replace(/\.pug/, ".html")
+      template: `${PAGES_LOC.PAGES_DIR}/dev/${page}`,
+      filename: 'dev/' + page.replace(/\.pug/, ".html")
     })),
     new webpack.SourceMapDevToolPlugin({
       filename: "[file].map"

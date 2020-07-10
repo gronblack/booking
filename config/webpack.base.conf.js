@@ -1,8 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require("copy-webpack-plugin");
-const webpack = require("webpack");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 var _path = function (p) {
   return path.join(__dirname, p);
@@ -16,7 +16,7 @@ const PAGES = {
   // Pages const for HtmlWebpackPlugin
   PAGES_DIR: `${PATHS.src}/pug`,
   PAGES: fs.readdirSync(`${PATHS.src}/pug`).filter(fileName => fileName.endsWith('.pug')),
-  PAGES_UI: fs.readdirSync(`${PATHS.src}/pug/UI`).filter(fileName => fileName.endsWith('.pug'))
+  PAGES_UI: fs.readdirSync(`${PATHS.src}/pug/dev`).filter(fileName => fileName.endsWith('.pug'))
 };
 
 // components subdirs 'img' to object array
@@ -41,14 +41,7 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      cacheGroups: {
-        vendor1: {
-          name: "vendors",
-          test: /(node_modules)/,
-          chunks: "all",
-          enforce: true
-        }
-      }
+      chunks: "all"
     }
   },
   module: {
@@ -76,16 +69,10 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
-            options: { sourceMap: true }
+            loader: "css-loader"
           },
           {
-            loader: "postcss-loader",
-            options: { sourceMap: true }
-          },
-          {
-            loader: "sass-loader",
-            options: { sourceMap: true }
+            loader: "sass-loader"
           }
         ]
       },

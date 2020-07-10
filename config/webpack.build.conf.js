@@ -1,6 +1,7 @@
-const merge = require("webpack-merge");
-const baseWebpackConfig = require("./webpack.base.conf");
+const merge = require('webpack-merge');
+const baseWebpackConfig = require('./webpack.base.conf');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const PAGES_LOC = baseWebpackConfig.externals.pages;
 const buildWebpackConfig = merge(baseWebpackConfig, {
@@ -9,11 +10,8 @@ const buildWebpackConfig = merge(baseWebpackConfig, {
     ...PAGES_LOC.PAGES.map(page => new HtmlWebpackPlugin({
       template: `${PAGES_LOC.PAGES_DIR}/${page}`,
       filename: page.replace(/\.pug/, ".html")
-    }))
-    ,...PAGES_LOC.PAGES_UI.map(page => new HtmlWebpackPlugin({
-      template: `${PAGES_LOC.PAGES_DIR}/UI/${page}`,
-      filename: 'UI/' + page.replace(/\.pug/, ".html")
-    }))
+    })),
+    new CleanWebpackPlugin()
   ]
 });
 

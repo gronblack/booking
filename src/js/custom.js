@@ -1,51 +1,6 @@
-import TimeAgo from "javascript-time-ago/modules/JavascriptTimeAgo";
-import TimeAgoRu from "javascript-time-ago/locale/ru";
+import * as Common from './common'
 
 $(document).ready(function () {
-  const DATE_FORMATTER = new Intl.DateTimeFormat('ru-RU');
-  const SELECT_STRING_LIMIT = 27;
-
-  // ----------- common begin ----------------------------
-  TimeAgo.addLocale(TimeAgoRu);
-  const timeAgo = new TimeAgo('ru-RU');
-  $('[datetime]').each(function () {
-    $(this).text(timeAgo.format(new Date($(this).attr('datetime'))));
-  });
-
-  var formatNumber = digit => digit.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
-  $('[data-format-number]').each(function () {
-    var elem = $(this);
-    var digits = elem.text().replace(/[^\d]/g, '');
-    var letter = elem.text().replace(/[\d]/g, '');
-    elem.text(formatNumber(digits) + letter);
-  });
-
-  // select block toggle
-  $('[data-expand-for]').on('click', function (e) {
-    e.preventDefault();
-    $('#'+$(this).data('expandFor')).toggleClass('expanded');
-  });
-
-  // decline word based on the number
-  var decline = function (number, one, two, many) {
-    var lastDigit = number % 10;
-    if (number !== 11 && lastDigit === 1) return one;
-
-    if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return two;
-    else return many;
-  };
-
-  $('[data-decline-nubmer]').each(function () {
-    var node = $(this);
-    node.text(
-        $.parseHTML(
-            `${node.data('declineNubmer')}&nbsp;${decline(node.data('declineNubmer'), node.data('declineOne'), node.data('declineTwo'), node.data('declineMany'))}`
-        )[0].data
-    );
-  });
-  // ----------- common end ----------------------------
-
-
   // ----------- range-slider begin -------------
   $('.range').each(function () {
     var storage = JSON.parse(JSON.stringify($(this).data()));
@@ -84,8 +39,8 @@ $(document).ready(function () {
 
     var factStart = $(this).find('.range__fact-start');
     var factEnd = $(this).find('.range__fact-end');
-    factStart.text(formatNumber(Math.round(storage['start'])));
-    factEnd.text(formatNumber(Math.round(storage['end'])));
+    factStart.text(Common.formatNumber(Math.round(storage['start'])));
+    factEnd.text(Common.formatNumber(Math.round(storage['end'])));
 
     // pin mouse events
     [pinOne, pinTwo].forEach(elem =>
@@ -141,8 +96,8 @@ $(document).ready(function () {
     var digitTwo = (parseFloat(storage['elemPinTwo'].css('left')) + storage['elemPinTwo'].outerWidth() / 2) / storage['k'] + storage['min'];
     storage['start'] = Math.min(digitOne, digitTwo);
     storage['end'] = Math.max(digitOne, digitTwo);
-    storage['elemFactStart'].text(formatNumber(Math.round(storage['start'])));
-    storage['elemFactEnd'].text(formatNumber(Math.round(storage['end'])));
+    storage['elemFactStart'].text(Common.formatNumber(Math.round(storage['start'])));
+    storage['elemFactEnd'].text(Common.formatNumber(Math.round(storage['end'])));
     storage['elemBarFilled'].css({width: storage['k']*(storage['end'] - storage['start']), left: storage['k'] * (storage['start'] - storage['min'])});
   };
 
@@ -156,6 +111,8 @@ $(document).ready(function () {
 
 
   // ----------- input begin ------------------
+  const DATE_FORMATTER = new Intl.DateTimeFormat('ru-RU');
+
   var cutString = function (string, limit) {
     if (string.length <= limit) return string;
     return string.substr(0, (limit-3)) + '...';
@@ -201,8 +158,8 @@ $(document).ready(function () {
           $(elem).find('.input__select-minus').attr('disabled', sum === 0);
         });
 
-        if (guests > 0) resultArray.push(guests + ' ' + decline(guests, 'гость', 'гостя', 'гостей'));
-        if (babys > 0) resultArray.push(babys + ' ' + decline(babys, 'младенец', 'младенца', 'младенцев'));
+        if (guests > 0) resultArray.push(guests + ' ' + Common.decline(guests, 'гость', 'гостя', 'гостей'));
+        if (babys > 0) resultArray.push(babys + ' ' + Common.decline(babys, 'младенец', 'младенца', 'младенцев'));
 
       } else {  // general case
         selectElems.each(function (i, elem) {
