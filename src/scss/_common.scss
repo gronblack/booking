@@ -548,7 +548,7 @@ h3 {
     }
 
     @media (min-width: $desktop) {
-      width: 380px;
+      width: 380px !important;
     }
 
     @media (min-width: $smDesktop) {
