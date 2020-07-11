@@ -1,4 +1,4 @@
-import * as Common from "../../js/common";
+import {decline} from "../../js/common";
 
 $(document).ready(function () {
   const DATE_FORMATTER = new Intl.DateTimeFormat('ru-RU');
@@ -48,8 +48,8 @@ $(document).ready(function () {
           $(elem).find('.input__select-minus').attr('disabled', sum === 0);
         });
 
-        if (guests > 0) resultArray.push(guests + ' ' + Common.decline(guests, 'гость', 'гостя', 'гостей'));
-        if (babys > 0) resultArray.push(babys + ' ' + Common.decline(babys, 'младенец', 'младенца', 'младенцев'));
+        if (guests > 0) resultArray.push(guests + ' ' + decline(guests, 'гость', 'гостя', 'гостей'));
+        if (babys > 0) resultArray.push(babys + ' ' + decline(babys, 'младенец', 'младенца', 'младенцев'));
 
       } else {  // general case
         selectElems.each(function (i, elem) {

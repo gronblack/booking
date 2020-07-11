@@ -1,4 +1,4 @@
-import * as Common from "../../js/common";
+import {formatNumber} from "../../js/common";
 
 $(document).ready(function () {
   $('.range').each(function () {
@@ -38,8 +38,8 @@ $(document).ready(function () {
 
     var factStart = $(this).find('.range__fact-start');
     var factEnd = $(this).find('.range__fact-end');
-    factStart.text(Common.formatNumber(Math.round(storage['start'])));
-    factEnd.text(Common.formatNumber(Math.round(storage['end'])));
+    factStart.text(formatNumber(Math.round(storage['start'])));
+    factEnd.text(formatNumber(Math.round(storage['end'])));
 
     // pin mouse events
     [pinOne, pinTwo].forEach(elem =>
@@ -95,8 +95,8 @@ $(document).ready(function () {
     var digitTwo = (parseFloat(storage['elemPinTwo'].css('left')) + storage['elemPinTwo'].outerWidth() / 2) / storage['k'] + storage['min'];
     storage['start'] = Math.min(digitOne, digitTwo);
     storage['end'] = Math.max(digitOne, digitTwo);
-    storage['elemFactStart'].text(Common.formatNumber(Math.round(storage['start'])));
-    storage['elemFactEnd'].text(Common.formatNumber(Math.round(storage['end'])));
+    storage['elemFactStart'].text(formatNumber(Math.round(storage['start'])));
+    storage['elemFactEnd'].text(formatNumber(Math.round(storage['end'])));
     storage['elemBarFilled'].css({width: storage['k']*(storage['end'] - storage['start']), left: storage['k'] * (storage['start'] - storage['min'])});
   };
 

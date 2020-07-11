@@ -32,8 +32,8 @@ mixin diagram-circle(options)
                 var gID = gObj.id ? gObj.id : Math.random().toString(36).substr(2, 9);
                 var color = `url(#${gID})`;
               linearGradient(id=gID, x1=gObj.x1, y1=gObj.y1, x2=gObj.x2, y2=gObj.y2)
-                each stop in gObj.stops
-                  stop(offset=stop.offset, stop-color=stop.stopColor)
+                each stopPoint in gObj.stops
+                  stop(offset=stopPoint.offset, stop-color=stopPoint.stopColor)
             else
               - var color = obj.color;
 

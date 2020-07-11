@@ -149,10 +149,11 @@ block main
         .room-details__reviews
           .room-details__caption.mb20
             h2 !{'Отзывы посетителей номера'}
-            span(data-decline-nubmer=REVIEWS_COUNT, data-decline-one='отзыв', data-decline-two='отзыва', data-decline-many='отзывов')
+            span(data-decline-number=REVIEWS_COUNT, data-decline-one='отзыв', data-decline-two='отзыва', data-decline-many='отзывов')
           ul.room-details__reviews-list
             each item in reviews
-              +review(item).room-details__review
+              li
+                +review(item).room-details__review
         .room-details__rules.mb20
           h2.room-details__caption !{'Правила'}
           +bullets({

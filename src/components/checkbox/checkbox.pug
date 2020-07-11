@@ -20,9 +20,10 @@ mixin checkbox(options)
         ul.checkbox__list
           each obj, ind in options.list
             - var locId = blockId+'-'+ind
-            - var rich = obj.rich ? '<p class="checkbox__rich-text">'+obj.rich+'</p>' : '';
+            - var rich = obj.rich ? '<span class="checkbox__rich-text">'+obj.rich+'</span>' : '';
             - var elemRich = obj.rich ? ' checkbox__elem_rich' : '';
             - var labelRich = obj.rich ? ' checkbox__label_rich' : '';
+            - var value = obj.value !== undefined ? obj.value : obj.caption;
             li(class='checkbox__elem'+elemRich)
-              input(class="checkbox__input" id=locId type="checkbox" value=obj.caption checked=obj.checked)
+              input(class="checkbox__input" id=locId type="checkbox" value=value checked=obj.checked)
               label(class="checkbox__label"+labelRich for=locId) !{rich}!{obj.caption}

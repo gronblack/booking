@@ -1,22 +1,21 @@
-/************* IMPORTS *******************/
-import TimeAgo from "javascript-time-ago/modules/JavascriptTimeAgo";
-import TimeAgoRu from "javascript-time-ago/locale/ru";
-TimeAgo.addLocale(TimeAgoRu);
-export const timeAgo = new TimeAgo('ru-RU');
-
-export let formatNumber = digit => digit.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
-
+/************* EXPORTS *******************/
 // decline word based on the number
-export let decline = function (number, one, two, many) {
+export const decline = function (number, one, two, many) {
   let lastDigit = number % 10;
   if (number !== 11 && lastDigit === 1) return one;
 
   if ((number < 5 || number > 20) && lastDigit > 0 && lastDigit < 5) return two;
   else return many;
 };
+export const formatNumber = digit => digit.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1 ');
 
 
 /************* ON BOOT *******************/
+import TimeAgo from "javascript-time-ago/modules/JavascriptTimeAgo";
+import TimeAgoRu from "javascript-time-ago/locale/ru";
+TimeAgo.addLocale(TimeAgoRu);
+const timeAgo = new TimeAgo('ru-RU');
+
 $(document).ready(function () {
   $('[datetime]').each(function () {
     $(this).text(timeAgo.format(new Date($(this).attr('datetime'))));
@@ -35,11 +34,11 @@ $(document).ready(function () {
     $('#'+$(this).data('expandFor')).toggleClass('expanded');
   });
 
-  $('[data-decline-nubmer]').each(function () {
+  $('[data-decline-number]').each(function () {
     let node = $(this);
     node.text(
         $.parseHTML(
-            `${node.data('declineNubmer')}&nbsp;${decline(node.data('declineNubmer'), node.data('declineOne'), node.data('declineTwo'), node.data('declineMany'))}`
+            `${node.data('declineNumber')}&nbsp;${decline(node.data('declineNumber'), node.data('declineOne'), node.data('declineTwo'), node.data('declineMany'))}`
         )[0].data
     );
   });

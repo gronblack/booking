@@ -24,21 +24,22 @@ mixin room-select-form(options)
     var buttonText = (options && options.buttonText) ? options.buttonText : 'Подобрать номер';
 
   form(class='room-select-form form'+addClass id=blockId action=action, method=method, name=name)
-    legend(class='form__legend') !{legend}
-    +date-pair({
-      mode: "dropdown",
-      label_1: "Прибытие",
-      label_2: "Выезд",
-      placeholder: "ДД.ММ.ГГГГ",
-      mask: "00.00.0000"
-    })(class="room-select-form__date-pair")
-    +input({
-      mode: "dropdown",
-      label: "Гости",
-      guestsCount: true,
-      selectQuestion: selectQuestion,
-      list: list,
-      applyButton: true,
-      clearButton: true
-    })(class='room-select-form__list')
+    fieldset(class='form__fieldset')
+      legend(class='form__legend') !{legend}
+      +date-pair({
+        mode: "dropdown",
+        label_1: "Прибытие",
+        label_2: "Выезд",
+        placeholder: "ДД.ММ.ГГГГ",
+        mask: "00.00.0000"
+      })(class="room-select-form__date-pair")
+      +input({
+        mode: "dropdown",
+        label: "Гости",
+        guestsCount: true,
+        selectQuestion: selectQuestion,
+        list: list,
+        applyButton: true,
+        clearButton: true
+      })(class='room-select-form__list')
     +button({text: buttonText, subscribe: true}).form__submit

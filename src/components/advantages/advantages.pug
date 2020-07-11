@@ -9,7 +9,7 @@ mixin advantages(options)
       each obj in data
         li.advantages__elem
           .advantages__left
-            img(class='advantages__img' src=obj.img)
+            img(class='advantages__img' src=obj.img alt=obj.text)
           .advantages__right
             p.advantages__caption
               strong= obj.caption

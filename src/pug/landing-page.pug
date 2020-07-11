@@ -4,10 +4,11 @@ include ../components/room-select-form/room-select-form
 block title
   ='Landing page'
 block main
+  - var promo = 'Лучшие номера для вашей работы, отдыха и просто вдохновения'
   section.landing.one-form
     .landing__container.one-form__container
       picture.landing__picture.one-form__picture
         source(media='(min-width: 768px)' srcset='/img/landing-page.jpg')
-        img(src='/img/landing-page_mobile.jpg')
+        img(src='/img/landing-page_mobile.jpg' alt=promo)
       +room-select-form().landing__form.one-form__form
-      p.landing__promo= 'Лучшие номера для вашей работы, отдыха и просто вдохновения'
+      p.landing__promo= promo

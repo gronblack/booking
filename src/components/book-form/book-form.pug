@@ -22,32 +22,33 @@ mixin book-form(options)
 
 
   form(class='book-form form' + addClass id=options.blockId action=options.action, method=method, name=name)
-    legend(class='book-form__legend')
-      p(class='form__number')
-        span(class='form__number-symbol')= '№'
-        span(class='form__number-value' data-format-number=true)= options.number
-        if (options.lux)
-          span(class='form__lux')= 'Люкс'
-      p(class='form__price')
-        span(class='form__price-value' data-format-number=true)= options.price
-        span(class='form__price-symbol')= options.symbol
-        span(class='form__price-subtext')= 'в сутки'
-    +date-pair({
-      mode: "dropdown",
-      label_1: "Прибытие",
-      label_2: "Выезд",
-      placeholder: "ДД.ММ.ГГГГ",
-      mask: "00.00.0000"
-    })
-    +input({
-      mode: "dropdown",
-      label: "Гости",
-      selectQuestion: selectQuestion,
-      guestsCount: true,
-      list: guestList,
-      applyButton: true,
-      clearButton: true
-    })(class='book-form__guests')
+    fieldset(class='form__fieldset')
+      div(class='book-form__legend form__legend')
+        p.form__number
+          span(class='form__number-symbol')= '№'
+          span(class='form__number-value' data-format-number=true)= options.number
+          if (options.lux)
+            span(class='form__lux')= 'Люкс'
+        p.form__price
+          span(class='form__price-value' data-format-number=true)= options.price
+          span(class='form__price-symbol')= options.symbol
+          span(class='form__price-subtext')= 'в сутки'
+      +date-pair({
+        mode: "dropdown",
+        label_1: "Прибытие",
+        label_2: "Выезд",
+        placeholder: "ДД.ММ.ГГГГ",
+        mask: "00.00.0000"
+      })
+      +input({
+        mode: "dropdown",
+        label: "Гости",
+        selectQuestion: selectQuestion,
+        guestsCount: true,
+        list: guestList,
+        applyButton: true,
+        clearButton: true
+      })(class='book-form__guests')
     if (options.orderList && !!options.orderList.length)
       ul(class='book-form__list')
         each obj in options.orderList

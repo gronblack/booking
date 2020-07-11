@@ -34,7 +34,7 @@ h2 {
 }
 
 h3 {
-  font-family: $mainFontWeight !important;
+  font-family: $mainFont !important;
   font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
@@ -194,6 +194,10 @@ h3 {
     padding: 40px 30px 30px;
   }
 
+  &__fieldset {
+    border: none;
+  }
+
   &__legend {
     font-family: $openSansFont;
     font-weight: 700;
@@ -233,6 +237,7 @@ h3 {
 
   &__price {
     padding-top: 10px;
+    font-family: $mainFont;
     font-weight: 700;
     font-size: 14px;
     line-height: 18px;

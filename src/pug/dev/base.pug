@@ -1,17 +1,21 @@
 include ../../components/header/header
 include ../../components/footer/footer
 
+- var description = 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»';
+
 doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width,initial-scale=1")
+    meta(name="description" content=description)
     title
       block title
   body
     block header
       +header({
         logo: '/img/logo.svg',
+        logoAlt: description,
         logoHref: '/',
         list: [
           {
@@ -64,7 +68,7 @@ html(lang="ru")
 
     block footer
       +footer({
-        description: 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
+        description: description,
         logoHref: '/',
         list: [
           {

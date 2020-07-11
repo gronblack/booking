@@ -14,7 +14,7 @@ mixin review(options)
   blockquote(class='review'+addClass)
     div(class='review__top')
       a(class='review__img' href=href)
-        img(src=options.person.img)
+        img(src=options.person.img alt=options.person.name)
       p(class='review__caption')
         cite
           a(href=href)= options.person.name
