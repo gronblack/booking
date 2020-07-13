@@ -3,7 +3,7 @@ include ../rate/rate
 mixin product-card(options)
   -
     var blockId = options.blockId ? options.blockId : Math.random().toString(36).substr(2, 9);
-    var images = options.images ? options.images : ['/img/rooms/product-stub.png'];
+    var images = options.images ? options.images : ['img/rooms/product-stub.png'];
     var symbol = options.symbol ? options.symbol : '';
     var rate = options.rate ? options.rate : 5;
     var attrClass = attributes.class ? ' '+attributes.class : '';

@@ -20,7 +20,7 @@
     left: 4px;
     top: 4px;
     @include size(10px);
-    background-image: url("/img/like.svg");
+    background-image: url("../img/like.svg");
     background-repeat: no-repeat;
   }
 
@@ -33,7 +33,7 @@
     color: $purple;
 
     &::before {
-      background-image: url("/img/like-voted.svg");
+      background-image: url("../img/like-voted.svg");
     }
   }
 

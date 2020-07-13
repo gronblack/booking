@@ -10,22 +10,22 @@
     display: block;
     margin-right: 4px;
     @include size(20px, 19px);
-    background-image: url("/img/star.png");
+    background-image: url("../img/star.png");
   }
 
   &__star-filled {
     display: block;
     @include size(inherit);
-    background-image: url("/img/star-filled.png");
+    background-image: url("../img/star-filled.png");
   }
 
   &_interactive:hover &__star-filled {
-     background-image: url("/img/star.png");
+     background-image: url("../img/star.png");
   }
 
   &_interactive &__value:checked ~ &__star,
   &_interactive &__star:hover,
   &_interactive &__star:hover ~ &__star {
-    background-image: url("/img/star-filled.png");
+    background-image: url("../img/star-filled.png");
   }
 }

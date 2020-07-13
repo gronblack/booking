@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'Montserrat';
   src:
-          url('/fonts/Montserrat-Regular.woff') format('woff'),
-          url('/fonts/Montserrat-Regular.ttf') format('truetype'),
-          url('/fonts/Montserrat-Regular.svg') format('svg');
+          url('../fonts/Montserrat-Regular.woff') format('woff'),
+          url('../fonts/Montserrat-Regular.ttf') format('truetype'),
+          url('../fonts/Montserrat-Regular.svg') format('svg');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -12,9 +12,9 @@
 @font-face {
   font-family: 'Montserrat';
   src:
-          url('/fonts/Montserrat-Bold.woff') format('woff'),
-          url('/fonts/Montserrat-Bold.ttf') format('truetype'),
-          url('/fonts/Montserrat-Bold.svg') format('svg');
+          url('../fonts/Montserrat-Bold.woff') format('woff'),
+          url('../fonts/Montserrat-Bold.ttf') format('truetype'),
+          url('../fonts/Montserrat-Bold.svg') format('svg');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -23,9 +23,9 @@
 @font-face {
   font-family: 'Quicksand';
   src:
-          url('/fonts/Quicksand-Regular.woff') format('woff'),
-          url('/fonts/Quicksand-Regular.ttf') format('truetype'),
-          url('/fonts/Quicksand-Regular.svg') format('svg');
+          url('../fonts/Quicksand-Regular.woff') format('woff'),
+          url('../fonts/Quicksand-Regular.ttf') format('truetype'),
+          url('../fonts/Quicksand-Regular.svg') format('svg');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -34,9 +34,9 @@
 @font-face {
   font-family: 'Quicksand';
   src:
-          url('/fonts/Quicksand-Bold.woff') format('woff'),
-          url('/fonts/Quicksand-Bold.ttf') format('truetype'),
-          url('/fonts/Quicksand-Bold.svg') format('svg');
+          url('../fonts/Quicksand-Bold.woff') format('woff'),
+          url('../fonts/Quicksand-Bold.ttf') format('truetype'),
+          url('../fonts/Quicksand-Bold.svg') format('svg');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -45,10 +45,10 @@
 @font-face {
   font-family: 'OpenSans';
   src:
-          url('/fonts/OpenSans-Regular.woff2') format('woff2'),
-          url('/fonts/OpenSans-Regular.woff') format('woff'),
-          url('/fonts/OpenSans-Regular.ttf') format('truetype'),
-          url('/fonts/OpenSans-Regular.svg') format('svg');
+          url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+          url('../fonts/OpenSans-Regular.woff') format('woff'),
+          url('../fonts/OpenSans-Regular.ttf') format('truetype'),
+          url('../fonts/OpenSans-Regular.svg') format('svg');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -57,10 +57,10 @@
 @font-face {
   font-family: 'OpenSans';
   src:
-          url('/fonts/OpenSans-Bold.woff2') format('woff2'),
-          url('/fonts/OpenSans-Bold.woff') format('woff'),
-          url('/fonts/OpenSans-Bold.ttf') format('truetype'),
-          url('/fonts/OpenSans-Bold.svg') format('svg');
+          url('../fonts/OpenSans-Bold.woff2') format('woff2'),
+          url('../fonts/OpenSans-Bold.woff') format('woff'),
+          url('../fonts/OpenSans-Bold.ttf') format('truetype'),
+          url('../fonts/OpenSans-Bold.svg') format('svg');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

@@ -41,15 +41,15 @@ module.exports = {
   },
   optimization: {
     splitChunks: {
-      chunks: "all"
+      chunks: 'all'
     }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        loader: "babel-loader",
-        exclude: "/node_modules/"
+        loader: 'babel-loader',
+        exclude: '/node_modules/'
       },
       {
         test: /\.pug$/,
@@ -60,19 +60,19 @@ module.exports = {
         include: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader"
+          'css-loader?url=false'
         ]
       },
       {
         test: /\.scss$/,
-        exclude: "/node_modules/",
+        exclude: '/node_modules/',
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader"
+            loader: 'css-loader?url=false'
           },
           {
-            loader: "sass-loader"
+            loader: 'sass-loader'
           }
         ]
       },
@@ -98,7 +98,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      "~datepicker": _path('../node_modules/air-datepicker/')
+      '~datepicker': _path('../node_modules/air-datepicker/')
     }
   },
   plugins: [

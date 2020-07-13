@@ -9,7 +9,7 @@ html(lang="ru")
     title HeadersFooters
   body.background-gray
     +header({
-      logo: '/img/logo.svg',
+      logo: '../img/logo.svg',
       list: [
         {
           caption: 'Home',
@@ -17,100 +17,101 @@ html(lang="ru")
         },
         {
           caption: 'About Us',
-          href: '/about',
+          href: 'about',
         },
         {
           caption: 'Services',
-          href: '/services',
+          href: 'services',
           submenu: [
             {
               caption: 'Service 1',
-              href: '/services/services-1',
+              href: 'services/services-1',
             },
             {
               caption: 'Service 2',
-              href: '/services/services-2',
+              href: 'services/services-2',
             }
           ]
         },
         {
           caption: 'Careers',
-          href: '/careers',
+          href: 'careers',
         },
         {
           caption: 'News',
-          href: '/news',
+          href: 'news',
         },
         {
           caption: 'Documentation',
-          href: '/documentation',
+          href: 'documentation',
         }
       ]
     }).header_UI.mt150.mb40
     +header({
-      logo: '/img/logo.svg',
-      logoHref: '/',
-      user: { id: '0001', link: '/users/0001', name: 'Cosmin Negoita'},
+      logo: '../img/logo.svg',
+      logoHref: 'index.html',
+      user: { id: '0001', link: 'users/0001', name: 'Cosmin Negoita'},
       list: [
         {
           caption: 'Home',
           isCurrent: true,
-          href: '/',
+          href: 'index.html',
         },
         {
           caption: 'About Us',
-          href: '/about',
+          href: 'about',
         },
         {
           caption: 'Services',
-          href: '/services',
+          href: 'services',
           submenu: [
             {
               caption: 'Service 1',
-              href: '/services/services-1',
+              href: 'services/services-1',
             },
             {
               caption: 'Service 2',
-              href: '/services/services-2',
+              href: 'services/services-2',
             }
           ]
         },
         {
           caption: 'Careers',
-          href: '/careers',
+          href: 'careers',
         },
         {
           caption: 'News',
-          href: '/news',
+          href: 'news',
         },
         {
           caption: 'Documentation',
-          href: '/documentation',
+          href: 'documentation',
         }
       ]
     }).header_UI.mb40
     +footer({
+      logo: '../img/logo.svg',
       description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam pellentesque aliquam curabitur cociis.',
-      logoHref: '/',
+      logoHref: 'index.html',
       list: [
         {
           caption: 'Navigation',
           menu: [
             {
               caption: 'About Us',
-              href: '/about'
+              href: 'about'
             },
             {
               caption: 'News',
-              href: '/news'
+              href: 'news'
             },
             {
               caption: 'Support',
-              href: '/support'
+              href: 'support'
             },
             {
               caption: 'Products',
-              href: '/products'
+              href: 'products'
             }
           ]
         },
@@ -119,19 +120,19 @@ html(lang="ru")
           menu: [
             {
               caption: 'Who we are',
-              href: '/who-we-are'
+              href: 'who-we-are'
             },
             {
               caption: 'Our team',
-              href: '/team'
+              href: 'team'
             },
             {
               caption: 'Careers',
-              href: '/careers'
+              href: 'careers'
             },
             {
               caption: 'Investors',
-              href: '/investors'
+              href: 'investors'
             }
           ]
         },
@@ -140,15 +141,15 @@ html(lang="ru")
           menu: [
             {
               caption: 'Documentation',
-              href: '/documentation'
+              href: 'documentation'
             },
             {
               caption: 'Community',
-              href: '/community'
+              href: 'community'
             },
             {
               caption: 'Get in touch',
-              href: '/contacts'
+              href: 'contacts'
             }
           ]
         }
@@ -163,42 +164,43 @@ html(lang="ru")
         {
           href: 'https://twitter.com/',
           title: 'Twitter',
-          icon: '/img/social/twitter.png'
+          icon: '../img/social/twitter.png'
         },
         {
           href: 'https://facebook.com/',
           title: 'Facebook',
-          icon: '/img/social/facebook.png'
+          icon: '../img/social/facebook.png'
         },
         {
           href: 'https://instagram.com/',
           title: 'Instagram',
-          icon: '/img/social/instagram.png'
+          icon: '../img/social/instagram.png'
         },
       ]
     }).footer_UI.mb40
     +footer({
+      logo: '../img/logo.svg',
       description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit aliquam eget nullam<br>pellentesque aliquam curabitur cociis.',
-      logoHref: '/',
+      logoHref: 'index.html',
       list: [
         {
           caption: 'Navigation',
           menu: [
             {
               caption: 'About Us',
-              href: '/about'
+              href: 'about'
             },
             {
               caption: 'News',
-              href: '/news'
+              href: 'news'
             },
             {
               caption: 'Support',
-              href: '/support'
+              href: 'support'
             },
             {
               caption: 'Products',
-              href: '/products'
+              href: 'products'
             }
           ]
         },
@@ -207,19 +209,19 @@ html(lang="ru")
           menu: [
             {
               caption: 'Who we are',
-              href: '/who-we-are'
+              href: 'who-we-are'
             },
             {
               caption: 'Our team',
-              href: '/team'
+              href: 'team'
             },
             {
               caption: 'Careers',
-              href: '/careers'
+              href: 'careers'
             },
             {
               caption: 'Investors',
-              href: '/investors'
+              href: 'investors'
             }
           ]
         },
@@ -228,15 +230,15 @@ html(lang="ru")
           menu: [
             {
               caption: 'Documentation',
-              href: '/documentation'
+              href: 'documentation'
             },
             {
               caption: 'Community',
-              href: '/community'
+              href: 'community'
             },
             {
               caption: 'Get in touch',
-              href: '/contacts'
+              href: 'contacts'
             }
           ]
         }
@@ -251,17 +253,17 @@ html(lang="ru")
         {
           href: 'https://twitter.com/',
           title: 'Twitter',
-          icon: '/img/social/twitter.png'
+          icon: '../img/social/twitter.png'
         },
         {
           href: 'https://facebook.com/',
           title: 'Facebook',
-          icon: '/img/social/facebook.png'
+          icon: '../img/social/facebook.png'
         },
         {
           href: 'https://instagram.com/',
           title: 'Instagram',
-          icon: '/img/social/instagram.png'
+          icon: '../img/social/instagram.png'
         },
       ]
     }).footer_UI.footer_mobile

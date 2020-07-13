@@ -14,47 +14,47 @@ html(lang="ru")
   body
     block header
       +header({
-        logo: '/img/logo.svg',
+        logo: 'img/logo.svg',
         logoAlt: description,
-        logoHref: '/',
+        logoHref: 'index.html',
         list: [
           {
             caption: 'О нас',
-            href: '/about',
+            href: 'about',
           },
           {
             caption: 'Услуги',
-            href: '/services',
+            href: 'services',
             submenu: [
               {
                 caption: 'Service 1',
-                href: '/services/services-1',
+                href: 'services/services-1',
               },
               {
                 caption: 'Service 2',
-                href: '/services/services-2',
+                href: 'services/services-2',
               }
             ]
           },
           {
             caption: 'Вакансии',
-            href: '/careers',
+            href: 'careers',
           },
           {
             caption: 'Новости',
-            href: '/news',
+            href: 'news',
           },
           {
             caption: 'Соглашения',
-            href: '/documentation',
+            href: 'documentation',
             submenu: [
               {
                 caption: 'Documentation 1',
-                href: '/documentation/documentation-1',
+                href: 'documentation/documentation-1',
               },
               {
                 caption: 'Documentation 2',
-                href: '/documentation/documentation-2',
+                href: 'documentation/documentation-2',
               }
             ]
           }
@@ -69,26 +69,26 @@ html(lang="ru")
     block footer
       +footer({
         description: description,
-        logoHref: '/',
+        logoHref: 'index.html',
         list: [
           {
             caption: 'Навигация',
             menu: [
               {
                 caption: 'О нас',
-                href: '/about'
+                href: 'about'
               },
               {
                 caption: 'Новости',
-                href: '/news'
+                href: 'news'
               },
               {
                 caption: 'Служба поддержки',
-                href: '/support'
+                href: 'support'
               },
               {
                 caption: 'Услуги',
-                href: '/services'
+                href: 'services'
               }
             ]
           },
@@ -97,19 +97,19 @@ html(lang="ru")
             menu: [
               {
                 caption: 'О сервисе',
-                href: '/about-service'
+                href: 'about-service'
               },
               {
                 caption: 'Наша команда',
-                href: '/team'
+                href: 'team'
               },
               {
                 caption: 'Вакансии',
-                href: '/careers'
+                href: 'careers'
               },
               {
                 caption: 'Инвесторы',
-                href: '/investors'
+                href: 'investors'
               }
             ]
           },
@@ -118,15 +118,15 @@ html(lang="ru")
             menu: [
               {
                 caption: 'Соглашения',
-                href: '/documentation'
+                href: 'documentation'
               },
               {
                 caption: 'Сообщества',
-                href: '/community'
+                href: 'community'
               },
               {
                 caption: 'Связь с нами',
-                href: '/contacts'
+                href: 'contacts'
               }
             ]
           }
@@ -141,17 +141,17 @@ html(lang="ru")
           {
             href: 'https://twitter.com/',
             title: 'Twitter',
-            icon: '/img/social/twitter.png'
+            icon: 'img/social/twitter.png'
           },
           {
             href: 'https://facebook.com/',
             title: 'Facebook',
-            icon: '/img/social/facebook.png'
+            icon: 'img/social/facebook.png'
           },
           {
             href: 'https://instagram.com/',
             title: 'Instagram',
-            icon: '/img/social/instagram.png'
+            icon: 'img/social/instagram.png'
           },
         ]
       })

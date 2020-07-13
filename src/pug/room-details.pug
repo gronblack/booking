@@ -19,19 +19,19 @@ block main
     // photo
     var imgList = [
       {
-        src: '/img/rooms/room-888-preview-1.jpg',
-        tablet: '/img/rooms/room-888-1.jpg',
-        desktop: '/img/rooms/room-888-big-1.jpg',
+        src: 'img/rooms/room-888-preview-1.jpg',
+        tablet: 'img/rooms/room-888-1.jpg',
+        desktop: 'img/rooms/room-888-big-1.jpg',
         alt: 'Полулюкс с отличным видом из окон'
       },
       {
-        src: '/img/rooms/room-888-preview-2.jpg',
-        tablet: '/img/rooms/room-888-2.jpg',
+        src: 'img/rooms/room-888-preview-2.jpg',
+        tablet: 'img/rooms/room-888-2.jpg',
         alt: 'Фиолетовая кровать'
       },
       {
-        src: '/img/rooms/room-888-preview-3.jpg',
-        tablet: '/img/rooms/room-888-3.jpg',
+        src: 'img/rooms/room-888-preview-3.jpg',
+        tablet: 'img/rooms/room-888-3.jpg',
         alt: 'Удобная комната для работы и отдыха'
       },
     ];
@@ -44,13 +44,13 @@ block main
     // reviews
     var reviews = [
       {
-        person: {name: "Мурад Сарафанов", img: "../img/persons/1.png"},
+        person: {name: "Мурад Сарафанов", img: "img/persons/1.png"},
         text: "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
         likes: 12,
         date: Date.now() - 4.5 * 24 * 3600 * 1000
       },
       {
-        person: {name: "Патрисия Стёклышкова", img: "../img/persons/2.png"},
+        person: {name: "Патрисия Стёклышкова", img: "img/persons/2.png"},
         text: "Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент",
         likes: 2,
         date: Date.now() - 6.5 * 24 * 3600 * 1000
@@ -76,9 +76,9 @@ block main
           h2.room-details__caption.mb20 !{'Сведения о номере'}
           +advantages({
             data: [
-              {caption: "Комфорт", img: "../img/advantages-smile.png", text: "Шумопоглощающие стены"},
-              {caption: "Удобство", img: "../img/advantages-city.png", text: "Окно в каждой из спален"},
-              {caption: "Уют", img: "../img/advantages-whatshot.png", text: "Номер оснащён камином"}
+              {caption: "Комфорт", img: "img/advantages-smile.png", text: "Шумопоглощающие стены"},
+              {caption: "Удобство", img: "img/advantages-city.png", text: "Окно в каждой из спален"},
+              {caption: "Уют", img: "img/advantages-whatshot.png", text: "Номер оснащён камином"}
             ]
           })
         .room-details__impress.mb20

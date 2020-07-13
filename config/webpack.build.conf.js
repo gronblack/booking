@@ -6,11 +6,16 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 const PAGES_LOC = baseWebpackConfig.externals.pages;
 const buildWebpackConfig = merge(baseWebpackConfig, {
-  mode: "production",
+  mode: 'production',
   plugins: [
     ...PAGES_LOC.PAGES.map(page => new HtmlWebpackPlugin({
       template: `${PAGES_LOC.PAGES_DIR}/${page}`,
-      filename: page.replace(/\.pug/, ".html")
+      filename: page.replace(/\.pug/, '.html')
+    })),
+    // for project demonstration
+    ...PAGES_LOC.PAGES_UI.map(page => new HtmlWebpackPlugin({
+      template: `${PAGES_LOC.PAGES_DIR}/dev/${page}`,
+      filename: 'dev/' + page.replace(/\.pug/, '.html')
     })),
     new ImageminPlugin({
       mozjpeg: {

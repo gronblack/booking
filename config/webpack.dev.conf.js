@@ -5,11 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PAGES_LOC = baseWebpackConfig.externals.pages;
 const devWebpackConfig = merge(baseWebpackConfig, {
-  mode: "development",
+  mode: 'development',
   entry: {
     app: `${baseWebpackConfig.externals.paths.src}/dev.js`
   },
-  devtool: "cheap-module-eval-source-map",
+  devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
     port: 8081,
@@ -21,14 +21,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     ...PAGES_LOC.PAGES.map(page => new HtmlWebpackPlugin({
       template: `${PAGES_LOC.PAGES_DIR}/${page}`,
-      filename: page.replace(/\.pug/, ".html")
+      filename: page.replace(/\.pug/, '.html')
     })),
     ...PAGES_LOC.PAGES_UI.map(page => new HtmlWebpackPlugin({
       template: `${PAGES_LOC.PAGES_DIR}/dev/${page}`,
-      filename: 'dev/' + page.replace(/\.pug/, ".html")
+      filename: 'dev/' + page.replace(/\.pug/, '.html')
     })),
     new webpack.SourceMapDevToolPlugin({
-      filename: "[file].map"
+      filename: '[file].map'
     })
   ]
 });
