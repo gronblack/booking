@@ -1,2 +1,2 @@
-# Учебный проект «Booking», Fullstack Development
-GitHub Pages: https://gronblack.github.io/booking/
+# Учебный проект «Educ-Booking», Fullstack Development
+GitHub Pages: https://gronblack.github.io/educ-booking/
