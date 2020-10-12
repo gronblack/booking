@@ -105,11 +105,13 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
     }),
-    new CopyWebpackPlugin([
-      { from: `${PATHS.src}/fonts/`, to: `${PATHS.dist}/fonts/` },
-      { from: `${PATHS.src}/img/`, to: `${PATHS.dist}/img/` },
-      ...COMPONENTS_IMAGES
-    ]),
+    new CopyWebpackPlugin(
+      {patterns: [
+        { from: `${PATHS.src}/fonts/`, to: `${PATHS.dist}/fonts/` },
+        { from: `${PATHS.src}/img/`, to: `${PATHS.dist}/img/` },
+        ...COMPONENTS_IMAGES
+      ]}
+    ),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
